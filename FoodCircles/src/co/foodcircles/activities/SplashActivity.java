@@ -25,6 +25,7 @@ public class SplashActivity extends Activity
 				//TODO: If user has logged in before, show sign in screen instead
 				Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
 				startActivity(intent);
+				SplashActivity.this.finish();
 			}
 		};
 

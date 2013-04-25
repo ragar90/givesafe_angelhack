@@ -3,9 +3,10 @@ package co.foodcircles.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,16 +18,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import co.foodcircles.R;
 
-public class AccountActivity extends Activity
+public class AccountFragment extends Fragment
 {
 	EditText nameEditText;
 	ListView list;
 	AboutYouAdapter adapter;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		super.onCreate(savedInstanceState);
+		View view = getActivity().getLayoutInflater().inflate(R.layout.about_you, null);
 
 		List<String> selectionStrings = new ArrayList<String>();
 		selectionStrings.add("Purchase History");
@@ -44,8 +45,8 @@ public class AccountActivity extends Activity
 		selectionIcons.add(R.drawable.logo);
 		selectionIcons.add(R.drawable.logo);
 
-		nameEditText = (EditText) findViewById(R.id.editText);
-		list = (ListView) findViewById(R.id.listView);
+		nameEditText = (EditText) view.findViewById(R.id.editText);
+		list = (ListView) view.findViewById(R.id.listView);
 		adapter = new AboutYouAdapter(selectionStrings, selectionIcons);
 		list.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
@@ -55,9 +56,21 @@ public class AccountActivity extends Activity
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
-				//TODO: do something when they click an item
+				Class selectedActivity = null;
+				switch(position)
+				{
+					case 0 : selectedActivity = VouchersActivity.class;
+				}
+				
+				if(selectedActivity != null)
+				{
+					Intent intent = new Intent(getActivity(), selectedActivity);
+					startActivity(intent);
+				}
 			}
 		});
+		
+		return view;
 	}
 
 	private class AboutYouAdapter extends BaseAdapter
@@ -102,7 +115,7 @@ public class AccountActivity extends Activity
 			final ViewHolder holder;
 			if (convertView == null)
 			{
-				view = getLayoutInflater().inflate(R.layout.about_you_row, parent, false);
+				view = getActivity().getLayoutInflater().inflate(R.layout.about_you_row, parent, false);
 				holder = new ViewHolder();
 				holder.icon = (ImageView) view.findViewById(R.id.imageViewIcon);
 				holder.string = (TextView) view.findViewById(R.id.textView);

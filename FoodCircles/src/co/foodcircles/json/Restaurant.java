@@ -31,7 +31,7 @@ public class Restaurant
 	{
 		name = "Super Burgers";
 		cuisine = "American";
-		upgradeText = "pimped out burgers";
+		upgradeText = "the best burgers";
 		phone = "555-123-5151";
 		hours = "M-F 10am - 9pm";
 		url = null;

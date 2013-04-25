@@ -3,9 +3,12 @@ package co.foodcircles.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class RestaurantInfoActivity extends FragmentActivity implements OnClickListener, OnMarkerClickListener, OnMapClickListener, OnInfoWindowClickListener
+public class RestaurantInfoFragment extends Fragment implements OnClickListener, OnMarkerClickListener, OnMapClickListener, OnInfoWindowClickListener
 {
 	FoodCirclesApplication app;
 	Restaurant restaurant;
@@ -47,22 +50,22 @@ public class RestaurantInfoActivity extends FragmentActivity implements OnClickL
 	ImageView yelpImage;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		super.onCreate(savedInstanceState);
+		View view = getActivity().getLayoutInflater().inflate(R.layout.restaurant_info, null);
 
-		app = (FoodCirclesApplication) getApplicationContext();
+		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		restaurant = app.selectedRestaurant;
 
-		image = (ImageView) findViewById(R.id.imageViewLogo);
+		image = (ImageView) view.findViewById(R.id.imageViewLogo);
 
 		try
 		{
-			FragmentManager myFragmentManager = getSupportFragmentManager();
+			FragmentManager myFragmentManager = getActivity().getSupportFragmentManager();
 			SupportMapFragment mySupportMapFragment = (SupportMapFragment) myFragmentManager.findFragmentById(R.id.map);
 			map = mySupportMapFragment.getMap();
 
-			MapsInitializer.initialize(this);
+			MapsInitializer.initialize(getActivity());
 			LatLng destinationLatLng = new LatLng(restaurant.getLatitude(), restaurant.getLongitude());
 			destinationMarker = new MarkerOptions();
 
@@ -88,20 +91,22 @@ public class RestaurantInfoActivity extends FragmentActivity implements OnClickL
 		}
 		catch (GooglePlayServicesNotAvailableException e)
 		{
-			Toast.makeText(this, "Google Play Services are not available on this device. Cannot display map.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "Google Play Services are not available on this device. Cannot display map.", Toast.LENGTH_SHORT).show();
 		}
 
-		addressTextView = (TextView) findViewById(R.id.textViewAddress);
-		phoneNumberTextView = (TextView) findViewById(R.id.textViewPhone);
-		hoursTextView = (TextView) findViewById(R.id.textViewHours);
-		urlTextView = (TextView) findViewById(R.id.textViewUrl);
-		detailsTextView = (TextView) findViewById(R.id.textViewDetails);
+		addressTextView = (TextView) view.findViewById(R.id.textViewAddress);
+		phoneNumberTextView = (TextView) view.findViewById(R.id.textViewPhone);
+		hoursTextView = (TextView) view.findViewById(R.id.textViewHours);
+		urlTextView = (TextView) view.findViewById(R.id.textViewUrl);
+		detailsTextView = (TextView) view.findViewById(R.id.textViewDetails);
 		
 		addressTextView.setText(restaurant.getAddress());
 		phoneNumberTextView.setText(restaurant.getPhone());
 		hoursTextView.setText(restaurant.getHours());
 		urlTextView.setText(restaurant.getUrl());
 		detailsTextView.setText(restaurant.getDetails());
+		
+		return view;
 	}
 
 	@Override

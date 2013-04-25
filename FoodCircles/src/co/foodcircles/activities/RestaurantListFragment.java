@@ -2,49 +2,48 @@ package co.foodcircles.activities;
 
 import java.util.List;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Restaurant;
 import co.foodcircles.net.Net;
 import co.foodcircles.util.FoodCirclesApplication;
 
-public class RestaurantListActivity extends ListActivity
+public class RestaurantListFragment extends ListFragment
 {
 	private List<Restaurant> restaurants;
 	private RestaurantAdapter adapter;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.restaurant_list);
+		View view = getActivity().getLayoutInflater().inflate(R.layout.list, null);
 
 		restaurants = Net.getRestaurants();
 
 		adapter = new RestaurantAdapter(restaurants);
 		this.setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
+		return view;
+	}
 
-		getListView().setOnItemClickListener(new OnItemClickListener()
-		{
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-			{
-				FoodCirclesApplication app = (FoodCirclesApplication) RestaurantListActivity.this.getApplicationContext();
-				app.selectedRestaurant = restaurants.get(position);
-				Intent intent = new Intent(RestaurantListActivity.this, RestaurantUpgradesActivity.class);
-				startActivity(intent);
-			}
-		});
+	@Override
+	public void onListItemClick(ListView l, View v, int position, long id)
+	{
+		FoodCirclesApplication app = (FoodCirclesApplication) RestaurantListFragment.this.getActivity().getApplicationContext();
+		app.selectedRestaurant = restaurants.get(position);
+		Intent intent = new Intent(RestaurantListFragment.this.getActivity(), RestaurantActivity.class);
+		startActivity(intent);
 	}
 
 	private class RestaurantAdapter extends BaseAdapter
@@ -90,7 +89,7 @@ public class RestaurantListActivity extends ListActivity
 			final ViewHolder holder;
 			if (convertView == null)
 			{
-				view = getLayoutInflater().inflate(R.layout.restaurant_row, parent, false);
+				view = getActivity().getLayoutInflater().inflate(R.layout.restaurant_row, parent, false);
 				holder = new ViewHolder();
 				holder.logo = (ImageView) view.findViewById(R.id.imageViewLogo);
 				holder.name = (TextView) view.findViewById(R.id.textViewName);
@@ -98,8 +97,7 @@ public class RestaurantListActivity extends ListActivity
 				holder.upgrades = (TextView) view.findViewById(R.id.textViewUpgrades);
 				holder.distance = (TextView) view.findViewById(R.id.textViewDistance);
 				view.setTag(holder);
-			}
-			else
+			} else
 			{
 				holder = (ViewHolder) view.getTag();
 			}
@@ -116,5 +114,4 @@ public class RestaurantListActivity extends ListActivity
 		}
 
 	}
-
 }

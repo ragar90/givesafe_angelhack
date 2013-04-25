@@ -7,9 +7,11 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,6 +25,9 @@ import co.foodcircles.util.FoodCirclesApplication;
 
 public class PricePickerDialog extends DialogFragment
 {
+	private static final int LOWER_SEEKBAR_PERCENT = 20;
+	private static final int HIGHER_SEEKBAR_PERCENT = 80;
+
 	public interface PricePickerDialogListener
 	{
 		public void onDialogPositiveClick(BigDecimal selectedPrice);
@@ -36,24 +41,24 @@ public class PricePickerDialog extends DialogFragment
 	public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
-		try
-		{
-			mListener = (PricePickerDialogListener) activity;
-			FoodCirclesApplication app = (FoodCirclesApplication) activity.getApplicationContext();
-			upgrade = app.selectedUpgrade;
-		}
-		catch (ClassCastException e)
-		{
-			throw new ClassCastException(activity.toString() + " must implement NoticeDialogListener");
-		}
+		FoodCirclesApplication app = (FoodCirclesApplication) activity.getApplicationContext();
+		upgrade = app.selectedUpgrade;
+	}
+
+	public void setListener(PricePickerDialogListener listener)
+	{
+		mListener = listener;
 	}
 
 	public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		LayoutInflater inflater = getActivity().getLayoutInflater();
+		
+		Context context = new ContextThemeWrapper(getActivity(), R.style.AppBaseTheme);
+		LayoutInflater localInflater = inflater.cloneInContext(context);
 
-		View view = inflater.inflate(R.layout.price_chooser_dialog, null);
+		View view = localInflater.inflate(R.layout.price_chooser_dialog, null);
 		final TextView currentPriceTextView = (TextView) view.findViewById(R.id.textViewCurrentPrice);
 		TextView price1TextView = (TextView) view.findViewById(R.id.textViewPrice1);
 		TextView price2TextView = (TextView) view.findViewById(R.id.textViewPrice2);
@@ -77,15 +82,13 @@ public class PricePickerDialog extends DialogFragment
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
 			{
-				if (seekBar.getProgress() < 33)
+				if (seekBar.getProgress() < LOWER_SEEKBAR_PERCENT)
 				{
 					selectedPrice = upgrade.getDiscountPrice();
-				}
-				else if (seekBar.getProgress() < 66)
+				} else if (seekBar.getProgress() < HIGHER_SEEKBAR_PERCENT)
 				{
 					selectedPrice = upgrade.getFullPrice();
-				}
-				else
+				} else
 				{
 					selectedPrice = upgrade.getFullPrice().add(upgrade.getFullPrice());
 				}
@@ -101,15 +104,13 @@ public class PricePickerDialog extends DialogFragment
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar)
 			{
-				if (seekBar.getProgress() < 33)
+				if (seekBar.getProgress() < LOWER_SEEKBAR_PERCENT)
 				{
 					seekBar.setProgress(0);
-				}
-				else if (seekBar.getProgress() < 66)
+				} else if (seekBar.getProgress() < HIGHER_SEEKBAR_PERCENT)
 				{
 					seekBar.setProgress(50);
-				}
-				else
+				} else
 				{
 					seekBar.setProgress(100);
 				}

@@ -1,6 +1,5 @@
 package co.foodcircles.activities;
 
-import co.foodcircles.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import co.foodcircles.R;
 
 public class SignUpActivity extends Activity
 {
+	TextView signIn;
 	EditText email;
 	EditText password;
-	Button signinButton;
+	Button signUpButton;
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -22,9 +24,10 @@ public class SignUpActivity extends Activity
 
 		email = (EditText) findViewById(R.id.editTextEmail);
 		password = (EditText) findViewById(R.id.editTextPassword);
-		signinButton = (Button) findViewById(R.id.buttonSignUp);
+		signUpButton = (Button) findViewById(R.id.buttonSignUp);
+		signIn = (TextView) findViewById(R.id.textViewSignIn);
 
-		signinButton.setOnClickListener(new View.OnClickListener()
+		signUpButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -41,10 +44,20 @@ public class SignUpActivity extends Activity
 					@Override
 					protected void onPostExecute(Boolean success)
 					{
-						Intent intent = new Intent(SignUpActivity.this, RestaurantListActivity.class);
+						Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
 						startActivity(intent);
 					}
 				}.execute("");
+			}
+		});
+
+		signIn.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+				SignUpActivity.this.finish();
 			}
 		});
 	}

@@ -3,9 +3,10 @@ package co.foodcircles.activities;
 import java.math.BigDecimal;
 import java.util.List;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,7 +20,7 @@ import co.foodcircles.json.Restaurant;
 import co.foodcircles.json.Upgrade;
 import co.foodcircles.util.FoodCirclesApplication;
 
-public class RestaurantUpgradesActivity extends FragmentActivity implements PricePickerDialogListener
+public class RestaurantUpgradesFragment extends Fragment implements PricePickerDialogListener
 {
 	FoodCirclesApplication app;
 	Restaurant restaurant;
@@ -28,18 +29,17 @@ public class RestaurantUpgradesActivity extends FragmentActivity implements Pric
 	private UpgradeAdapter adapter;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.restaurant_upgrade_list);
+		View view = getActivity().getLayoutInflater().inflate(R.layout.restaurant_upgrade_list, null);
 
-		app = (FoodCirclesApplication) getApplicationContext();
+		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		restaurant = app.selectedRestaurant;
 
-		restaurantNameTextView = (TextView) findViewById(R.id.textViewName);
+		restaurantNameTextView = (TextView) view.findViewById(R.id.textViewName);
 		restaurantNameTextView.setText(app.selectedRestaurant.getName());
 
-		upgradesListView = (ListView) findViewById(R.id.listViewOffers);
+		upgradesListView = (ListView) view.findViewById(R.id.listViewOffers);
 
 		adapter = new UpgradeAdapter(restaurant.getUpgrades());
 
@@ -52,10 +52,13 @@ public class RestaurantUpgradesActivity extends FragmentActivity implements Pric
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				app.selectedUpgrade = restaurant.getUpgrades().get(position);
-		        PricePickerDialog dialog = new PricePickerDialog();
-		        dialog.show(getSupportFragmentManager(), "PricePickerDialog");
+				PricePickerDialog dialog = new PricePickerDialog();
+				dialog.setListener(RestaurantUpgradesFragment.this);
+				dialog.show(getActivity().getSupportFragmentManager(), "PricePickerDialog");
 			}
 		});
+
+		return view;
 	}
 
 	private class UpgradeAdapter extends BaseAdapter
@@ -98,13 +101,12 @@ public class RestaurantUpgradesActivity extends FragmentActivity implements Pric
 			final ViewHolder holder;
 			if (convertView == null)
 			{
-				view = getLayoutInflater().inflate(R.layout.restaurant_upgrade_row, parent, false);
+				view = getActivity().getLayoutInflater().inflate(R.layout.restaurant_upgrade_row, parent, false);
 				holder = new ViewHolder();
 				holder.top = (TextView) view.findViewById(R.id.textViewOfferTop);
 				holder.bottom = (TextView) view.findViewById(R.id.textViewOfferBottom);
 				view.setTag(holder);
-			}
-			else
+			} else
 			{
 				holder = (ViewHolder) view.getTag();
 			}
@@ -121,6 +123,8 @@ public class RestaurantUpgradesActivity extends FragmentActivity implements Pric
 	@Override
 	public void onDialogPositiveClick(BigDecimal selectedPrice)
 	{
-		
+		Intent intent = new Intent(getActivity(), UpgradePurchasedActivity.class);
+		startActivity(intent);
+		getActivity().finish();
 	}
 }
