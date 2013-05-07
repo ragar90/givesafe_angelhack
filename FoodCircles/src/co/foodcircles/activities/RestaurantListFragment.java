@@ -29,7 +29,7 @@ public class RestaurantListFragment extends ListFragment
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.list, null);
 
-		restaurants = Net.getRestaurants();
+		restaurants = Restaurant.parseRestaurants("");
 
 		adapter = new RestaurantAdapter(restaurants);
 		this.setListAdapter(adapter);

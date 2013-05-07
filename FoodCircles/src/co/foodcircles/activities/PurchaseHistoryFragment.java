@@ -27,7 +27,7 @@ public class PurchaseHistoryFragment extends ListFragment
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.purchase_history, null);
 
-		purchases = Net.getPurchases();
+		purchases = Purchase.parsePurchases("");
 
 		adapter = new PurchaseAdapter(purchases);
 		this.setListAdapter(adapter);

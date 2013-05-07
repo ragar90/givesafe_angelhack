@@ -4,16 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textViewOfferTop"
+    <RadioButton
+        android:id="@+id/radioButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textViewOfferBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="RadioButton"
+        android:textColorLink="@color/grey" />
 
 </LinearLayout>

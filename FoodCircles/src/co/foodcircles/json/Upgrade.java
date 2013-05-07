@@ -17,15 +17,24 @@ public class Upgrade
 		upgrades.add(new Upgrade(""));
 		upgrades.add(new Upgrade(""));
 		upgrades.add(new Upgrade(""));
+		
+		upgrades.get(1).setName("1 Appetizer and 1 Dessert");
+		upgrades.get(1).setDiscountPrice(new BigDecimal(2));
+		upgrades.get(1).setFullPrice(new BigDecimal(4));
+		
+		upgrades.get(2).setName("2 Appetizers and 2 Desserts");
+		upgrades.get(2).setDiscountPrice(new BigDecimal(3));
+		upgrades.get(2).setFullPrice(new BigDecimal(6));
+		
 
 		return upgrades;
 	}
 
 	public Upgrade(String jsonString)
 	{
-		name = "Awesome Fries";
-		discountPrice = new BigDecimal("2");
-		fullPrice = new BigDecimal("5");
+		name = "1 Appetizer";
+		discountPrice = new BigDecimal("1");
+		fullPrice = new BigDecimal("2");
 		minGuests = "2";
 	}
 

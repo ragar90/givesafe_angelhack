@@ -27,7 +27,7 @@ public class VouchersListFragment extends ListFragment
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.list, null);
 
-		purchases = Net.getPurchases();
+		purchases = Purchase.parsePurchases("");
 
 		adapter = new PurchaseAdapter(purchases);
 		this.setListAdapter(adapter);
