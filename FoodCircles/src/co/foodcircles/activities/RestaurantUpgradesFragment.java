@@ -5,12 +5,15 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
@@ -21,7 +24,7 @@ import co.foodcircles.json.Restaurant;
 import co.foodcircles.json.Upgrade;
 import co.foodcircles.util.FoodCirclesApplication;
 
-public class RestaurantUpgradesFragment extends Fragment
+public class RestaurantUpgradesFragment extends DialogFragment
 {
 	FoodCirclesApplication app;
 	Restaurant restaurant;
@@ -31,13 +34,25 @@ public class RestaurantUpgradesFragment extends Fragment
 	private TextView price;
 	private TextView meals;
 
+	private boolean isDialog = false;
+
 	private static final int LOWER_SEEKBAR_PERCENT = 20;
 	private static final int HIGHER_SEEKBAR_PERCENT = 80;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View view = getActivity().getLayoutInflater().inflate(R.layout.restaurant_upgrade_list, null);
+		View view;
+
+		if (isDialog)
+		{
+			view = inflater.inflate(R.layout.buy_dialog, null);
+			getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+		}
+		else
+		{
+			view = inflater.inflate(R.layout.restaurant_upgrade_list, null);
+		}
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		restaurant = app.selectedRestaurant;
@@ -45,31 +60,35 @@ public class RestaurantUpgradesFragment extends Fragment
 		price = (TextView) view.findViewById(R.id.textViewTotalPrice);
 		meals = (TextView) view.findViewById(R.id.textViewMeals);
 
-		LinearLayout upgradesLayout = (LinearLayout) view.findViewById(R.id.linearLayoutOffers);
-
 		List<Upgrade> upgrades = restaurant.getUpgrades();
-		for (final Upgrade upgrade : upgrades)
+		if (!isDialog)
 		{
-			View upgradeView = inflater.inflate(R.layout.restaurant_upgrade_row, null);
-			final RadioButton radioButton = (RadioButton) upgradeView.findViewById(R.id.radioButton);
-			radioButton.setText(upgrade.getName());
-			buttonGroup.add(radioButton);
-			radioButton.setOnClickListener(new OnClickListener()
+			LinearLayout upgradesLayout = (LinearLayout) view.findViewById(R.id.linearLayoutOffers);
+
+			for (final Upgrade upgrade : upgrades)
 			{
-				@Override
-				public void onClick(View v)
+				View upgradeView = inflater.inflate(R.layout.restaurant_upgrade_row, null);
+				final RadioButton radioButton = (RadioButton) upgradeView.findViewById(R.id.radioButton);
+				radioButton.setText(upgrade.getName());
+				buttonGroup.add(radioButton);
+				radioButton.setOnClickListener(new OnClickListener()
 				{
-					for (RadioButton rb : buttonGroup)
-						rb.setChecked(false);
-					radioButton.setChecked(true);
-					selectedUpgrade = upgrade;
-					setPrices();
-				}
-			});
-			upgradesLayout.addView(upgradeView);
+					@Override
+					public void onClick(View v)
+					{
+						for (RadioButton rb : buttonGroup)
+							rb.setChecked(false);
+						radioButton.setChecked(true);
+						selectedUpgrade = upgrade;
+						setPrices();
+					}
+				});
+				upgradesLayout.addView(upgradeView);
+			}
+
+			buttonGroup.get(0).setChecked(true);
 		}
 
-		buttonGroup.get(0).setChecked(true);
 		selectedUpgrade = upgrades.get(0);
 
 		TextView price1 = (TextView) view.findViewById(R.id.textViewPrice1);
@@ -125,10 +144,12 @@ public class RestaurantUpgradesFragment extends Fragment
 				if (seekBar.getProgress() < LOWER_SEEKBAR_PERCENT)
 				{
 					seekBar.setProgress(0);
-				} else if (seekBar.getProgress() < HIGHER_SEEKBAR_PERCENT)
+				}
+				else if (seekBar.getProgress() < HIGHER_SEEKBAR_PERCENT)
 				{
 					seekBar.setProgress(50);
-				} else
+				}
+				else
 				{
 					seekBar.setProgress(100);
 				}
@@ -159,16 +180,32 @@ public class RestaurantUpgradesFragment extends Fragment
 		setPrices();
 
 		Button buyButton = (Button) view.findViewById(R.id.buttonBuy);
-		buyButton.setOnClickListener(new OnClickListener()
+		if (!isDialog)
 		{
-			@Override
-			public void onClick(View v)
+			buyButton.setOnClickListener(new OnClickListener()
 			{
-				Intent intent = new Intent(getActivity(), UpgradePurchasedActivity.class);
-				startActivity(intent);
-				getActivity().finish();
-			}
-		});
+				@Override
+				public void onClick(View v)
+				{
+					RestaurantUpgradesFragment df = new RestaurantUpgradesFragment();
+					df.setDialog(true);
+					df.show(getActivity().getSupportFragmentManager(), "MyDF");
+				}
+			});
+		}
+		else
+		{
+			buyButton.setOnClickListener(new OnClickListener()
+			{
+				@Override
+				public void onClick(View v)
+				{
+					Intent intent = new Intent(getActivity(), UpgradePurchasedActivity.class);
+					startActivity(intent);
+					getActivity().finish();
+				}
+			});
+		}
 
 		return view;
 	}
@@ -181,16 +218,23 @@ public class RestaurantUpgradesFragment extends Fragment
 
 			int numMeals = selectedUpgrade.getDiscountPrice().intValue();
 			meals.setText("" + numMeals + " Meal" + (numMeals <= 1 ? "" : "s") + " Provided");
-		} else if (seekBar.getProgress() < HIGHER_SEEKBAR_PERCENT)
+		}
+		else if (seekBar.getProgress() < HIGHER_SEEKBAR_PERCENT)
 		{
 			price.setText("$" + selectedUpgrade.getFullPrice());
 			int numMeals = selectedUpgrade.getFullPrice().intValue();
 			meals.setText("" + numMeals + " Meal" + (numMeals <= 1 ? "" : "s") + " Provided");
-		} else
+		}
+		else
 		{
 			price.setText("$" + selectedUpgrade.getFullPrice().add(selectedUpgrade.getFullPrice()));
 			int numMeals = selectedUpgrade.getFullPrice().add(selectedUpgrade.getFullPrice()).intValue();
 			meals.setText("" + numMeals + " Meal" + (numMeals <= 1 ? "" : "s") + " Provided");
 		}
+	}
+
+	public void setDialog(boolean isDialog)
+	{
+		this.isDialog = isDialog;
 	}
 }

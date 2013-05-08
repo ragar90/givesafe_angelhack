@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- default -->
+    <dimen name="buttonText">18sp</dimen>
+    <dimen name="loginSquare">45dp</dimen>
+    <dimen name="loginButtonsPadding">20dp</dimen>
+    <dimen name="loginBuyOneFeedOne">20sp</dimen>
+    
+    <dimen name="polaroidIcon">35dp</dimen>
+    <dimen name="polaroidIconTopMargin">30dp</dimen>
+
+</resources>

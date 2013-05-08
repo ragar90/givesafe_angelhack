@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- XLARGE -->
+    <dimen name="loginBuyOneFeedOne">40sp</dimen>
+    <dimen name="logoHeight">450dp</dimen>
+    <dimen name="loginTopSpace">150dp</dimen>
+</resources>

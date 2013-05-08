@@ -3,7 +3,7 @@
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fc_tan" >
+    android:background="@color/background" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@ mollit occaecat"
                 android:textStyle="italic" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

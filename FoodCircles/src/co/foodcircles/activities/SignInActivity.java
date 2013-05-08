@@ -12,7 +12,6 @@ import co.foodcircles.R;
 
 public class SignInActivity extends Activity
 {
-	TextView signUp;
 	EditText email;
 	EditText password;
 	Button signInButton;
@@ -25,7 +24,6 @@ public class SignInActivity extends Activity
 		email = (EditText) findViewById(R.id.editTextEmail);
 		password = (EditText) findViewById(R.id.editTextPassword);
 		signInButton = (Button) findViewById(R.id.buttonSignIn);
-		signUp = (TextView) findViewById(R.id.textViewSignUp);
 
 		signInButton.setOnClickListener(new View.OnClickListener()
 		{
@@ -48,16 +46,6 @@ public class SignInActivity extends Activity
 						startActivity(intent);
 					}
 				}.execute("");
-			}
-		});
-
-		signUp.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
-				SignInActivity.this.finish();
 			}
 		});
 	}

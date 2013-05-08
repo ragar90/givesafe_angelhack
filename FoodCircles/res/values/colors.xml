@@ -3,8 +3,33 @@
 
     <color name="grey">#E6E6E6</color>
     <color name="dark_grey">#666666</color>
-    <color name="fc_tan">#F0E9DE</color>
     <color name="fc_text">#76320A</color>
     <color name="transparent">#00000000</color>
+    <color name="background">#F0E9DE</color>
+    <color name="header_text">#4E3E34</color>
+    <color name="copy_text">#4E3E34</color>
+    <color name="secondary_text">#8A857F</color>
+    <color name="reverse_text">#000000</color>
+    <color name="button_shadow">#461212</color>
+    
+    <color name="links_inactive">#A34A4B</color>
+    <color name="links_hover">#701A1A</color>
+    <color name="text_field">#999999</color>
+    
+    <color name="facebook">#3b5998</color>
+    <color name="google_plus">#db4a39</color>
+    <color name="yelp">#c41200</color>
+    
+    <color name="pol_blue_icon_light">#3583B5</color>
+    <color name="pol_blue_icon_dark">#1B4D7A</color>
+    
+    <color name="pol_green_icon_light">#54BD78</color>
+    <color name="pol_green_icon_dark">#3B8948</color>
+    
+    <color name="pol_yellow_icon_light">#DEBC42</color>
+    <color name="pol_yellow_icon_dark">#C58134</color>
+    
+    <color name="pol_grey_icon_light">#B7B7B7</color>
+    <color name="pol_grey_icon_dark">#7A7A7A</color>
     
 </resources>

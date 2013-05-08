@@ -48,7 +48,7 @@ mollit occaecat"
                 android:textStyle="italic" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

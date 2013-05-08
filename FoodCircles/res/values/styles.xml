@@ -32,5 +32,17 @@
         <item name="android:fadingEdgeLength">8dp</item>
     </style>
     
+    <style name="buttonStyle" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_selector</item>
+	    <item name="android:paddingLeft">4dp</item>
+	    <item name="android:paddingBottom">4dp</item>
+	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:shadowColor">#461212</item>
+	    <item name="android:shadowDx">0</item>
+	    <item name="android:shadowDy">-1</item>
+	    <item name="android:shadowRadius">1</item>
+	    <item name="android:textSize">@dimen/buttonText</item>
+	</style>
+    
 
 </resources>
