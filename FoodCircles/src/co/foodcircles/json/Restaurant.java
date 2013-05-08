@@ -20,7 +20,7 @@ public class Restaurant
 	public static List<Restaurant> parseRestaurants(String jsonString)
 	{
 		List<Restaurant> restaurants = new ArrayList<Restaurant>();
-		for(int i = 0; i < 3; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			restaurants.add(new Restaurant(""));
 		}

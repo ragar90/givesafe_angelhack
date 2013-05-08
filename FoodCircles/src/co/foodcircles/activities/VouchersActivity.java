@@ -42,7 +42,7 @@ public class VouchersActivity extends FragmentActivity {
         	switch(position)
         	{
         		case 0: return new PurchaseHistoryFragment();
-        		case 1: return new VouchersListFragment();
+        		case 1: return new TimelineFragment();
         		default: return null;
         	}
         }

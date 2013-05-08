@@ -50,11 +50,11 @@ public class MainActivity extends FragmentActivity
 			switch (position)
 			{
 				case 0:
-					return new AccountFragment();
+					return new TimelineFragment();
 				case 1:
 					return new NewsFragment();
 				case 2:
-					return new RestaurantListFragment();
+					return new RestaurantGridFragment();
 				default:
 					return null;
 			}

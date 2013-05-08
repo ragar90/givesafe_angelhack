@@ -38,12 +38,12 @@ public class AccountFragment extends Fragment
 		selectionStrings.add("Log Out");
 
 		List<Integer> selectionIcons = new ArrayList<Integer>();
-		selectionIcons.add(R.drawable.logo);
-		selectionIcons.add(R.drawable.logo);
-		selectionIcons.add(R.drawable.logo);
-		selectionIcons.add(R.drawable.logo);
-		selectionIcons.add(R.drawable.logo);
-		selectionIcons.add(R.drawable.logo);
+		selectionIcons.add(R.drawable.thumb);
+		selectionIcons.add(R.drawable.thumb);
+		selectionIcons.add(R.drawable.thumb);
+		selectionIcons.add(R.drawable.thumb);
+		selectionIcons.add(R.drawable.thumb);
+		selectionIcons.add(R.drawable.thumb);
 
 		nameEditText = (EditText) view.findViewById(R.id.editText);
 		list = (ListView) view.findViewById(R.id.listView);

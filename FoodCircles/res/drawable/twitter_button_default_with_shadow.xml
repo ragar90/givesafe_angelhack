@@ -3,6 +3,6 @@
     <item android:drawable="@drawable/shadow"/>
     <item
         android:bottom="2px"
-        android:drawable="@drawable/button_default"/>
+        android:drawable="@drawable/twitter_button_default"/>
 
 </layer-list>

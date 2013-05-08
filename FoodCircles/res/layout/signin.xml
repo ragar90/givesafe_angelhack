@@ -89,23 +89,30 @@
             android:layout_gravity="center"
             android:orientation="horizontal" >
 
-            <Button
+            <ImageButton
                 android:id="@+id/buttonFacebook"
                 style="@style/buttonStyle"
                 android:layout_width="@dimen/loginSquare"
                 android:layout_height="@dimen/loginSquare"
                 android:layout_margin="10dp"
-                android:background="@drawable/button_selector"
+                android:background="@drawable/facebook_button_selector"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/facebook_white"
                 android:text="" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/buttonTwitter"
                 style="@style/buttonStyle"
                 android:layout_width="@dimen/loginSquare"
                 android:layout_height="@dimen/loginSquare"
                 android:layout_margin="10dp"
-                android:background="@drawable/button_selector"
+                android:background="@drawable/twitter_button_selector"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/twitter_white"
                 android:text="" />
+
         </LinearLayout>
     </LinearLayout>
 

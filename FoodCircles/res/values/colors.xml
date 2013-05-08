@@ -16,7 +16,13 @@
     <color name="links_hover">#701A1A</color>
     <color name="text_field">#999999</color>
     
+    <color name="dark_red">#6E1414</color>
+    <color name="yellow_circle">#D09A00</color>
+    
     <color name="facebook">#3b5998</color>
+    <color name="facebook_dark">#274584</color>
+    <color name="twitter">#00acee</color>
+    <color name="twitter_dark">#0098DA</color>
     <color name="google_plus">#db4a39</color>
     <color name="yelp">#c41200</color>
     
