@@ -2,6 +2,6 @@
 <resources>
     <!-- NORMAL -->
     <dimen name="loginBuyOneFeedOne">20sp</dimen>
-    <dimen name="logoHeight">150dp</dimen>
+    <dimen name="logoHeight">120dp</dimen>
     <dimen name="loginTopSpace">25dp</dimen>
 </resources>

@@ -50,6 +50,38 @@
                 android:textStyle="italic" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/buttonFacebook"
+                style="@style/buttonStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/loginSquare"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/facebook_button_selector"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/facebook_white"
+                android:text="" />
+
+            <ImageButton
+                android:id="@+id/buttonTwitter"
+                style="@style/buttonStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/loginSquare"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/twitter_button_selector"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/twitter_white"
+                android:text="" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
@@ -82,38 +114,6 @@
             android:id="@+id/space3"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/loginButtonsPadding" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal" >
-
-            <ImageButton
-                android:id="@+id/buttonFacebook"
-                style="@style/buttonStyle"
-                android:layout_width="@dimen/loginSquare"
-                android:layout_height="@dimen/loginSquare"
-                android:layout_margin="10dp"
-                android:background="@drawable/facebook_button_selector"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/facebook_white"
-                android:text="" />
-
-            <ImageButton
-                android:id="@+id/buttonTwitter"
-                style="@style/buttonStyle"
-                android:layout_width="@dimen/loginSquare"
-                android:layout_height="@dimen/loginSquare"
-                android:layout_margin="10dp"
-                android:background="@drawable/twitter_button_selector"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/twitter_white"
-                android:text="" />
-
-        </LinearLayout>
     </LinearLayout>
 
     <android.support.v7.widget.Space
