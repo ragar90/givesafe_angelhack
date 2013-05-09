@@ -12,12 +12,18 @@
     <color name="reverse_text">#000000</color>
     <color name="button_shadow">#461212</color>
     
+    <color name="transparent_grey">#DD222222</color>
+    <color name="transparent_dark_grey">#DD666666</color>
+    
     <color name="links_inactive">#A34A4B</color>
     <color name="links_hover">#701A1A</color>
     <color name="text_field">#999999</color>
+
+    <color name="blue_text">#3AABEF</color>
     
     <color name="dark_red">#6E1414</color>
     <color name="yellow_circle">#D09A00</color>
+    <color name="timeline_date_circle">#D8D0C7</color>
     
     <color name="facebook">#3b5998</color>
     <color name="facebook_dark">#274584</color>

@@ -6,7 +6,10 @@
     <dimen name="loginButtonsPadding">20dp</dimen>
     <dimen name="loginBuyOneFeedOne">20sp</dimen>
     
-    <dimen name="polaroidIcon">35dp</dimen>
+    <dimen name="polaroidIcon">38dp</dimen>
     <dimen name="polaroidIconTopMargin">30dp</dimen>
+    
+    <dimen name="timeline_bottom_left">10sp</dimen>
+    <dimen name="timeline_bottom_middle">16sp</dimen>
 
 </resources>

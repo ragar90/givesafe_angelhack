@@ -3,7 +3,7 @@
     android:padding="16dp"
     android:shape="rectangle" >
 
-    <corners android:radius="2dp" />
+    <corners android:radius="1dp" />
 
     <gradient
         android:angle="315"
