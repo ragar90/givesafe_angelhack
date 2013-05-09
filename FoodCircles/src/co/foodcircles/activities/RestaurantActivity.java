@@ -36,7 +36,7 @@ public class RestaurantActivity extends FragmentActivity {
         public Fragment getItem(int position) {
         	switch(position)
         	{
-        		case 0: return new RestaurantUpgradesFragment();
+        		case 0: return new VenueItemFragment();
         		case 1: return new RestaurantInfoFragment();
         		default: return null;
         	}

@@ -9,6 +9,6 @@ public class ViewVoucherActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.voucher_and_restaurant);
+        setContentView(R.layout.voucher_receipt);
     }
 }

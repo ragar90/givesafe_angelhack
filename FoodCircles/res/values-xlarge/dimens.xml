@@ -4,4 +4,17 @@
     <dimen name="loginBuyOneFeedOne">40sp</dimen>
     <dimen name="logoHeight">450dp</dimen>
     <dimen name="loginTopSpace">150dp</dimen>
+    
+    <dimen name="venue_item_image_height">450dp</dimen>
+    <dimen name="venue_item_name_text_size">50sp</dimen>
+    <dimen name="venue_flavor_text_size">35sp</dimen>
+    <dimen name="venue_small_text_size">25sp</dimen>
+    <dimen name="venue_heart_height">25dp</dimen>
+    <dimen name="venue_button_padding">16dp</dimen>
+    
+    
+    <dimen name="receipt_code_text">100sp</dimen>
+    <dimen name="receipt_large_text">80sp</dimen>
+    <dimen name="receipt_medium_text">50sp</dimen>
+    <dimen name="receipt_small_text">30sp</dimen>
 </resources>

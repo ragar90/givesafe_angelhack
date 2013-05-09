@@ -11,5 +11,18 @@
     
     <dimen name="timeline_bottom_left">10sp</dimen>
     <dimen name="timeline_bottom_middle">16sp</dimen>
+    
+    <dimen name="venue_item_image_height">150dp</dimen>
+    <dimen name="venue_item_name_text_size">24sp</dimen>
+    <dimen name="venue_flavor_text_size">10sp</dimen>
+    <dimen name="venue_small_text_size">10sp</dimen>
+    <dimen name="venue_heart_height">10dp</dimen>
+    <dimen name="venue_button_padding">8dp</dimen>
+    
+    <dimen name="receipt_code_text">40sp</dimen>
+    <dimen name="receipt_large_text">30sp</dimen>
+    <dimen name="receipt_medium_text">20sp</dimen>
+    <dimen name="receipt_small_text">15sp</dimen>
+    
 
 </resources>

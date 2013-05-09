@@ -29,7 +29,6 @@ public class UpgradePurchasedActivity extends Activity
 			{
 				TaskStackBuilder stackBuilder = TaskStackBuilder.from(UpgradePurchasedActivity.this);
 				stackBuilder.addNextIntent(new Intent(UpgradePurchasedActivity.this, MainActivity.class).putExtra("tab", 0));
-				stackBuilder.addNextIntent(new Intent(UpgradePurchasedActivity.this, VouchersActivity.class).putExtra("tab", 1));
 				stackBuilder.addNextIntent(new Intent(UpgradePurchasedActivity.this, ViewVoucherActivity.class));
 				
 				stackBuilder.startActivities();
