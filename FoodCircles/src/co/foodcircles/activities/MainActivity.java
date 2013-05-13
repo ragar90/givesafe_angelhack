@@ -52,14 +52,12 @@ public class MainActivity extends FragmentActivity
 				case 0:
 					return new TimelineFragment();
 				case 1:
-					return new NewsFragment();
+					return new CarouselFragment();
 				case 2:
 					return new RestaurantGridFragment();
 				default:
 					return null;
 			}
-			// return TestFragment.newInstance(CONTENT[position %
-			// CONTENT.length]);
 		}
 
 		@Override

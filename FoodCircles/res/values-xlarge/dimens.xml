@@ -17,4 +17,10 @@
     <dimen name="receipt_large_text">80sp</dimen>
     <dimen name="receipt_medium_text">50sp</dimen>
     <dimen name="receipt_small_text">30sp</dimen>
+    
+    <dimen name="landing_large_text">55sp</dimen>
+    <dimen name="landing_small_text">40sp</dimen>
+    
+    <dimen name="signup_large_text">55sp</dimen>
+    <dimen name="signup_small_text">40sp</dimen>
 </resources>

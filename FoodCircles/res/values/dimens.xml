@@ -24,5 +24,11 @@
     <dimen name="receipt_medium_text">20sp</dimen>
     <dimen name="receipt_small_text">15sp</dimen>
     
+    <dimen name="landing_large_text">40sp</dimen>
+    <dimen name="landing_small_text">20sp</dimen>
+    
+    <dimen name="signup_large_text">40sp</dimen>
+    <dimen name="signup_small_text">20sp</dimen>
+    
 
 </resources>

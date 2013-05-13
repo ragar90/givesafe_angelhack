@@ -4,4 +4,10 @@
     <dimen name="loginBuyOneFeedOne">20sp</dimen>
     <dimen name="logoHeight">120dp</dimen>
     <dimen name="loginTopSpace">25dp</dimen>
+
+    <dimen name="landing_large_text">30sp</dimen>
+    <dimen name="landing_small_text">15sp</dimen>
+
+    <dimen name="signup_large_text">30sp</dimen>
+    <dimen name="signup_small_text">15sp</dimen>
 </resources>
