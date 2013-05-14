@@ -30,5 +30,11 @@
     <dimen name="signup_large_text">40sp</dimen>
     <dimen name="signup_small_text">20sp</dimen>
     
+    <dimen name="profile_large_text">40sp</dimen>
+    <dimen name="profile_small_text">20sp</dimen>
+    <dimen name="profile_hours_text">10sp</dimen>
+    <dimen name="profile_button_height">20dp</dimen>
+    <dimen name="profile_upper_height">80dp</dimen>
+    
 
 </resources>

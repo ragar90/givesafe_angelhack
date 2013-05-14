@@ -44,4 +44,7 @@
     <color name="pol_grey_icon_light">#B7B7B7</color>
     <color name="pol_grey_icon_dark">#7A7A7A</color>
     
+    <color name="button_grey_light">#AEAEAE</color>
+    <color name="button_grey_dark">#707070</color>
+    
 </resources>
