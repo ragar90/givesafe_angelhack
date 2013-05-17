@@ -42,7 +42,7 @@ public class SignUpActivity extends Activity
 					@Override
 					protected void onPostExecute(Boolean success)
 					{
-						Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+						Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
 						startActivity(intent);
 					}
 				}.execute("");

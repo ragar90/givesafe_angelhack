@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -145,8 +146,11 @@ public class PurchaseDialogFragment extends DialogFragment
 			@Override
 			public void onClick(View v)
 			{
-				Intent intent = new Intent(getActivity(), UpgradePurchasedActivity.class);
-				startActivity(intent);
+				TaskStackBuilder stackBuilder = TaskStackBuilder.from(getActivity());
+				stackBuilder.addNextIntent(new Intent(getActivity(), MainActivity.class).putExtra("tab", 0));
+				stackBuilder.addNextIntent(new Intent(getActivity(), ViewVoucherActivity.class));
+				
+				stackBuilder.startActivities();
 				getActivity().finish();
 			}
 		});

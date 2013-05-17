@@ -12,8 +12,9 @@
     <color name="reverse_text">#000000</color>
     <color name="button_shadow">#461212</color>
     
+    <color name="transparent_lighter_grey">#44999999</color>
     <color name="transparent_grey">#DD222222</color>
-    <color name="transparent_dark_grey">#DD666666</color>
+    <color name="transparent_light_grey">#DD666666</color>
     
     <color name="links_inactive">#A34A4B</color>
     <color name="links_hover">#701A1A</color>
@@ -46,5 +47,7 @@
     
     <color name="button_grey_light">#AEAEAE</color>
     <color name="button_grey_dark">#707070</color>
+    
+    <color name="price_background_grey">#E1E1E1</color>
     
 </resources>

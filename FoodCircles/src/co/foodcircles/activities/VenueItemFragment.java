@@ -1,5 +1,6 @@
 package co.foodcircles.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -38,8 +39,10 @@ public class VenueItemFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				PurchaseDialogFragment dialog = new PurchaseDialogFragment();
-				dialog.show(getActivity().getSupportFragmentManager(), "dialogFragment");
+				//BuyDialogFragment dialog = new BuyDialogFragment();
+				//dialog.show(getActivity().getSupportFragmentManager(), "dialogFragment");
+				getActivity().startActivity(new Intent(getActivity(), BuyOptionsActivity.class));
+				getActivity().finish();
 			}
 		});
 

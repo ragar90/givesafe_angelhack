@@ -23,6 +23,7 @@
     
     <dimen name="signup_large_text">45sp</dimen>
     <dimen name="signup_small_text">30sp</dimen>
+    <dimen name="signup_message_height">80dp</dimen>
     
     <dimen name="profile_large_text">30sp</dimen>
     <dimen name="profile_small_text">20sp</dimen>

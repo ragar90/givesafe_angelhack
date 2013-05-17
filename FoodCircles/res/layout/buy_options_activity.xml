@@ -4,11 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RadioButton
-        android:id="@+id/radioButton"
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="co.foodcircles.activities.BuyFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
-        android:textColorLink="@color/grey" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

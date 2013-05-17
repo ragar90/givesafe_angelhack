@@ -139,12 +139,40 @@
         </LinearLayout>
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Fasion axe tofu laboris delectus, VHS godard single-origin deserunt. Small batch craft beer, organic pitchfork. Synth cliche readymade kogi sustainable, artisan chillwave seitan cosby sweater."
+            android:textSize="@dimen/profile_small_text" />
+
+        <ImageView
+            android:id="@+id/imageViewGradientTop"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="top"
+            android:src="@drawable/venue_profile_text" />
+
+        <ImageView
+            android:id="@+id/imageViewGradientBottom"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/venue_profile_text_bottom" />
+    </FrameLayout>
+
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewAddress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Fasion axe tofu laboris delectus, VHS godard single-origin deserunt. Small batch craft beer, organic pitchfork. Synth cliche readymade kogi sustainable, artisan chillwave seitan cosby sweater."
+        android:padding="5dp"
+        android:gravity="center"
+        android:text="23 Commerce Street, Grand Rapids MI 49503"
         android:textSize="@dimen/profile_small_text" />
 
     <fragment

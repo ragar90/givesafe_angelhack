@@ -37,10 +37,9 @@ public class RestaurantActivity extends FragmentActivity {
         	switch(position)
         	{
         		case 0: return new VenueItemFragment();
-        		case 1: return new RestaurantInfoFragment();
+        		case 1: return new VenueProfileFragment();
         		default: return null;
         	}
-            //return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
         }
 
         @Override

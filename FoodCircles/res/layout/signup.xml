@@ -7,7 +7,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3" >
+        android:layout_weight="1">
 
         <ImageView
             android:id="@+id/imageView1"
@@ -28,27 +28,26 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Buy One, Feed One."
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/signup_large_text"
-                android:layout_margin="10dp" />
+                android:textSize="@dimen/signup_large_text" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Buy one appetizer or dessert for $1 or more, feed one child in need."
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/signup_small_text" 
-                android:gravity="center"/>
+                android:textSize="@dimen/signup_small_text" />
         </LinearLayout>
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="5"
         android:background="@color/background"
         android:orientation="horizontal" >
 
@@ -60,20 +59,14 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="8"
             android:orientation="vertical" >
 
-            <android.support.v7.widget.Space
-                android:id="@+id/space2"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/loginTopSpace" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="@dimen/signup_message_height"
                 android:gravity="center"
                 android:orientation="vertical" >
 
@@ -95,31 +88,95 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <ImageButton
-                    android:id="@+id/buttonFacebook"
-                    style="@style/buttonStyle"
+                <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="@dimen/loginSquare"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/facebook_button_selector"
-                    android:padding="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/facebook_white"
-                    android:text="" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1" >
 
-                <ImageButton
-                    android:id="@+id/buttonTwitter"
-                    style="@style/buttonStyle"
+                    <Button
+                        android:id="@+id/buttonFacebook"
+                        style="@style/buttonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/facebook_button_selector"
+                        android:paddingBottom="15dp"
+                        android:paddingTop="15dp"
+                        android:scaleType="fitEnd"
+                        android:text="" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="5dp" >
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Log in with  "
+                            android:textColor="@android:color/white" />
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:padding="5dp"
+                            android:src="@drawable/facebook_white" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="@dimen/loginSquare"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/twitter_button_selector"
-                    android:padding="10dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/twitter_white"
-                    android:text="" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/buttonTwitter"
+                        style="@style/buttonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/twitter_button_selector"
+                        android:paddingBottom="15dp"
+                        android:paddingTop="15dp"
+                        android:scaleType="fitEnd"
+                        android:text="" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="5dp" >
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="Log in with  "
+                            android:textColor="@android:color/white" />
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:padding="5dp"
+                            android:src="@drawable/twitter_white" />
+                    </LinearLayout>
+                </FrameLayout>
             </LinearLayout>
 
             <EditText

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="16dp"
     android:shape="rectangle" >
 
-    <corners android:radius="8dp" />
-
     <gradient
-        android:angle="90"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:angle="270"
         android:endColor="@color/button_grey_light"
-        android:startColor="@color/button_grey_dark" />
-    
-    
-
+        android:startColor="@color/background" />
 
 </shape>
