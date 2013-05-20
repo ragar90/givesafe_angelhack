@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Restaurant;
+import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class VenueItemFragment extends Fragment
@@ -25,6 +26,7 @@ public class VenueItemFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.venue_profile, null);
+		C.overrideFonts(getActivity(), view);
 
 		itemImage = (ImageView) view.findViewById(R.id.imageView);
 		itemName = (TextView) view.findViewById(R.id.textViewItemName);
@@ -39,8 +41,6 @@ public class VenueItemFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				//BuyDialogFragment dialog = new BuyDialogFragment();
-				//dialog.show(getActivity().getSupportFragmentManager(), "dialogFragment");
 				getActivity().startActivity(new Intent(getActivity(), BuyOptionsActivity.class));
 				getActivity().finish();
 			}

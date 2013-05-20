@@ -10,5 +10,4 @@ public class FoodCirclesApplication extends Application
 	public Restaurant selectedRestaurant;
 	public Upgrade selectedUpgrade;
 	public Purchase selectedPurchase;
-
 }

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Restaurant;
 import co.foodcircles.json.Upgrade;
+import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class BuyFragment extends Fragment
@@ -39,6 +40,7 @@ public class BuyFragment extends Fragment
 		View view;
 
 		view = inflater.inflate(R.layout.buy_options, null);
+		C.overrideFonts(getActivity(), view);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		restaurant = app.selectedRestaurant;

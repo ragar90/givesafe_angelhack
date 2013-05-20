@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import co.foodcircles.R;
+import co.foodcircles.util.C;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class SplashActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
+		C.overrideFonts(this, findViewById(R.id.root));
 
 		TimerTask task = new TimerTask()
 		{

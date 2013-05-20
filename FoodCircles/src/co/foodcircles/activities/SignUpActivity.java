@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import co.foodcircles.R;
+import co.foodcircles.util.C;
 
 public class SignUpActivity extends Activity
 {
@@ -20,6 +21,7 @@ public class SignUpActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signup);
+		C.overrideFonts(this, findViewById(R.id.root));
 
 		email = (EditText) findViewById(R.id.editTextEmail);
 		password = (EditText) findViewById(R.id.editTextPassword);

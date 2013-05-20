@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Restaurant;
+import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class RestaurantGridFragment extends Fragment
@@ -29,6 +30,7 @@ public class RestaurantGridFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.polaroid_grid, null);
+		C.overrideFonts(getActivity(), view);
 		gridView = (GridView) view.findViewById(R.id.gridView);
 
 		restaurants = Restaurant.parseRestaurants("");
@@ -96,6 +98,7 @@ public class RestaurantGridFragment extends Fragment
 			if (convertView == null)
 			{
 				view = getActivity().getLayoutInflater().inflate(R.layout.polaroid, parent, false);
+				C.overrideFonts(parent.getContext(), view);
 				holder = new ViewHolder();
 				holder.logo = (ImageView) view.findViewById(R.id.imageViewLogo);
 				holder.name = (TextView) view.findViewById(R.id.textViewName);

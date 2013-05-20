@@ -19,6 +19,7 @@ import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Restaurant;
 import co.foodcircles.json.Upgrade;
+import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class PurchaseDialogFragment extends DialogFragment
@@ -39,6 +40,7 @@ public class PurchaseDialogFragment extends DialogFragment
 		View view;
 
 		view = inflater.inflate(R.layout.buy_dialog, null);
+		C.overrideFonts(getActivity(), view);
 		getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();

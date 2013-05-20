@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import co.foodcircles.R;
 import co.foodcircles.json.Restaurant;
+import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -40,6 +41,7 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.restaurant_profile, null);
+		C.overrideFonts(getActivity(), view);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		restaurant = app.selectedRestaurant;
