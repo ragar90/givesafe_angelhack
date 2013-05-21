@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.TaskStackBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
@@ -116,6 +118,33 @@ public class BuyFragment extends Fragment
 
 				stackBuilder.startActivities();
 				getActivity().finish();
+			}
+		});
+		
+
+		ImageView i1 = (ImageView) view.findViewById(R.id.imageViewI1);
+		i1.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				FragmentManager fm = getActivity().getSupportFragmentManager();
+				SimpleDialogFragment dialog = new SimpleDialogFragment();
+				dialog.setText("Bringing Friends Description", "This is a description about buying multiple items.");
+				dialog.show(fm, "simple_dialog");
+			}
+		});
+
+		ImageView i2 = (ImageView) view.findViewById(R.id.imageViewI2);
+		i2.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				FragmentManager fm = getActivity().getSupportFragmentManager();
+				SimpleDialogFragment dialog = new SimpleDialogFragment();
+				dialog.setText("Charity Description", "This is a description about the charities.");
+				dialog.show(fm, "simple_dialog");
 			}
 		});
 

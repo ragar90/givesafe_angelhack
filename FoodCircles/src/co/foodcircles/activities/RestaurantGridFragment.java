@@ -116,7 +116,7 @@ public class RestaurantGridFragment extends Fragment
 			// library
 			holder.name.setText(restaurant.getName());
 			holder.cuisine.setText(restaurant.getCuisine());
-			holder.distance.setText("10.0");
+			holder.distance.setText("10.0 mi");
 
 			return view;
 		}

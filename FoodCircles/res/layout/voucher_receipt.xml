@@ -141,7 +141,8 @@
             <ImageView
                 android:id="@+id/imageViewFacebook"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/receipt_social_height"
+                android:adjustViewBounds="true"
                 android:src="@drawable/facebook" />
 
             <android.support.v7.widget.Space
@@ -153,7 +154,8 @@
             <ImageView
                 android:id="@+id/imageViewTwitter"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/receipt_social_height"
+                android:adjustViewBounds="true"
                 android:src="@drawable/twitter" />
 
             <android.support.v7.widget.Space

@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="TWO BEARD&apos;S DELI"
+                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearance"
                 android:textColor="@color/copy_text" />
 
@@ -95,7 +96,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
         android:layout_marginBottom="2dp"

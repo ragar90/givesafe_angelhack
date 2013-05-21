@@ -29,7 +29,7 @@ public class Restaurant
 	
 	public Restaurant(String jsonString)
 	{
-		name = "Super Burgers";
+		name = "SUPER BURGERS";
 		cuisine = "American";
 		upgradeText = "the best burgers";
 		phone = "555-123-5151";

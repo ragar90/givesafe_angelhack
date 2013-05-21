@@ -42,7 +42,7 @@
             android:gravity="center"
             android:padding="5dp"
             android:text="2013"
-            android:textColor="@color/background" />
+            android:textColor="@android:color/white" />
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
             android:background="@color/timeline_date_circle"
             android:padding="5dp"
             android:text="MARCH"
-            android:textColor="@color/background" />
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </FrameLayout>

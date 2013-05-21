@@ -1,126 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="@color/background"
-    android:orientation="horizontal" >
-
-    <android.support.v7.widget.Space
-        android:id="@+id/space2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_weight="8"
-        android:orientation="vertical" >
+        android:background="@color/background"
+        android:orientation="horizontal" >
 
         <android.support.v7.widget.Space
             android:id="@+id/space2"
             android:layout_width="0dp"
-            android:layout_height="@dimen/loginTopSpace" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="8"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/imageViewLogo"
+            <android.support.v7.widget.Space
+                android:id="@+id/space2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/loginTopSpace" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/logoHeight"
-                android:layout_margin="10dp"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:src="@drawable/logo" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/imageViewLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/logoHeight"
+                    android:layout_margin="10dp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:src="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Buy One, Feed One"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="@dimen/loginBuyOneFeedOne"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Buy One, Feed One"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="@dimen/loginBuyOneFeedOne"
-                android:textStyle="italic" />
-        </LinearLayout>
+                android:orientation="horizontal" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+                <ImageButton
+                    android:id="@+id/buttonFacebook"
+                    style="@style/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/loginSquare"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/facebook_button_selector"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/facebook_white"
+                    android:text="" />
 
-            <ImageButton
-                android:id="@+id/buttonFacebook"
+                <ImageButton
+                    android:id="@+id/buttonTwitter"
+                    style="@style/buttonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/loginSquare"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/twitter_button_selector"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/twitter_white"
+                    android:text="" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="email address"
+                android:inputType="textEmailAddress" >
+
+                <requestFocus android:layout_width="wrap_content" />
+            </EditText>
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/buttonSignIn"
                 style="@style/buttonStyle"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/loginSquare"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/facebook_button_selector"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/facebook_white"
-                android:text="" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_selector"
+                android:text="Sign In" />
 
-            <ImageButton
-                android:id="@+id/buttonTwitter"
-                style="@style/buttonStyle"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/loginSquare"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/twitter_button_selector"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/twitter_white"
-                android:text="" />
+            <android.support.v7.widget.Space
+                android:id="@+id/space3"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/loginButtonsPadding" />
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="email address"
-            android:inputType="textEmailAddress" >
-
-            <requestFocus android:layout_width="wrap_content" />
-        </EditText>
-
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword" />
-
-        <Button
-            android:id="@+id/buttonSignIn"
-            style="@style/buttonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_selector"
-            android:text="Sign In" />
 
         <android.support.v7.widget.Space
-            android:id="@+id/space3"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/loginButtonsPadding" />
+            android:id="@+id/space1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
-    <android.support.v7.widget.Space
-        android:id="@+id/space1"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/buttonSignUp"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_gravity="top|right"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_selector"
+        android:text="Sign Up" />
 
-</LinearLayout>
+</FrameLayout>

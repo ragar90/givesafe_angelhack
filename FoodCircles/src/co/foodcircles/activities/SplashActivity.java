@@ -8,6 +8,7 @@ import co.foodcircles.util.C;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
 
 public class SplashActivity extends Activity
 {
@@ -16,6 +17,7 @@ public class SplashActivity extends Activity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash);
 		C.overrideFonts(this, findViewById(R.id.root));
 
@@ -25,7 +27,7 @@ public class SplashActivity extends Activity
 			public void run()
 			{
 				//TODO: If user has logged in before, show sign in screen instead
-				Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
+				Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
 				startActivity(intent);
 				SplashActivity.this.finish();
 			}

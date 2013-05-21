@@ -5,7 +5,7 @@
     <dimen name="logoHeight">70dp</dimen>
     <dimen name="loginSquare">45dp</dimen>
 
-    <dimen name="receipt_code_text">40sp</dimen>
+    <dimen name="receipt_code_text">60sp</dimen>
     <dimen name="receipt_large_text">25sp</dimen>
     <dimen name="receipt_medium_text">15sp</dimen>
     <dimen name="receipt_small_text">15sp</dimen>

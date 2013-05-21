@@ -8,11 +8,26 @@ import android.widget.TextView;
 
 public class C
 {
-	public static String fontName = "neutrafaceslabtextbook.ttf";
-	public static String fontItalicName = "neutrafaceslabtextbook";
+	public static Typeface font;
+	public static Typeface boldFont;
+	public static Typeface italicFont;
+	public static Typeface boldItalicFont;
+
+	private static void initFonts(final Context context)
+	{
+		if (font == null)
+		{
+			font = Typeface.createFromAsset(context.getAssets(), "neutrafaceslabtextbook.ttf");
+			boldFont = Typeface.createFromAsset(context.getAssets(), "neutrafaceslabtextbold.ttf");
+			italicFont = Typeface.createFromAsset(context.getAssets(), "neutrafaceslabtextbookitalic.ttf");
+			boldItalicFont = Typeface.createFromAsset(context.getAssets(), "neutrafaceslabtextbolditalic.ttf");
+		}
+	}
 
 	public static void overrideFonts(final Context context, final View v)
 	{
+		initFonts(context);
+
 		try
 		{
 			if (v instanceof ViewGroup)
@@ -27,13 +42,25 @@ public class C
 			else if (v instanceof TextView)
 			{
 				TextView textView = (TextView) v;
-				String font = "neutrafaceslabtextbook";
-				if (textView.getTypeface() != null && textView.getTypeface().isBold())
-					font = "neutrafaceslabtextbold";
-				if (textView.getTypeface() != null && textView.getTypeface().isItalic())
-					font += "italic";
-				font += ".ttf";
-				textView.setTypeface(Typeface.createFromAsset(context.getAssets(), font));
+				Typeface newFont = font;
+
+				if (textView.getTypeface() != null)
+				{
+					if (textView.getTypeface().isBold())
+					{
+						if (textView.getTypeface().isItalic())
+							newFont = boldItalicFont;
+						else
+							newFont = boldFont;
+					}
+					else
+					{
+						if (textView.getTypeface().isItalic())
+							newFont = italicFont;
+					}
+				}
+
+				textView.setTypeface(newFont);
 			}
 		}
 		catch (Exception e)
