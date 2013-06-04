@@ -52,6 +52,7 @@ public class SignInActivity extends Activity
 					protected void onPostExecute(Boolean success)
 					{
 						Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+						intent.putExtra("tab", 1);
 						startActivity(intent);
 						SignInActivity.this.finish();
 						app.signinActivity = null;

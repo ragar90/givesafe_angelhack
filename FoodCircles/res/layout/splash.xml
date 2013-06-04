@@ -14,7 +14,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparent_lighter_grey"
         android:orientation="vertical" >
 
         <android.support.v7.widget.Space
@@ -25,17 +24,34 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="7"
-            android:src="@drawable/splash_logo" />
+            android:gravity="center"
+            android:layout_weight="5"
+            android:src="@drawable/logo" />
 
         <android.support.v7.widget.Space
             android:id="@+id/space1"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Buy One, Feed One."
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/splash_size"
+            android:textStyle="bold|italic" />
+
+        <android.support.v7.widget.Space
+            android:id="@+id/space1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
 </FrameLayout>

@@ -5,7 +5,7 @@
     <gradient
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:angle="270"
-        android:endColor="@color/button_grey_light"
+        android:endColor="@color/venue_profile_gradient_dark"
         android:startColor="@color/background" />
 
 </shape>

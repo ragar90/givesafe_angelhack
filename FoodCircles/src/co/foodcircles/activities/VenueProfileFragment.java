@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import co.foodcircles.R;
-import co.foodcircles.json.Restaurant;
+import co.foodcircles.json.Venue;
 import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
@@ -32,7 +35,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class VenueProfileFragment extends Fragment implements OnClickListener, OnMarkerClickListener, OnMapClickListener, OnInfoWindowClickListener
 {
 	FoodCirclesApplication app;
-	Restaurant restaurant;
+	Venue venue;
 
 	GoogleMap map;
 	MarkerOptions destinationMarker;
@@ -44,7 +47,33 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 		C.overrideFonts(getActivity(), view);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
-		restaurant = app.selectedRestaurant;
+		venue = app.selectedVenue;
+		((TextView) view.findViewById(R.id.textViewName)).setText(venue.getName());
+		((TextView) view.findViewById(R.id.textViewTags)).setText(venue.getTagsString());
+		((TextView) view.findViewById(R.id.textViewHours)).setText(venue.getOpenTimes().toString());
+		((TextView) view.findViewById(R.id.textViewDescription)).setText(venue.getDescription());
+		((TextView) view.findViewById(R.id.textViewAddress)).setText(venue.getAddress());
+		((ImageButton) view.findViewById(R.id.buttonCall)).setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Intent intent = new Intent(Intent.ACTION_DIAL);
+				intent.setData(Uri.parse("tel:" + venue.getPhone()));
+				startActivity(intent);
+			}
+		});
+
+		((ImageButton) view.findViewById(R.id.buttonWebsite)).setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(venue.getWeb()));
+				startActivity(i);
+			}
+		});
 
 		try
 		{
@@ -53,11 +82,11 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 			map = mySupportMapFragment.getMap();
 
 			MapsInitializer.initialize(getActivity());
-			LatLng destinationLatLng = new LatLng(restaurant.getLatitude(), restaurant.getLongitude());
+			LatLng destinationLatLng = new LatLng(venue.getLatitude(), venue.getLongitude());
 			destinationMarker = new MarkerOptions();
 
 			destinationMarker = destinationMarker.position(destinationLatLng);
-			destinationMarker = destinationMarker.title(restaurant.getName());
+			destinationMarker = destinationMarker.title(venue.getName());
 
 			map.addMarker(destinationMarker).showInfoWindow();
 			map.setOnMarkerClickListener(this);
@@ -99,7 +128,7 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 	@Override
 	public boolean onMarkerClick(Marker marker)
 	{
-		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?daddr=" + restaurant.getAddress()));
+		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?daddr=" + venue.getAddress()));
 		intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
 		startActivity(intent);
 		return true;

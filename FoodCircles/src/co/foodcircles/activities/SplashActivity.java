@@ -26,8 +26,8 @@ public class SplashActivity extends Activity
 			@Override
 			public void run()
 			{
-				//TODO: If user has logged in before, show sign in screen instead
-				Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+				//If user is already signed in, show Main activity
+				Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
 				startActivity(intent);
 				SplashActivity.this.finish();
 			}

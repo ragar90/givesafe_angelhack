@@ -37,10 +37,13 @@ public class Offer
 		id = json.getString("id");
 		title = json.getString("title");
 		details = json.getString("details");
-		minDiners = json.getInt("min_diners");
-		discountPrice = new BigDecimal(json.getString("discount_price"));
-		fullPrice = new BigDecimal(json.getString("full_price"));
-		imageUrl = json.getString("image_url");
+		minDiners = json.getInt("minimum_diners");
+		discountPrice = new BigDecimal(1);
+		fullPrice = new BigDecimal(9);
+		imageUrl = "/media/BAhbBlsHOgZmSSIvMjAxMi8wNS8yNC8xM180N181MF81OTRfR29qb19FdGhpb3BpYW4ucG5nBjoGRVQ";
+		//discountPrice = new BigDecimal(json.getString("discount_price"));
+		//fullPrice = new BigDecimal(json.getString("full_price"));
+		//imageUrl = json.getString("image_url");
 	}
 
 	public Offer(String id, String title, String details, int minDiners, BigDecimal discountPrice, BigDecimal fullPrice, String imageUrl)

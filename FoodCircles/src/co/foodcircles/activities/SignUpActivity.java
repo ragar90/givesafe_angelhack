@@ -24,7 +24,7 @@ public class SignUpActivity extends Activity
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.signup);
 		C.overrideFonts(this, findViewById(R.id.root));
-		
+
 		final FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
 
 		email = (EditText) findViewById(R.id.editTextEmail);
@@ -49,9 +49,11 @@ public class SignUpActivity extends Activity
 					protected void onPostExecute(Boolean success)
 					{
 						Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+						intent.putExtra("tab", 1);
 						startActivity(intent);
 						SignUpActivity.this.finish();
-						if(app.signinActivity != null) app.signinActivity.finish();
+						if (app.signinActivity != null)
+							app.signinActivity.finish();
 					}
 				}.execute("");
 			}

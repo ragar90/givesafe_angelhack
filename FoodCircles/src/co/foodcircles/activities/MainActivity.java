@@ -14,7 +14,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MainActivity extends FragmentActivity
 {
-	private static final String[] CONTENT = new String[] { "NEWS", "FOOD", "MEALS", "ME" };
+	private static final String[] CONTENT = new String[] { "NEWS", "FOOD", "ME" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -27,12 +27,13 @@ public class MainActivity extends FragmentActivity
 
 		ViewPager pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(adapter);
-		C.overrideFonts(this, pager);
 
 		TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
 		indicator.setViewPager(pager);
 
 		pager.setCurrentItem(getIntent().getIntExtra("tab", 0));
+
+		C.overrideFonts(this, findViewById(R.id.root));
 	}
 
 	class GoogleMusicAdapter extends FragmentPagerAdapter
@@ -53,8 +54,6 @@ public class MainActivity extends FragmentActivity
 					return new RestaurantGridFragment();
 				case 2:
 					return new TimelineFragment();
-				case 3:
-					return new AccountOptionsFragment();
 				default:
 					return null;
 			}

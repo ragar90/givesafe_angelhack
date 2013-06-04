@@ -8,6 +8,4 @@
     android:horizontalSpacing="2dp"
     android:numColumns="2"
     android:verticalSpacing="2dp"
-    tools:listitem="@layout/polaroid" >
-
-</GridView>
+    tools:listitem="@layout/polaroid" />

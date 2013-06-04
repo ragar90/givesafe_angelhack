@@ -1,17 +1,29 @@
 package co.foodcircles.activities;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
+
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +32,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import co.foodcircles.R;
+import co.foodcircles.json.Offer;
 import co.foodcircles.json.Restaurant;
 import co.foodcircles.json.Upgrade;
 import co.foodcircles.util.C;
@@ -27,14 +40,17 @@ import co.foodcircles.util.FoodCirclesApplication;
 
 public class BuyFragment extends Fragment
 {
+	private final BigDecimal CENT_PRECISION = new BigDecimal(50);
+	private final BigDecimal CENTS_IN_DOLLAR = new BigDecimal(100);
 	FoodCirclesApplication app;
-	Restaurant restaurant;
-	private Upgrade selectedUpgrade;
+	private Offer selectedOffer;
 	private Spinner numFriends;
 	private SeekBar seekBar;
 	private TextView price;
 	private TextView meals;
 	private Spinner donateTo;
+	private TextView minPrice, medianPrice, maxPrice;
+	private BigDecimal priceValue = new BigDecimal(1);
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -45,7 +61,7 @@ public class BuyFragment extends Fragment
 		C.overrideFonts(getActivity(), view);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
-		restaurant = app.selectedRestaurant;
+		selectedOffer = app.selectedVenue.getOffers().get(0);
 
 		numFriends = (Spinner) view.findViewById(R.id.spinnerNumFriends);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>()
@@ -59,6 +75,29 @@ public class BuyFragment extends Fragment
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		numFriends.setAdapter(adapter);
+
+		numFriends.setOnItemSelectedListener(new OnItemSelectedListener()
+		{
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
+			{
+				minPrice.setText(NumberFormat.getCurrencyInstance().format(position + 1));
+
+				BigDecimal medianPriceValue = new BigDecimal(selectedOffer.getFullPrice().intValue() * (position + 1) * 2);
+				medianPriceValue = medianPriceValue.subtract(new BigDecimal(position + 1));
+				medianPriceValue = medianPriceValue.divide(new BigDecimal(2));
+				medianPriceValue = medianPriceValue.add(new BigDecimal(position + 1));
+				medianPrice.setText(NumberFormat.getCurrencyInstance().format(medianPriceValue));
+
+				maxPrice.setText(NumberFormat.getCurrencyInstance().format(selectedOffer.getFullPrice().intValue() * (position + 1) * 2));
+				setPrices();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView)
+			{
+			}
+		});
 
 		donateTo = (Spinner) view.findViewById(R.id.spinnerDonateTo);
 		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>()
@@ -76,14 +115,10 @@ public class BuyFragment extends Fragment
 		price = (TextView) view.findViewById(R.id.textViewTotalPrice);
 		meals = (TextView) view.findViewById(R.id.textViewDonated);
 
-		List<Upgrade> upgrades = restaurant.getUpgrades();
-
-		selectedUpgrade = upgrades.get(0);
-
-		int price = selectedUpgrade.getFullPrice().intValue();
+		int price = selectedOffer.getFullPrice().intValue();
 
 		seekBar = (SeekBar) view.findViewById(R.id.seekBar);
-		seekBar.setMax(100 * (price * 2 - 1) + 99);
+		seekBar.setMax(100 * (price * 2 - 1) - 1);
 		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
 		{
 			@Override
@@ -103,6 +138,10 @@ public class BuyFragment extends Fragment
 			}
 		});
 
+		minPrice = (TextView) view.findViewById(R.id.textViewPrice1);
+		medianPrice = (TextView) view.findViewById(R.id.textViewPrice2);
+		maxPrice = (TextView) view.findViewById(R.id.textViewPrice3);
+
 		setPrices();
 
 		Button buyButton = (Button) view.findViewById(R.id.buttonBuy);
@@ -112,15 +151,19 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				TaskStackBuilder stackBuilder = TaskStackBuilder.from(getActivity());
-				stackBuilder.addNextIntent(new Intent(getActivity(), MainActivity.class).putExtra("tab", 0));
-				stackBuilder.addNextIntent(new Intent(getActivity(), ViewVoucherActivity.class));
-
-				stackBuilder.startActivities();
-				getActivity().finish();
+				PayPalPayment voucherPayment = new PayPalPayment(priceValue, "USD", "Food Circles");
+		        
+		        Intent intent = new Intent(getActivity(), PaymentActivity.class);
+		        
+		        intent.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, PaymentActivity.ENVIRONMENT_NO_NETWORK);
+		        intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, "ATpY8BAwAkcjGxyOJ9IjArCzDNfrqdQV3FaADv-iWszrCOxpjQ_I2elLntHS");
+		        intent.putExtra(PaymentActivity.EXTRA_RECEIVER_EMAIL, "jtkumario@gmail.com");
+		        intent.putExtra(PaymentActivity.EXTRA_PAYER_ID, "your-customer-id-in-your-system");
+		        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, voucherPayment);
+		        
+		        startActivityForResult(intent, 0);
 			}
 		});
-		
 
 		ImageView i1 = (ImageView) view.findViewById(R.id.imageViewI1);
 		i1.setOnClickListener(new OnClickListener()
@@ -151,10 +194,58 @@ public class BuyFragment extends Fragment
 		return view;
 	}
 
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		if (resultCode == Activity.RESULT_OK)
+		{
+			PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+			if (confirm != null)
+			{
+				try
+				{
+					Log.i("paymentExample", confirm.toJSONObject().toString(4));
+					// TODO: Server Verification here!!!
+
+					TaskStackBuilder stackBuilder = TaskStackBuilder.from(getActivity());
+					stackBuilder.addNextIntent(new Intent(getActivity(), MainActivity.class).putExtra("tab", 2));
+					stackBuilder.addNextIntent(new Intent(getActivity(), ViewVoucherActivity.class));
+
+					stackBuilder.startActivities();
+					getActivity().finish();
+				}
+				catch (JSONException e)
+				{
+					Log.e("PaypalResult", "an extremely unlikely failure occurred: ", e);
+				}
+			}
+		}
+		else if (resultCode == Activity.RESULT_CANCELED)
+		{
+			Log.i("PaypalResult", "The user canceled.");
+		}
+		else if (resultCode == PaymentActivity.RESULT_PAYMENT_INVALID)
+		{
+			Log.i("PaypalResult", "An invalid payment was submitted. Please see the docs.");
+		}
+	}
+
 	private void setPrices()
 	{
-		int priceAmount = (seekBar.getProgress() / 100) + 1;
-		price.setText("$" + priceAmount + ".00");
-		meals.setText(priceAmount + " meals donated to...");
+		int numVouchers = numFriends.getSelectedItemPosition() + 1;
+		// Seekbar.getprogress = number of cents
+		BigDecimal priceAmount = new BigDecimal(seekBar.getProgress());
+		priceAmount = priceAmount.add(CENTS_IN_DOLLAR);
+
+		priceAmount = priceAmount.multiply(new BigDecimal(numVouchers));
+
+		priceAmount = priceAmount.divide(CENTS_IN_DOLLAR);
+		priceAmount = priceAmount.multiply(CENTS_IN_DOLLAR.divide(CENT_PRECISION));
+		priceAmount = priceAmount.setScale(0, BigDecimal.ROUND_HALF_UP);
+		priceAmount = priceAmount.divide(CENTS_IN_DOLLAR.divide(CENT_PRECISION));
+		priceValue = priceAmount;
+
+		price.setText(NumberFormat.getCurrencyInstance().format(priceAmount));
+		meals.setText(priceAmount.intValue() + " meals");
 	}
 }

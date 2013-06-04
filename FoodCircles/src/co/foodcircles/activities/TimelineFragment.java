@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -53,7 +55,7 @@ public class TimelineFragment extends ListFragment
 
 	private class PurchaseAdapter extends BaseAdapter
 	{
-		public final int HEADER_TYPE = 0;
+		public final int YOU_AND_FRIENDS_TYPE = 0;
 		public final int VOUCHER_TYPE = 1;
 		public final int FRIEND_TYPE = 2;
 		public final int MONTH_TYPE = 3;
@@ -74,6 +76,8 @@ public class TimelineFragment extends ListFragment
 
 			public TextView year;
 			public TextView month;
+
+			public ImageView settingsButton;
 		}
 
 		public PurchaseAdapter(List<Purchase> purchases)
@@ -109,7 +113,7 @@ public class TimelineFragment extends ListFragment
 		public int getItemViewType(int position)
 		{
 			if (position == 0)
-				return HEADER_TYPE;
+				return YOU_AND_FRIENDS_TYPE;
 			else if (position % 3 == 0)
 				return FRIEND_TYPE;
 			else if (position % 3 == 1)
@@ -139,12 +143,22 @@ public class TimelineFragment extends ListFragment
 			{
 				switch (getItemViewType(position))
 				{
-					case HEADER_TYPE:
+					case YOU_AND_FRIENDS_TYPE:
 						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_top_row, parent, false);
 						C.overrideFonts(parent.getContext(), view);
 						holder = new TimelineHolder();
 						holder.me = (TextView) view.findViewById(R.id.textViewMe);
 						holder.friends = (TextView) view.findViewById(R.id.textViewFriends);
+						holder.settingsButton = (ImageView) view.findViewById(R.id.button);
+						holder.settingsButton.setOnClickListener(new OnClickListener()
+						{
+							@Override
+							public void onClick(View v)
+							{
+								Intent intent = new Intent(getActivity(), AccountOptionsActivity.class);
+								startActivity(intent);
+							}
+						});
 						view.setTag(holder);
 						break;
 					case VOUCHER_TYPE:

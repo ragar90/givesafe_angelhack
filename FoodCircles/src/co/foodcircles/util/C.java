@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class C
@@ -39,9 +40,10 @@ public class C
 					overrideFonts(context, child);
 				}
 			}
-			else if (v instanceof TextView)
+			else if (v instanceof TextView && !(v instanceof Button))
 			{
 				TextView textView = (TextView) v;
+				if(textView.getText().toString().startsWith("Log in")) return;
 				Typeface newFont = font;
 
 				if (textView.getTypeface() != null)

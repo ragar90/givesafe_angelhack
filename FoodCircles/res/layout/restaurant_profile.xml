@@ -28,7 +28,7 @@
                 android:src="@drawable/fries" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/textViewHours"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mon - Sat 11:30p - 2:00a Sun 12:00p - 2:00a"
@@ -43,14 +43,14 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Stella&apos;s Lounge"
                 android:textSize="@dimen/profile_large_text" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewTags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Food, WiFi, V/GF, Desserts"
@@ -144,7 +144,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"

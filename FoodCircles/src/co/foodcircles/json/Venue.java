@@ -17,10 +17,9 @@ public class Venue
 	private String zip;
 	private double latitude;
 	private double longitude;
-	private String shortDescription;
 	private String description;
 	private String phone;
-	private String url;
+	private String web;
 	private List<String> tags;
 	private List<Offer> offers;
 	private List<String> openTimes;
@@ -48,18 +47,17 @@ public class Venue
 		city = json.getString("city");
 		state = json.getString("state");
 		zip = json.getString("zip");
-		latitude = json.getDouble("latitude");
-		longitude = json.getDouble("longitude");
-		shortDescription = json.getString("short_description");
+		latitude = json.getDouble("lat");
+		longitude = json.getDouble("lon");
 		description = json.getString("description");
 		phone = json.getString("phone");
-		url = json.getString("url");
+		web = json.getString("web");
 
 		tags = new ArrayList<String>();
 		JSONArray tagsJson = json.getJSONArray("tags");
 		for (int i = 0; i < tagsJson.length(); i++)
 		{
-			tags.add(tagsJson.getString(i));
+			tags.add(tagsJson.getJSONObject(i).getString("name"));
 		}
 
 		offers = new ArrayList<Offer>();
@@ -70,17 +68,20 @@ public class Venue
 		}
 
 		openTimes = new ArrayList<String>();
+		openTimes.add("time1");
+		openTimes.add("time2");
+/*
 		JSONArray openTimesJson = json.getJSONArray("open_times");
 		for (int i = 0; i < openTimesJson.length(); i++)
 		{
 			openTimes.add(openTimesJson.getString(i));
 		}
-
-		imageUrl = json.getString("image_url");
+*/
+		imageUrl = json.getString("image");
 
 	}
 
-	public Venue(String id, String name, String address, String city, String state, String zip, double latitude, double longitude, String shortDescription, String description, String phone,
+	public Venue(String id, String name, String address, String city, String state, String zip, double latitude, double longitude, String description, String phone,
 			String url, List<String> tags, List<Offer> offers, List<String> openTimes, String imageUrl)
 	{
 		super();
@@ -92,10 +93,9 @@ public class Venue
 		this.zip = zip;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.shortDescription = shortDescription;
 		this.description = description;
 		this.phone = phone;
-		this.url = url;
+		this.web = url;
 		this.tags = tags;
 		this.offers = offers;
 		this.openTimes = openTimes;
@@ -182,16 +182,6 @@ public class Venue
 		this.longitude = longitude;
 	}
 
-	public String getShortDescription()
-	{
-		return shortDescription;
-	}
-
-	public void setShortDescription(String shortDescription)
-	{
-		this.shortDescription = shortDescription;
-	}
-
 	public String getDescription()
 	{
 		return description;
@@ -212,14 +202,14 @@ public class Venue
 		this.phone = phone;
 	}
 
-	public String getUrl()
+	public String getWeb()
 	{
-		return url;
+		return web;
 	}
 
-	public void setUrl(String url)
+	public void setWeb(String web)
 	{
-		this.url = url;
+		this.web = web;
 	}
 
 	public List<String> getTags()
@@ -230,6 +220,11 @@ public class Venue
 	public void setTags(List<String> tags)
 	{
 		this.tags = tags;
+	}
+	
+	public String getTagsString()
+	{
+		return tags.toString().replace("[", "").replace("]",  "");
 	}
 
 	public List<Offer> getOffers()

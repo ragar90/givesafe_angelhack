@@ -16,12 +16,11 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/fries" />
+            android:src="@drawable/fuzzy_cheer" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/transparent_grey"
             android:gravity="center"
             android:orientation="vertical" >
 
@@ -32,7 +31,8 @@
                 android:layout_margin="10dp"
                 android:text="Buy One, Feed One."
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/signup_large_text" />
+                android:textSize="@dimen/signup_large_text"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -43,7 +43,9 @@
                 android:paddingRight="10dp"
                 android:text="Buy one appetizer or dessert for $1 or more, feed one child in need."
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/signup_small_text" />
+                android:textSize="@dimen/signup_small_text"
+                android:textStyle="italic" />
+
         </LinearLayout>
     </FrameLayout>
 
@@ -77,13 +79,8 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your appetite is powerful." />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sign up today!" />
+                    android:textSize="@dimen/signup_powerful_text"
+                    android:text="Your appetite is powerful. Sign up today!" />
             </LinearLayout>
 
             <LinearLayout
@@ -205,7 +202,7 @@
                 android:id="@+id/buttonSignUp"
                 style="@style/buttonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/loginSquare"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_selector"
                 android:text="Sign Up" />

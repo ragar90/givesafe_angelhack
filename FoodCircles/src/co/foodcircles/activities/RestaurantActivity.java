@@ -13,7 +13,7 @@ import co.foodcircles.util.C;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class RestaurantActivity extends FragmentActivity {
-    private static final String[] CONTENT = new String[] { "UPGRADES", "INFO" };
+    private static final String[] CONTENT = new String[] { "OFFER", "INFO" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +25,11 @@ public class RestaurantActivity extends FragmentActivity {
 
         ViewPager pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
-		C.overrideFonts(this, pager);
 
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
+
+		C.overrideFonts(this, findViewById(R.id.root));
     }
 
     class GoogleMusicAdapter extends FragmentPagerAdapter {

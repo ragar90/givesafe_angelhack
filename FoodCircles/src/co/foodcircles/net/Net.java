@@ -28,7 +28,7 @@ public class Net
 	private static final String TAG = "Net";
 	private static final String HOST = "foodcircles.net";
 	private static final String API_URL = "/api";
-	private static final String GET_VENUES_LIST = "/venues";
+	private static final String GET_VENUES_LIST = "/venues.json";
 	private static final String GET_VENUE = "/venues/[venueId]";
 	private static final String GET_RESERVATIONS_LIST = "/reservations";
 	private static final String GET_RESERVATION = "/reservations/[reservationId]";
@@ -70,8 +70,11 @@ public class Net
 
 		try
 		{
-			String paramString = URLEncodedUtils.format(urlParams, "utf-8");
-			path += paramString;
+			if (urlParams != null)
+			{
+				String paramString = URLEncodedUtils.format(urlParams, "utf-8");
+				path += paramString;
+			}
 
 			Log.w(TAG, "Execute HTTP Post Request");
 			HttpResponse httpResp = httpclient.execute(httpget, httpContext);

@@ -5,65 +5,66 @@
     android:layout_height="match_parent"
     android:background="@color/dark_grey" >
 
-    <ViewFlipper
-        android:id="@+id/viewFlipper1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ViewFlipper>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <android.support.v7.widget.Space
-            android:id="@+id/space1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="8" />
-
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:gravity="center"
-            android:padding="2dp" >
+            android:layout_weight="8.5" >
 
             <ImageView
-                android:id="@+id/imageViewCircle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:src="@drawable/filled_circle" />
+                android:id="@+id/imageViewTop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cheer" />
 
-            <ImageView
-                android:id="@+id/imageViewCircle2"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:src="@drawable/circle" />
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="5dp"
+                android:padding="1dp" >
 
-            <ImageView
-                android:id="@+id/imageViewCircle3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:src="@drawable/circle" />
+                <ImageView
+                    android:id="@+id/imageViewCircle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:src="@drawable/filled_circle" />
 
-            <ImageView
-                android:id="@+id/imageViewCircle4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:src="@drawable/circle" />
+                <ImageView
+                    android:id="@+id/imageViewCircle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:src="@drawable/circle" />
 
-            <ImageView
-                android:id="@+id/imageViewCircle5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:src="@drawable/circle" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageViewCircle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:src="@drawable/circle" />
+
+                <ImageView
+                    android:id="@+id/imageViewCircle4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:src="@drawable/circle" />
+
+                <ImageView
+                    android:id="@+id/imageViewCircle5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:src="@drawable/circle" />
+            </LinearLayout>
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textView1"
@@ -73,61 +74,80 @@
             android:background="@color/background"
             android:gravity="center"
             android:text="Buy One, Feed One"
-            android:textSize="@dimen/landing_large_text" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="You can feed a child but your network can feed a classroom"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/landing_small_text" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Share the mission"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/landing_small_text"
+            android:textSize="@dimen/landing_large_text"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center" >
+            android:layout_weight="5" >
 
             <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:scaleType="fitEnd"
-                android:src="@drawable/twitter" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/hands" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:scaleType="fitStart"
-                android:src="@drawable/facebook" />
-        </LinearLayout>
+                android:orientation="vertical" >
 
-        <android.support.v7.widget.Space
-            android:id="@+id/space1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="You can feed a child but your network can feed a classroom"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/landing_small_text" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Share the mission"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/landing_small_text"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/imageViewTwitter"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/twitter" />
+
+                    <ImageView
+                        android:id="@+id/imageViewFacebook"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/facebook" />
+                </LinearLayout>
+
+                <android.support.v7.widget.Space
+                    android:id="@+id/space1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
 
 </FrameLayout>
