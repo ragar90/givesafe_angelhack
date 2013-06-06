@@ -3,17 +3,10 @@ package co.foodcircles.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,11 +22,16 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.foodcircles.R;
-import co.foodcircles.json.Restaurant;
 import co.foodcircles.json.Venue;
 import co.foodcircles.net.Net;
 import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
+
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 public class RestaurantGridFragment extends Fragment
 {

@@ -29,6 +29,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="3.0"
                 android:text="Buy One, Feed One."
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/signup_large_text"
@@ -41,12 +45,33 @@
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="3.0"
                 android:text="Buy one appetizer or dessert for $1 or more, feed one child in need."
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/signup_small_text"
                 android:textStyle="italic" />
-
         </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSignIn"
+            style="@style/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/standard_button_height"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_selector"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="2"
+            android:text="Sign In"
+            android:textSize="@dimen/standard_button_text" />
     </FrameLayout>
 
     <LinearLayout
@@ -75,12 +100,13 @@
                 android:gravity="center"
                 android:orientation="vertical" >
 
-                <TextView
+                <co.foodcircles.util.FontFitTextView
                     android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/signup_powerful_text"
-                    android:text="Your appetite is powerful. Sign up today!" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Your appetite is powerful. Sign up today!"
+                    android:textSize="@dimen/signup_powerful_text" />
             </LinearLayout>
 
             <LinearLayout
@@ -90,9 +116,8 @@
 
                 <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/loginSquare"
+                    android:layout_height="@dimen/standard_button_height"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1" >
 
@@ -100,12 +125,17 @@
                         android:id="@+id/buttonFacebook"
                         style="@style/buttonStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/standard_button_height"
                         android:background="@drawable/facebook_button_selector"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
-                        android:text="" />
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1.0"
+                        android:shadowDy="1.0"
+                        android:shadowRadius="2"
+                        android:text=""
+                        android:textSize="@dimen/standard_button_text" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -120,8 +150,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
+                            android:shadowColor="@android:color/black"
+                            android:shadowDx="1.0"
+                            android:shadowDy="1.0"
+                            android:shadowRadius="2"
                             android:text="Log in "
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/standard_button_text" />
 
                         <ImageView
                             android:id="@+id/imageView2"
@@ -135,22 +170,26 @@
 
                 <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/loginSquare"
+                    android:layout_height="@dimen/standard_button_height"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1" >
 
                     <Button
                         android:id="@+id/buttonTwitter"
                         style="@style/buttonStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/standard_button_height"
                         android:background="@drawable/twitter_button_selector"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
-                        android:text="" />
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1.0"
+                        android:shadowDy="1.0"
+                        android:shadowRadius="2"
+                        android:text=""
+                        android:textSize="@dimen/standard_button_text" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -165,8 +204,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
+                            android:shadowColor="@android:color/black"
+                            android:shadowDx="1.0"
+                            android:shadowDy="1.0"
+                            android:shadowRadius="2"
                             android:text="Log in "
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/standard_button_text" />
 
                         <ImageView
                             android:id="@+id/imageView2"
@@ -202,10 +246,15 @@
                 android:id="@+id/buttonSignUp"
                 style="@style/buttonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/loginSquare"
+                android:layout_height="@dimen/standard_button_height"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_selector"
-                android:text="Sign Up" />
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="2"
+                android:text="Sign Up"
+                android:textSize="@dimen/standard_button_text" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space3"

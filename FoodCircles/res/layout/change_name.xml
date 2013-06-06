@@ -38,12 +38,17 @@
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/standard_button_height"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@drawable/button_selector"
         android:height="50dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="1.0"
+        android:shadowDy="1.0"
+        android:shadowRadius="2"
         android:text="Save"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/standard_button_text" />
 
 </LinearLayout>

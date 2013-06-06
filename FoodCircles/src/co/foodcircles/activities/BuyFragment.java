@@ -33,6 +33,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Offer;
+import co.foodcircles.json.Purchase;
 import co.foodcircles.json.Restaurant;
 import co.foodcircles.json.Upgrade;
 import co.foodcircles.util.C;
@@ -206,12 +207,8 @@ public class BuyFragment extends Fragment
 				{
 					Log.i("paymentExample", confirm.toJSONObject().toString(4));
 					// TODO: Server Verification here!!!
-
-					TaskStackBuilder stackBuilder = TaskStackBuilder.from(getActivity());
-					stackBuilder.addNextIntent(new Intent(getActivity(), MainActivity.class).putExtra("tab", 2));
-					stackBuilder.addNextIntent(new Intent(getActivity(), ViewVoucherActivity.class));
-
-					stackBuilder.startActivities();
+					
+					app.justPurchased = new Purchase("");
 					getActivity().finish();
 				}
 				catch (JSONException e)

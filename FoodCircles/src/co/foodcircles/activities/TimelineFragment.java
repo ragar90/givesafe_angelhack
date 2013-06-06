@@ -4,16 +4,18 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import co.foodcircles.R;
 import co.foodcircles.json.Purchase;
 import co.foodcircles.util.C;
@@ -39,6 +41,16 @@ public class TimelineFragment extends ListFragment
 		adapter = new PurchaseAdapter(purchases);
 		this.setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
+		
+		LinearLayout inviteFriends = (LinearLayout) view.findViewById(R.id.inviteFriendsLayout);
+		inviteFriends.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Toast.makeText(getActivity(), "Inviting friends!", Toast.LENGTH_SHORT).show();
+			}
+		});
 		return view;
 	}
 
@@ -48,9 +60,13 @@ public class TimelineFragment extends ListFragment
 		FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		app.selectedPurchase = purchases.get(position);
 		app.selectedRestaurant = purchases.get(position).getRestaurant();
+		
+		FragmentManager fm = getActivity().getSupportFragmentManager();
+		ReceiptDialogFragment receiptDialog = new ReceiptDialogFragment();
+		receiptDialog.show(fm, "receipt_dialog");
 
-		Intent intent = new Intent(getActivity(), ViewVoucherActivity.class);
-		startActivity(intent);
+		//Intent intent = new Intent(getActivity(), ViewVoucherActivity.class);
+		//startActivity(intent);
 	}
 
 	private class PurchaseAdapter extends BaseAdapter

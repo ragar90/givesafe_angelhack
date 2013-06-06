@@ -6,32 +6,11 @@
     <dimen name="loginButtonsPadding">20dp</dimen>
     <dimen name="loginBuyOneFeedOne">20sp</dimen>
     
-    <dimen name="polaroidIcon">38dp</dimen>
+    <dimen name="polaroidIcon">48dp</dimen>
     <dimen name="polaroidIconTopMargin">30dp</dimen>
     
     <dimen name="timeline_bottom_left">10sp</dimen>
     <dimen name="timeline_bottom_middle">16sp</dimen>
-    
-    
-    <dimen name="receipt_code_text">40sp</dimen>
-    <dimen name="receipt_large_text">30sp</dimen>
-    <dimen name="receipt_medium_text">20sp</dimen>
-    <dimen name="receipt_small_text">15sp</dimen>
-    <dimen name="receipt_social_height">40dp</dimen>
-    
-    <dimen name="landing_large_text">40sp</dimen>
-    <dimen name="landing_small_text">20sp</dimen>
-    
-    <dimen name="signup_large_text">40sp</dimen>
-    <dimen name="signup_small_text">20sp</dimen>
-    <dimen name="signup_message_height">40dp</dimen>
-    
-    
-    <dimen name="profile_large_text">40sp</dimen>
-    <dimen name="profile_small_text">20sp</dimen>
-    <dimen name="profile_hours_text">10sp</dimen>
-    <dimen name="profile_button_height">20dp</dimen>
-    <dimen name="profile_upper_height">80dp</dimen>
     
     <dimen name="buy_options_text">15dp</dimen>
     <dimen name="buy_options_text_large">25dp</dimen>

@@ -9,12 +9,14 @@ import android.support.v4.view.ViewPager;
 import android.view.Window;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
+import co.foodcircles.util.FoodCirclesApplication;
 
 import com.viewpagerindicator.TabPageIndicator;
 
 public class MainActivity extends FragmentActivity
 {
 	private static final String[] CONTENT = new String[] { "NEWS", "FOOD", "ME" };
+	ViewPager pager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -25,7 +27,7 @@ public class MainActivity extends FragmentActivity
 
 		FragmentPagerAdapter adapter = new GoogleMusicAdapter(getSupportFragmentManager());
 
-		ViewPager pager = (ViewPager) findViewById(R.id.pager);
+		pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(adapter);
 
 		TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
@@ -34,6 +36,23 @@ public class MainActivity extends FragmentActivity
 		pager.setCurrentItem(getIntent().getIntExtra("tab", 0));
 
 		C.overrideFonts(this, findViewById(R.id.root));
+	}
+
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
+		if (app.justPurchased != null)
+		{
+			pager.setCurrentItem(2);
+
+			FragmentManager fm = getSupportFragmentManager();
+			ReceiptDialogFragment receiptDialog = new ReceiptDialogFragment();
+			receiptDialog.show(fm, "receipt_dialog");
+
+			app.justPurchased = null;
+		}
 	}
 
 	class GoogleMusicAdapter extends FragmentPagerAdapter

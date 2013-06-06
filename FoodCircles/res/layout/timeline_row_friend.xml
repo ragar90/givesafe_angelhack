@@ -16,16 +16,31 @@
         android:textColor="@color/secondary_text" />
 
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="32dp"
         android:layout_height="match_parent" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="matrix"
+                android:src="@drawable/timeline_stripe" />
+
+        </FrameLayout>
 
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:cropToPadding="true"
+            android:scaleType="center"
             android:src="@drawable/timeline_circle_yellow" />
+
     </FrameLayout>
 
     <LinearLayout

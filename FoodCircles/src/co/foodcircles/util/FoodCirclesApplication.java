@@ -14,5 +14,5 @@ public class FoodCirclesApplication extends Application
 	public Upgrade selectedUpgrade;
 	public Purchase selectedPurchase;
 	
-	public SignInActivity signinActivity;
+	public Purchase justPurchased;
 }

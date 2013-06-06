@@ -62,9 +62,8 @@
 
                 <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/loginSquare"
+                    android:layout_height="@dimen/standard_button_height"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1" >
 
@@ -72,12 +71,17 @@
                         android:id="@+id/buttonFacebook"
                         style="@style/buttonStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/standard_button_height"
                         android:background="@drawable/facebook_button_selector"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
-                        android:text="" />
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1.0"
+                        android:shadowDy="1.0"
+                        android:shadowRadius="2"
+                        android:text=""
+                        android:textSize="@dimen/standard_button_text" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -92,8 +96,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
+                            android:shadowColor="@android:color/black"
+                            android:shadowDx="1.0"
+                            android:shadowDy="1.0"
+                            android:shadowRadius="2"
                             android:text="Log in "
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/standard_button_text" />
 
                         <ImageView
                             android:id="@+id/imageView2"
@@ -107,22 +116,26 @@
 
                 <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/loginSquare"
+                    android:layout_height="@dimen/standard_button_height"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1" >
 
                     <Button
                         android:id="@+id/buttonTwitter"
                         style="@style/buttonStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/standard_button_height"
                         android:background="@drawable/twitter_button_selector"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
-                        android:text="" />
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1.0"
+                        android:shadowDy="1.0"
+                        android:shadowRadius="2"
+                        android:text=""
+                        android:textSize="@dimen/standard_button_text" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -137,8 +150,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
+                            android:shadowColor="@android:color/black"
+                            android:shadowDx="1.0"
+                            android:shadowDy="1.0"
+                            android:shadowRadius="2"
                             android:text="Log in "
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/standard_button_text" />
 
                         <ImageView
                             android:id="@+id/imageView2"
@@ -157,7 +175,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="email address"
-                android:inputType="textEmailAddress" >
+                android:inputType="textEmailAddress"
+                android:drawableLeft="@drawable/i" >
 
                 <requestFocus android:layout_width="wrap_content" />
             </EditText>
@@ -174,10 +193,15 @@
                 android:id="@+id/buttonSignIn"
                 style="@style/buttonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/standard_button_height"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_selector"
-                android:text="Sign In" />
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="2"
+                android:text="Sign In"
+                android:textSize="@dimen/standard_button_text" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space3"
@@ -196,12 +220,17 @@
         android:id="@+id/buttonSignUp"
         style="@style/buttonStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/standard_button_height"
         android:layout_gravity="top|right"
         android:layout_margin="10dp"
         android:background="@drawable/button_selector"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="Sign Up" />
+        android:shadowColor="@android:color/black"
+        android:shadowDx="1.0"
+        android:shadowDy="1.0"
+        android:shadowRadius="2"
+        android:text="Sign Up"
+        android:textSize="@dimen/standard_button_text" />
 
 </FrameLayout>

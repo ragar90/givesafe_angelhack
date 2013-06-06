@@ -5,18 +5,19 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
-import co.foodcircles.util.FoodCirclesApplication;
 
 public class SignUpActivity extends Activity
 {
 	EditText email;
 	EditText password;
 	Button signUpButton;
+	Button signInButton;
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -25,13 +26,11 @@ public class SignUpActivity extends Activity
 		setContentView(R.layout.signup);
 		C.overrideFonts(this, findViewById(R.id.root));
 
-		final FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
-
 		email = (EditText) findViewById(R.id.editTextEmail);
 		password = (EditText) findViewById(R.id.editTextPassword);
 		signUpButton = (Button) findViewById(R.id.buttonSignUp);
 
-		signUpButton.setOnClickListener(new View.OnClickListener()
+		signUpButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -52,10 +51,20 @@ public class SignUpActivity extends Activity
 						intent.putExtra("tab", 1);
 						startActivity(intent);
 						SignUpActivity.this.finish();
-						if (app.signinActivity != null)
-							app.signinActivity.finish();
 					}
 				}.execute("");
+			}
+		});
+		
+		signInButton = (Button) findViewById(R.id.buttonSignIn);
+		signInButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+				startActivity(intent);
+				SignUpActivity.this.finish();
 			}
 		});
 	}

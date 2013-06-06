@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class C
@@ -40,29 +41,31 @@ public class C
 					overrideFonts(context, child);
 				}
 			}
-			else if (v instanceof TextView && !(v instanceof Button))
+			else if (v instanceof TextView && !(v instanceof Button) && !(v instanceof EditText))
 			{
 				TextView textView = (TextView) v;
-				if(textView.getText().toString().startsWith("Log in")) return;
-				Typeface newFont = font;
-
-				if (textView.getTypeface() != null)
+				
+				if ((v.getTag() != null) && ((String) v.getTag()).equals("neu"))
 				{
-					if (textView.getTypeface().isBold())
-					{
-						if (textView.getTypeface().isItalic())
-							newFont = boldItalicFont;
-						else
-							newFont = boldFont;
-					}
-					else
-					{
-						if (textView.getTypeface().isItalic())
-							newFont = italicFont;
-					}
-				}
+					Typeface newFont = font;
 
-				textView.setTypeface(newFont);
+					if (textView.getTypeface() != null)
+					{
+						if (textView.getTypeface().isBold())
+						{
+							if (textView.getTypeface().isItalic())
+								newFont = boldItalicFont;
+							else
+								newFont = boldFont;
+						}
+						else
+						{
+							if (textView.getTypeface().isItalic())
+								newFont = italicFont;
+						}
+					}
+					textView.setTypeface(newFont);
+				}
 			}
 		}
 		catch (Exception e)

@@ -37,4 +37,7 @@
     <dimen name="profile_upper_height">280dp</dimen>
     
     <dimen name="splash_size">50sp</dimen>
+    
+    <dimen name="standard_button_height">60dp</dimen>
+    <dimen name="standard_button_text">25sp</dimen>
 </resources>

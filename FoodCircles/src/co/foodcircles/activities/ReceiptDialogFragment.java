@@ -5,30 +5,35 @@ import android.app.AlertDialog;
 import android.graphics.BitmapFactory;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.DialogFragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
 
-public class ViewVoucherActivity extends FragmentActivity
+public class ReceiptDialogFragment extends DialogFragment
 {
 	Button markAsUsedButton;
 
 	@SuppressLint("NewApi")
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.voucher_receipt);
-		C.overrideFonts(this, findViewById(R.id.root));
+		super.onCreateView(inflater, container, savedInstanceState);
+		setStyle(STYLE_NO_FRAME, R.style.AppBaseTheme);
+		this.getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		View v = inflater.inflate(R.layout.voucher_receipt, container, false);
+		C.overrideFonts(getActivity(), v.findViewById(R.id.root));
 
-		View teeth = findViewById(R.id.viewTiledTeeth);
+		View teeth = v.findViewById(R.id.viewTiledTeeth);
 		BitmapDrawable teethDrawable = new BitmapDrawable(getResources(), BitmapFactory.decodeResource(getResources(), R.drawable.receipt_tooth));
 		teethDrawable.setTileModeX(TileMode.REPEAT);
 
@@ -41,18 +46,18 @@ public class ViewVoucherActivity extends FragmentActivity
 			teeth.setBackground(teethDrawable);
 		}
 
-		markAsUsedButton = (Button) findViewById(R.id.buttonMarkAsUsed);
+		markAsUsedButton = (Button) v.findViewById(R.id.buttonMarkAsUsed);
 		markAsUsedButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				AlertDialog.Builder builder = new AlertDialog.Builder(ViewVoucherActivity.this);
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setMessage("Are you sure?").setPositiveButton("Yes", null).setNegativeButton("No", null).show();
 			}
 		});
 
-		ImageView facebook = (ImageView) findViewById(R.id.imageViewFacebook);
+		ImageView facebook = (ImageView) v.findViewById(R.id.imageViewFacebook);
 		facebook.setOnClickListener(new OnClickListener()
 		{
 
@@ -61,5 +66,7 @@ public class ViewVoucherActivity extends FragmentActivity
 			{
 			}
 		});
+		
+		return v;
 	}
 }

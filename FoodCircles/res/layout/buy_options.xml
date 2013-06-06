@@ -233,11 +233,16 @@
             android:id="@+id/buttonBuy"
             style="@style/buttonStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/standard_button_height"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_selector"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="2"
             android:text="Buy"
-            android:textSize="@dimen/buy_options_text_large" />
+            android:textSize="@dimen/standard_button_text" />
+
     </LinearLayout>
 
 </ScrollView>

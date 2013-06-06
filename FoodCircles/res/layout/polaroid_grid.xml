@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/background"
-    android:horizontalSpacing="2dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
     android:numColumns="2"
     android:verticalSpacing="2dp"
     tools:listitem="@layout/polaroid" />
