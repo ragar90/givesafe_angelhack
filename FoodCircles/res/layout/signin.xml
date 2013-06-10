@@ -49,10 +49,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:tag="neu"
                     android:text="Buy One, Feed One"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="@dimen/loginBuyOneFeedOne"
                     android:textStyle="italic" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -100,6 +102,7 @@
                             android:shadowDx="1.0"
                             android:shadowDy="1.0"
                             android:shadowRadius="2"
+                            android:tag="rob"
                             android:text="Log in "
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/standard_button_text" />
@@ -154,6 +157,7 @@
                             android:shadowDx="1.0"
                             android:shadowDy="1.0"
                             android:shadowRadius="2"
+                            android:tag="rob"
                             android:text="Log in "
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/standard_button_text" />
@@ -176,7 +180,7 @@
                 android:ems="10"
                 android:hint="email address"
                 android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/i" >
+                android:tag="rob" >
 
                 <requestFocus android:layout_width="wrap_content" />
             </EditText>
@@ -187,7 +191,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:tag="rob" />
 
             <Button
                 android:id="@+id/buttonSignIn"
@@ -200,6 +205,7 @@
                 android:shadowDx="1.0"
                 android:shadowDy="1.0"
                 android:shadowRadius="2"
+                android:tag="rob"
                 android:text="Sign In"
                 android:textSize="@dimen/standard_button_text" />
 
@@ -230,6 +236,7 @@
         android:shadowDx="1.0"
         android:shadowDy="1.0"
         android:shadowRadius="2"
+        android:tag="rob"
         android:text="Sign Up"
         android:textSize="@dimen/standard_button_text" />
 

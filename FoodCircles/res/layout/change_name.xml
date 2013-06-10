@@ -11,6 +11,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tag="rob"
         android:text="WHAT&apos;S YOUR NAME?"
         android:textColor="@color/secondary_text" />
 
@@ -32,7 +33,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:tag="rob" />
+
     </LinearLayout>
 
     <Button
@@ -47,6 +50,7 @@
         android:shadowDx="1.0"
         android:shadowDy="1.0"
         android:shadowRadius="2"
+        android:tag="rob"
         android:text="Save"
         android:textColor="@android:color/white"
         android:textSize="@dimen/standard_button_text" />

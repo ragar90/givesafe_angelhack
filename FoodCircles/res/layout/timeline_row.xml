@@ -12,6 +12,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/timeline_textborder"
         android:padding="5dp"
+        android:tag="rob"
         android:text="04/22"
         android:textColor="@color/secondary_text" />
 
@@ -57,6 +58,7 @@
             android:id="@+id/textViewVenue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="rob"
             android:text="STELLA&apos;S LOUNGE" />
 
         <LinearLayout
@@ -74,6 +76,7 @@
                 android:id="@+id/textViewChildrenFed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="rob"
                 android:text="2 children fed"
                 android:textColor="@color/blue_text"
                 android:textStyle="bold" />
@@ -88,7 +91,9 @@
                 android:id="@+id/textViewUsed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="rob"
                 android:text="Used" />
+
         </LinearLayout>
     </LinearLayout>
 

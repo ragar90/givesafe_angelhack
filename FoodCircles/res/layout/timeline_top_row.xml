@@ -42,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
+        android:tag="rob"
         android:text="You"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
@@ -61,6 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
+        android:tag="rob"
         android:text=" Friends"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />

@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:tag="neu"
             android:text="Buy One, Feed One."
             android:textColor="@color/dark_grey"
             android:textSize="@dimen/splash_size"

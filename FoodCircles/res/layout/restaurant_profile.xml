@@ -31,9 +31,11 @@
                 android:id="@+id/textViewHours"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:tag="neu"
                 android:text="Mon - Sat 11:30p - 2:00a Sun 12:00p - 2:00a"
                 android:textColor="@color/dark_grey"
                 android:textSize="@dimen/profile_hours_text" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -47,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:tag="neu"
                 android:text="Stella&apos;s Lounge"
                 android:textSize="@dimen/profile_large_text" />
 
@@ -55,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".5"
+                android:tag="neu"
                 android:text="Food, WiFi, V/GF, Desserts"
                 android:textColor="@color/dark_grey"
                 android:textSize="@dimen/profile_small_text" />
@@ -150,6 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
+            android:tag="neu"
             android:text="Fasion axe tofu laboris delectus, VHS godard single-origin deserunt. Small batch craft beer, organic pitchfork. Synth cliche readymade kogi sustainable, artisan chillwave seitan cosby sweater."
             android:textSize="@dimen/profile_small_text" />
 
@@ -172,8 +177,9 @@
         android:id="@+id/textViewAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
         android:gravity="center"
+        android:padding="5dp"
+        android:tag="neu"
         android:text="23 Commerce Street, Grand Rapids MI 49503"
         android:textSize="@dimen/profile_small_text" />
 

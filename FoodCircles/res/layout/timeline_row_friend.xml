@@ -12,6 +12,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/timeline_textborder"
         android:padding="5dp"
+        android:tag="rob"
         android:text="04/22"
         android:textColor="@color/secondary_text" />
 
@@ -58,6 +59,7 @@
             android:id="@+id/textViewVenue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="rob"
             android:text="SAN CHEZ BISTRO" />
 
         <LinearLayout
@@ -68,6 +70,7 @@
                 android:id="@+id/textViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="rob"
                 android:text="JONATHAN KUMAR" />
 
             <android.support.v7.widget.Space
@@ -87,9 +90,11 @@
                 android:id="@+id/textViewChildrenFed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="rob"
                 android:text="1"
                 android:textColor="@color/yellow_circle"
                 android:textStyle="bold" />
+
         </LinearLayout>
     </LinearLayout>
 

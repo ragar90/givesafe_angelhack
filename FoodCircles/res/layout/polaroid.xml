@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:tag="neu"
                 android:text="TWO BEARD&apos;S DELI"
                 android:textAllCaps="true"
                 android:textAppearance="?android:attr/textAppearance"
@@ -70,6 +71,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="left"
+                    android:tag="neu"
                     android:text="Pizza"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/secondary_text" />
@@ -81,9 +83,11 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:gravity="right"
+                    android:tag="neu"
                     android:text=".5 mi"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/secondary_text" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -101,6 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:tag="neu"
                 android:text="10"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
@@ -110,9 +115,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:tag="neu"
                 android:text="left"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+
         </LinearLayout>
     </FrameLayout>
 

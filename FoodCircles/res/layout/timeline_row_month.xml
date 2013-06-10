@@ -41,6 +41,7 @@
             android:background="@color/timeline_date_circle"
             android:gravity="center"
             android:padding="5dp"
+            android:tag="rob"
             android:text="2013"
             android:textColor="@android:color/white" />
 
@@ -79,8 +80,10 @@
             android:layout_margin="5dp"
             android:background="@color/timeline_date_circle"
             android:padding="5dp"
+            android:tag="rob"
             android:text="MARCH"
             android:textColor="@android:color/white" />
+
     </LinearLayout>
 
 </FrameLayout>

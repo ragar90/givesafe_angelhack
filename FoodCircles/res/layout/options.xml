@@ -10,7 +10,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tag="neu"
+        android:tag="rob"
         android:text="ACCOUNT"
         android:textColor="@color/secondary_text" />
 
@@ -34,6 +34,7 @@
             android:layout_alignBottom="@+id/textViewName"
             android:layout_alignTop="@+id/textViewName"
             android:gravity="center"
+            android:tag="rob"
             android:text="Name" />
 
         <TextView
@@ -43,6 +44,7 @@
             android:layout_alignBottom="@+id/textViewEmail"
             android:layout_alignTop="@+id/textViewEmail"
             android:gravity="center"
+            android:tag="rob"
             android:text="Email" />
 
         <TextView
@@ -53,6 +55,7 @@
             android:layout_alignTop="@+id/textViewPassword"
             android:ellipsize="start"
             android:gravity="center"
+            android:tag="rob"
             android:text="Password" />
 
         <TextView
@@ -64,6 +67,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:padding="5dp"
+            android:tag="rob"
             android:text="What&apos;s your name?"
             android:textStyle="italic" />
 
@@ -76,6 +80,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:padding="5dp"
+            android:tag="rob"
             android:text="jonathan@foodcircles.net"
             android:textStyle="italic" />
 
@@ -89,14 +94,17 @@
             android:gravity="right"
             android:inputType="textPassword"
             android:padding="5dp"
+            android:tag="rob"
             android:text="thisisapassword"
             android:textStyle="italic" />
+
     </RelativeLayout>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tag="rob"
         android:text="CONNECTIONS"
         android:textColor="@color/secondary_text" />
 
@@ -118,6 +126,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="rob"
                 android:text="Facebook" />
 
             <android.support.v7.widget.Space
@@ -141,6 +150,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tag="rob"
                 android:text="Twitter" />
 
             <android.support.v7.widget.Space
@@ -163,6 +173,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="4dp"
+        android:tag="rob"
         android:text="Follow Us" />
 
     <LinearLayout
@@ -205,6 +216,7 @@
         android:shadowDx="1.0"
         android:shadowDy="1.0"
         android:shadowRadius="2"
+        android:tag="rob"
         android:text="Logout"
         android:textSize="@dimen/standard_button_text" />
 
