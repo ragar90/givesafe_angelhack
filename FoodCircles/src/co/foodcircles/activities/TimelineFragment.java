@@ -36,18 +36,20 @@ public class TimelineFragment extends ListFragment
 
 		try
 		{
-		reservations = Reservation.parseReservations("");
-		reservations.addAll(Reservation.parseReservations(""));
-		reservations.addAll(Reservation.parseReservations(""));
-		reservations.addAll(Reservation.parseReservations(""));
-		reservations.addAll(Reservation.parseReservations(""));
+			reservations = Reservation.parseReservations("");
+			reservations.addAll(Reservation.parseReservations(""));
+			reservations.addAll(Reservation.parseReservations(""));
+			reservations.addAll(Reservation.parseReservations(""));
+			reservations.addAll(Reservation.parseReservations(""));
 		}
-		catch(JSONException e){}
+		catch (JSONException e)
+		{
+		}
 
 		adapter = new ReservationAdapter(reservations);
 		this.setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
-		
+
 		LinearLayout inviteFriends = (LinearLayout) view.findViewById(R.id.inviteFriendsLayout);
 		inviteFriends.setOnClickListener(new OnClickListener()
 		{
@@ -66,13 +68,10 @@ public class TimelineFragment extends ListFragment
 		FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		app.selectedOffer = reservations.get(position).getOffer();
 		app.selectedVenue = reservations.get(position).getVenue();
-		
+
 		FragmentManager fm = getActivity().getSupportFragmentManager();
 		ReceiptDialogFragment receiptDialog = new ReceiptDialogFragment();
 		receiptDialog.show(fm, "receipt_dialog");
-
-		//Intent intent = new Intent(getActivity(), ViewVoucherActivity.class);
-		//startActivity(intent);
 	}
 
 	private class ReservationAdapter extends BaseAdapter
@@ -81,6 +80,8 @@ public class TimelineFragment extends ListFragment
 		public final int VOUCHER_TYPE = 1;
 		public final int FRIEND_TYPE = 2;
 		public final int MONTH_TYPE = 3;
+		public final int USED_VOUCHER_TYPE = 4;
+		public final int EXPIRING_VOUCHER_TYPE = 5;
 		List<Reservation> reservations;
 
 		private class TimelineHolder
@@ -88,7 +89,6 @@ public class TimelineFragment extends ListFragment
 			public TextView date;
 			public TextView venue;
 			public TextView childrenFed;
-			public TextView used;
 
 			public TextView me;
 			public TextView friends;
@@ -110,13 +110,13 @@ public class TimelineFragment extends ListFragment
 		@Override
 		public int getCount()
 		{
-			return reservations.size();
+			return reservations.size() + 1;
 		}
 
 		@Override
 		public int getViewTypeCount()
 		{
-			return 4;
+			return 6;
 		}
 
 		@Override
@@ -136,10 +136,14 @@ public class TimelineFragment extends ListFragment
 		{
 			if (position == 0)
 				return YOU_AND_FRIENDS_TYPE;
-			else if (position % 3 == 0)
+			else if (position % 5 == 0)
 				return FRIEND_TYPE;
-			else if (position % 3 == 1)
+			else if (position % 5 == 1)
 				return VOUCHER_TYPE;
+			else if (position % 5 == 2)
+				return USED_VOUCHER_TYPE;
+			else if (position % 5 == 3)
+				return EXPIRING_VOUCHER_TYPE;
 			else
 				return MONTH_TYPE;
 		}
@@ -147,7 +151,10 @@ public class TimelineFragment extends ListFragment
 		@Override
 		public Object getItem(int index)
 		{
-			return reservations.get(index);
+			if (index == 0)
+				return null;
+			else
+				return reservations.get(index);
 		}
 
 		@Override
@@ -190,7 +197,24 @@ public class TimelineFragment extends ListFragment
 						holder.date = (TextView) view.findViewById(R.id.textViewDate);
 						holder.venue = (TextView) view.findViewById(R.id.textViewVenue);
 						holder.childrenFed = (TextView) view.findViewById(R.id.textViewChildrenFed);
-						holder.used = (TextView) view.findViewById(R.id.textViewUsed);
+						view.setTag(holder);
+						break;
+					case EXPIRING_VOUCHER_TYPE:
+						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_row_expiring, parent, false);
+						C.overrideFonts(parent.getContext(), view);
+						holder = new TimelineHolder();
+						holder.date = (TextView) view.findViewById(R.id.textViewDate);
+						holder.venue = (TextView) view.findViewById(R.id.textViewVenue);
+						holder.childrenFed = (TextView) view.findViewById(R.id.textViewChildrenFed);
+						view.setTag(holder);
+						break;
+					case USED_VOUCHER_TYPE:
+						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_row_used, parent, false);
+						C.overrideFonts(parent.getContext(), view);
+						holder = new TimelineHolder();
+						holder.date = (TextView) view.findViewById(R.id.textViewDate);
+						holder.venue = (TextView) view.findViewById(R.id.textViewVenue);
+						holder.childrenFed = (TextView) view.findViewById(R.id.textViewChildrenFed);
 						view.setTag(holder);
 						break;
 					case FRIEND_TYPE:
@@ -219,7 +243,7 @@ public class TimelineFragment extends ListFragment
 				holder = (TimelineHolder) view.getTag();
 			}
 
-			Reservation reservation = reservations.get(position);
+			//Reservation reservation = reservations.get(position);
 
 			return view;
 		}

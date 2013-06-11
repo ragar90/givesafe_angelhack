@@ -1,6 +1,7 @@
 package co.foodcircles.json;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -100,6 +101,28 @@ public class Venue
 		this.offers = offers;
 		this.openTimes = openTimes;
 		this.imageUrl = imageUrl;
+	}
+	
+	public Venue(boolean testVenue)
+	{
+		super();
+		this.id = "1";
+		this.name = "Stella's Lounge";
+		this.address = "Address";
+		this.city = "City";
+		this.state = "State";
+		this.zip = "Zip";
+		this.latitude = 80;
+		this.longitude = 80;
+		this.description = "Description";
+		this.phone = "Phone";
+		this.web = "Web";
+		this.tags = new ArrayList<String>();
+		this.offers = new ArrayList<Offer>();
+		offers.add(new Offer(true));
+		offers.add(new Offer(true));
+		this.openTimes = new ArrayList<String>();
+		this.imageUrl = "/media/BAhbBlsHOgZmSSIvMjAxMi8wNS8yNC8xM180N181MF81OTRfR29qb19FdGhpb3BpYW4ucG5nBjoGRVQ";
 	}
 
 	public String getId()

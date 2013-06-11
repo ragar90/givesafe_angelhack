@@ -35,7 +35,7 @@ public class SignUpActivity extends Activity
 		C.overrideFonts(this, findViewById(R.id.root));
 		
 		FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
-		app.signUpActivity = this;
+		app.addPoppableActivity(this);
 
 		TextView copyText = (TextView) findViewById(R.id.textViewCopy);
 		Spannable spannable = new SpannableString("Buy one appetizer or dessert for $1 or more, feed one child in need.");

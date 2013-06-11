@@ -1,6 +1,7 @@
 package co.foodcircles.json;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -19,6 +20,15 @@ public class Reservation
 	public static List<Reservation> parseReservations(String jsonString) throws JSONException
 	{
 		List<Reservation> reservations = new ArrayList<Reservation>();
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
+		reservations.add(new Reservation(true));
 		return reservations;
 		/*
 		JSONArray jsonArray = new JSONArray(jsonString);
@@ -52,6 +62,17 @@ public class Reservation
 		this.offer = offer;
 		this.charity = charity;
 		this.datePurchased = datePurchased;
+	}
+	
+	public Reservation(boolean testReservation)
+	{
+		super();
+		this.id = "1";
+		this.user = "Jonathan Kumar";
+		this.venue = new Venue(true);
+		this.offer = new Offer(true);
+		this.charity = new Charity(true);
+		this.datePurchased = Calendar.getInstance().getTimeInMillis();
 	}
 
 	public String getId()

@@ -2,6 +2,7 @@ package co.foodcircles.activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,8 +16,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
+import co.foodcircles.util.FoodCirclesApplication;
 
 public class ReceiptDialogFragment extends DialogFragment
 {
@@ -32,6 +35,8 @@ public class ReceiptDialogFragment extends DialogFragment
 		this.getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 		View v = inflater.inflate(R.layout.voucher_receipt, container, false);
 		C.overrideFonts(getActivity(), v.findViewById(R.id.root));
+		
+		final FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
 
 		View teeth = v.findViewById(R.id.viewTiledTeeth);
 		BitmapDrawable teethDrawable = new BitmapDrawable(getResources(), BitmapFactory.decodeResource(getResources(), R.drawable.receipt_tooth));
@@ -54,6 +59,18 @@ public class ReceiptDialogFragment extends DialogFragment
 			{
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setMessage("Are you sure?").setPositiveButton("Yes", null).setNegativeButton("No", null).show();
+			}
+		});
+		
+		TextView venueTextView = (TextView) v.findViewById(R.id.textViewVenue);
+		venueTextView.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Intent intent = new Intent(getActivity(), VenueProfileActivity.class);
+				app.selectedVenue = app.venues.get(0);
+				startActivity(intent);
 			}
 		});
 

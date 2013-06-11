@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <color name="timeline_expiring">#be1e2d</color>
+    <color name="timeline_date_pin">#CFC6BC</color>
+    <color name="timeline_used_pinhead">#F9F9F9</color>
+    <color name="timeline_used_text">#bfbab4</color>
 
     <color name="grey">#E6E6E6</color>
     <color name="dark_grey">#666666</color>

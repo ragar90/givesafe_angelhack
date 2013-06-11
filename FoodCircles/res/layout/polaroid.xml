@@ -9,6 +9,7 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:adjustViewBounds="true"
         android:background="@color/background"
         android:scaleType="fitXY"
         android:src="@drawable/polshadow" />
@@ -34,70 +35,77 @@
                 android:src="@drawable/tag_blue_cropped" />
         </LinearLayout>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="2dp"
-            android:background="@android:color/white"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/textViewName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:tag="neu"
-                android:text="TWO BEARD&apos;S DELI"
-                android:textAllCaps="true"
-                android:textAppearance="?android:attr/textAppearance"
-                android:textColor="@color/dark_font"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageViewLogo"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/fries" />
+            android:visibility="visible"
+            android:paddingTop="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingBottom="3dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp" >
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textViewCuisine"
-                    android:layout_width="0dp"
+                    android:id="@+id/textViewName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:gravity="left"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:tag="neu"
-                    android:text="Pizza"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/secondary_text" />
+                    android:text="TWO BEARD&apos;S DELI"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance"
+                    android:textColor="@color/dark_font"
+                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textViewDistance"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/imageViewLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:gravity="right"
-                    android:tag="neu"
-                    android:text=".5 mi"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/secondary_text" />
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/fries" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp" >
+
+                    <TextView
+                        android:id="@+id/textViewCuisine"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:tag="neu"
+                        android:text="Pizza"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/secondary_text" />
+
+                    <TextView
+                        android:id="@+id/textViewDistance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:tag="neu"
+                        android:text=".5 mi"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/secondary_text" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="@dimen/polaroidIcon"
@@ -129,4 +137,5 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </FrameLayout>
+
 </co.foodcircles.customviews.SquareFrameLayout>

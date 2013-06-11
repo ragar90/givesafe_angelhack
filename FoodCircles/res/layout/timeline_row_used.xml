@@ -5,32 +5,26 @@
     android:background="@color/background"
     android:orientation="horizontal" >
 
-    <FrameLayout
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="60dp"
-        android:layout_height="fill_parent"
+        android:layout_height="18dp"
+        android:layout_gravity="center"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:gravity="center" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:background="@drawable/timeline_date_tag"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="8dp"
-            android:shadowColor="@android:color/black"
-            android:shadowDx="1.0"
-            android:shadowDy="1.0"
-            android:shadowRadius="2"
-            android:tag="rob"
-            android:text="04/22"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/timeline_date" />
-    </FrameLayout>
+        android:background="@drawable/timeline_date_tag"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="8dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="1.0"
+        android:shadowDy="1.0"
+        android:shadowRadius="2"
+        android:tag="rob"
+        android:text="04/22"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/timeline_date" />
 
     <FrameLayout
         android:layout_width="32dp"
@@ -65,7 +59,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/pinhead" />
+        android:src="@drawable/used_pinhead" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -75,7 +69,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
-        android:background="@drawable/timeline_textborder"
+        android:background="@color/timeline_used_pinhead"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="5dp" >
@@ -84,13 +78,9 @@
             android:id="@+id/textViewVenue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="@android:color/black"
-            android:shadowDx="1.0"
-            android:shadowDy="1.0"
-            android:shadowRadius="2"
             android:tag="rob"
             android:text="STELLA&apos;S LOUNGE"
-            android:textColor="@color/dark_font" />
+            android:textColor="@color/timeline_used_text" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,19 +91,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/kid_icon" />
+                android:src="@drawable/kid_icon_grey" />
 
             <TextView
                 android:id="@+id/textViewChildrenFed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@android:color/black"
-                android:shadowDx="1.0"
-                android:shadowDy="1.0"
-                android:shadowRadius="2"
                 android:tag="rob"
                 android:text="2 children fed"
-                android:textColor="@color/blue_text"
+                android:textColor="@color/timeline_used_text"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.Space

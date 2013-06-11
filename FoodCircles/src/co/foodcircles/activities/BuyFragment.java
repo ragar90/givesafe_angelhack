@@ -69,8 +69,12 @@ public class BuyFragment extends Fragment
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>()
 		{
 			{
+				int i = 1;
 				for (Offer offer : offers)
-					add(offer.getTitle());
+				{
+					add(offer.getTitle() + " - min. group " + 2*i + " deal" + (i > 1 ? " (+$" + i + ")" : ""));
+					i++;
+				}
 			}
 		});
 		// Specify the layout to use when the list of choices appears
@@ -183,6 +187,36 @@ public class BuyFragment extends Fragment
 			}
 		});
 
+		minPrice.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				seekBar.setProgress(0);
+				setPrices();
+			}
+		});
+		
+		medianPrice.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				seekBar.setProgress(seekBar.getMax() / 2);
+				setPrices();
+			}
+		});
+		
+		maxPrice.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				seekBar.setProgress(seekBar.getMax());
+				setPrices();
+			}
+		});
+
 		ImageView i1 = (ImageView) view.findViewById(R.id.imageViewI1);
 		i1.setOnClickListener(new OnClickListener()
 		{
@@ -224,8 +258,10 @@ public class BuyFragment extends Fragment
 				{
 					Log.i("paymentExample", confirm.toJSONObject().toString(4));
 					// TODO: Server Verification here!!!
+					app.purchasedVoucher = true;
 
 					getActivity().finish();
+					app.newTop();
 				}
 				catch (JSONException e)
 				{

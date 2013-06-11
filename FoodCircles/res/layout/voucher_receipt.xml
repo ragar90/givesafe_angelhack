@@ -91,7 +91,8 @@
                 android:id="@+id/buttonMarkAsUsed"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/standard_button_height"
-                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/button_selector"
                 android:paddingLeft="45dp"
                 android:paddingRight="45dp"
@@ -103,6 +104,15 @@
                 android:text="Mark as used"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/standard_button_text" />
+
+            <TextView
+                android:id="@+id/textViewUseBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="rob"
+                android:text="Use by Jun 15, 2013"
+                android:textColor="@color/dark_font"
+                android:textSize="@dimen/receipt_small_text" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

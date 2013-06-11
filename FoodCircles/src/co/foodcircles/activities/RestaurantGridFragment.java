@@ -62,6 +62,7 @@ public class RestaurantGridFragment extends Fragment
 
 		if (app.venues == null)
 		{
+			app.venues = new ArrayList<Venue>();
 			progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Loading venues...");
 			new AsyncTask<Object, Void, Boolean>()
 			{
@@ -69,7 +70,6 @@ public class RestaurantGridFragment extends Fragment
 				{
 					try
 					{
-						app.venues = new ArrayList<Venue>();
 						app.venues.addAll(Net.getVenuesList(null));
 						
 						app.charities = new ArrayList<Charity>();
@@ -101,6 +101,10 @@ public class RestaurantGridFragment extends Fragment
 							}
 						});
 						builder.create().show();
+					}
+					else
+					{
+						adapter.notifyDataSetChanged();
 					}
 				}
 			}.execute();

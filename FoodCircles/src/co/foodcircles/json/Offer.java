@@ -57,6 +57,18 @@ public class Offer
 		this.fullPrice = fullPrice;
 		this.imageUrl = imageUrl;
 	}
+	
+	public Offer(boolean testOffer)
+	{
+		super();
+		this.id = "1";
+		this.title = "Loaded Crack Fries";
+		this.details = "Delicious!";
+		this.minDiners = 2;
+		this.discountPrice = new BigDecimal(2);
+		this.fullPrice = new BigDecimal(4);
+		this.imageUrl = "/media/BAhbBlsHOgZmSSIvMjAxMi8wNS8yNC8xM180N181MF81OTRfR29qb19FdGhpb3BpYW4ucG5nBjoGRVQ";
+	}
 
 	public String getId()
 	{

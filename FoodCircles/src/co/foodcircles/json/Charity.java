@@ -53,6 +53,17 @@ public class Charity
 		this.description = description;
 		this.imageUrl = imageUrl;
 	}
+	
+	public Charity(boolean testCharity)
+	{
+		this.id = 1;
+		this.name = "Local Orgs";
+		this.address = "Address";
+		this.city = "City";
+		this.state = "State";
+		this.description = "Description";
+		this.imageUrl = "/media/BAhbBlsHOgZmSSIvMjAxMi8wNS8yNC8xM180N181MF81OTRfR29qb19FdGhpb3BpYW4ucG5nBjoGRVQ";
+	}
 
 	public int getId()
 	{

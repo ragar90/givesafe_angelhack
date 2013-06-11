@@ -54,11 +54,7 @@ public class SignInActivity extends Activity
 						startActivity(intent);
 						SignInActivity.this.finish();
 						FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
-						if(app.signUpActivity != null)
-						{
-							app.signUpActivity.finish();
-							app.signUpActivity = null;
-						}
+						app.newTop();
 					}
 				}.execute("");
 			}

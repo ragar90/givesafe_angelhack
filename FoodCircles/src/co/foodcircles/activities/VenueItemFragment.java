@@ -34,7 +34,7 @@ public class VenueItemFragment extends Fragment
 		itemFlavorText = (TextView) view.findViewById(R.id.textViewItemFlavorText);
 		button = (Button) view.findViewById(R.id.button);
 
-		FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
+		final FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		Venue venue = app.selectedVenue;
 		Offer offer = venue.getOffers().get(0);
 		
@@ -47,7 +47,7 @@ public class VenueItemFragment extends Fragment
 			public void onClick(View v)
 			{
 				getActivity().startActivity(new Intent(getActivity(), BuyOptionsActivity.class));
-				getActivity().finish();
+				app.addPoppableActivity(getActivity());
 			}
 		});
 

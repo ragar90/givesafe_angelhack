@@ -19,7 +19,7 @@
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/timeline_date_tag"
+            android:background="@drawable/timeline_date_tag_outlined"
             android:gravity="left|center_vertical"
             android:paddingLeft="8dp"
             android:shadowColor="@android:color/black"
@@ -30,6 +30,15 @@
             android:text="04/22"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/timeline_date" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text="expiring"
+            android:textColor="@color/timeline_expiring"
+            android:textSize="10sp" />
     </FrameLayout>
 
     <FrameLayout

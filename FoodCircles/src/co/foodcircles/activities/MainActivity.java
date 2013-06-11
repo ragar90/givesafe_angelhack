@@ -38,6 +38,23 @@ public class MainActivity extends FragmentActivity
 		C.overrideFonts(this, findViewById(R.id.root));
 	}
 
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
+		if (app.purchasedVoucher)
+		{
+			pager.setCurrentItem(2);
+
+			FragmentManager fm = getSupportFragmentManager();
+			ReceiptDialogFragment receiptDialog = new ReceiptDialogFragment();
+			receiptDialog.show(fm, "receipt_dialog");
+
+			app.purchasedVoucher = false;
+		}
+	}
+
 	class GoogleMusicAdapter extends FragmentPagerAdapter
 	{
 		public GoogleMusicAdapter(FragmentManager fm)
