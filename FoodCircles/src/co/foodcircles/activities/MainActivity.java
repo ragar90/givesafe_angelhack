@@ -15,7 +15,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MainActivity extends FragmentActivity
 {
-	private static final String[] CONTENT = new String[] { "NEWS", "FOOD", "ME" };
+	private static final String[] CONTENT = new String[] { "NEWS", "FOOD", "YOU" };
 	ViewPager pager;
 
 	@Override
@@ -36,23 +36,6 @@ public class MainActivity extends FragmentActivity
 		pager.setCurrentItem(getIntent().getIntExtra("tab", 0));
 
 		C.overrideFonts(this, findViewById(R.id.root));
-	}
-
-	@Override
-	protected void onResume()
-	{
-		super.onResume();
-		FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
-		if (app.justPurchased != null)
-		{
-			pager.setCurrentItem(2);
-
-			FragmentManager fm = getSupportFragmentManager();
-			ReceiptDialogFragment receiptDialog = new ReceiptDialogFragment();
-			receiptDialog.show(fm, "receipt_dialog");
-
-			app.justPurchased = null;
-		}
 	}
 
 	class GoogleMusicAdapter extends FragmentPagerAdapter

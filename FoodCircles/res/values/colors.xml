@@ -12,6 +12,8 @@
     <color name="reverse_text">#000000</color>
     <color name="button_shadow">#461212</color>
     
+    <color name="dark_font">#4E3E34</color>
+    
     <color name="transparent_lighter_grey">#44999999</color>
     <color name="transparent_grey">#DD222222</color>
     <color name="transparent_light_grey">#DD666666</color>
@@ -45,7 +47,7 @@
     <color name="pol_grey_icon_light">#B7B7B7</color>
     <color name="pol_grey_icon_dark">#7A7A7A</color>
     
-    <color name="venue_profile_gradient_dark">#CCCCCC</color>
+    <color name="venue_profile_gradient_dark">#44999999</color>
     
     <color name="button_grey_light">#AEAEAE</color>
     <color name="button_grey_dark">#707070</color>

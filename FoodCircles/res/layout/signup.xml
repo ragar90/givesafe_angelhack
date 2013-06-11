@@ -24,23 +24,33 @@
             android:gravity="center"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:shadowColor="@android:color/black"
-                android:shadowDx="1.0"
-                android:shadowDy="1.0"
-                android:shadowRadius="3.0"
-                android:tag="neu"
-                android:text="Buy One, Feed One."
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/signup_large_text"
-                android:textStyle="bold" />
+                android:orientation="horizontal" >
+
+                <android.support.v7.widget.Space
+                    android:id="@+id/space3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:src="@drawable/foodcircles_type_white_shadow" />
+
+                <android.support.v7.widget.Space
+                    android:id="@+id/space3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textViewCopy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -55,18 +65,15 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/signup_small_text"
                 android:textStyle="italic" />
-
         </LinearLayout>
 
-        <Button
+        <TextView
             android:id="@+id/buttonSignIn"
-            style="@style/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/standard_button_height"
             android:layout_gravity="top|right"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_selector"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:shadowColor="@android:color/black"
@@ -74,9 +81,9 @@
             android:shadowDy="1.0"
             android:shadowRadius="2"
             android:tag="rob"
-            android:text="Sign In"
+            android:text="Sign In >"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/standard_button_text" />
-
     </FrameLayout>
 
     <LinearLayout
@@ -113,7 +120,6 @@
                     android:tag="neu"
                     android:text="Your appetite is powerful. Sign up today!"
                     android:textSize="@dimen/signup_powerful_text" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -130,10 +136,9 @@
 
                     <Button
                         android:id="@+id/buttonFacebook"
-                        style="@style/buttonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/standard_button_height"
-                        android:background="@drawable/facebook_button_selector"
+                        android:background="@drawable/facebook_button"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
@@ -185,10 +190,9 @@
 
                     <Button
                         android:id="@+id/buttonTwitter"
-                        style="@style/buttonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/standard_button_height"
-                        android:background="@drawable/twitter_button_selector"
+                        android:background="@drawable/twitter_button"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
@@ -255,17 +259,17 @@
 
             <Button
                 android:id="@+id/buttonSignUp"
-                style="@style/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/standard_button_height"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/button_selector"
+                android:background="@drawable/red_button"
                 android:shadowColor="@android:color/black"
                 android:shadowDx="1.0"
                 android:shadowDy="1.0"
                 android:shadowRadius="2"
                 android:tag="rob"
                 android:text="Sign Up"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/standard_button_text" />
 
             <android.support.v7.widget.Space

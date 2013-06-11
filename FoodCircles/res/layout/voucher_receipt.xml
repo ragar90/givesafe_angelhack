@@ -25,9 +25,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:tag="rob"
+                android:tag="neu"
                 android:text="2 free appetizers"
-                android:textColor="@android:color/black"
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_large_text"
                 android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
                 android:background="@color/yellow_circle"
                 android:gravity="center"
                 android:padding="10dp"
-                android:tag="rob"
+                android:tag="neu"
                 android:text="Show your server!"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/receipt_large_text"
@@ -52,7 +52,7 @@
                 android:layout_marginTop="15dp"
                 android:tag="rob"
                 android:text="Your code is:"
-                android:textColor="@android:color/black"
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_small_text" />
 
             <TextView
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:tag="rob"
                 android:text="Stella&apos;s Lounge"
-                android:textColor="@android:color/black"
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_medium_text"
                 android:textStyle="bold" />
 
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:tag="rob"
                 android:text="(min group: 4)"
-                android:textColor="@android:color/black"
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_medium_text" />
 
             <Button
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:tag="rob"
                     android:text="$2 donated"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/dark_font"
                     android:textSize="@dimen/receipt_small_text"
                     android:textStyle="bold" />
 
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:tag="rob"
                     android:text=" (2 kids fed)"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/dark_font"
                     android:textSize="@dimen/receipt_small_text" />
 
                 <android.support.v7.widget.Space

@@ -2,6 +2,8 @@ package co.foodcircles.activities;
 
 import java.util.List;
 
+import org.json.JSONException;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -17,14 +19,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import co.foodcircles.R;
-import co.foodcircles.json.Purchase;
+import co.foodcircles.json.Reservation;
 import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class TimelineFragment extends ListFragment
 {
-	private List<Purchase> purchases;
-	private PurchaseAdapter adapter;
+	private List<Reservation> reservations;
+	private ReservationAdapter adapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -32,13 +34,17 @@ public class TimelineFragment extends ListFragment
 		View view = getActivity().getLayoutInflater().inflate(R.layout.timeline_list, null);
 		C.overrideFonts(getActivity(), view);
 
-		purchases = Purchase.parsePurchases("");
-		purchases.addAll(Purchase.parsePurchases(""));
-		purchases.addAll(Purchase.parsePurchases(""));
-		purchases.addAll(Purchase.parsePurchases(""));
-		purchases.addAll(Purchase.parsePurchases(""));
+		try
+		{
+		reservations = Reservation.parseReservations("");
+		reservations.addAll(Reservation.parseReservations(""));
+		reservations.addAll(Reservation.parseReservations(""));
+		reservations.addAll(Reservation.parseReservations(""));
+		reservations.addAll(Reservation.parseReservations(""));
+		}
+		catch(JSONException e){}
 
-		adapter = new PurchaseAdapter(purchases);
+		adapter = new ReservationAdapter(reservations);
 		this.setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
 		
@@ -58,8 +64,8 @@ public class TimelineFragment extends ListFragment
 	public void onListItemClick(ListView l, View v, int position, long id)
 	{
 		FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
-		app.selectedPurchase = purchases.get(position);
-		app.selectedRestaurant = purchases.get(position).getRestaurant();
+		app.selectedOffer = reservations.get(position).getOffer();
+		app.selectedVenue = reservations.get(position).getVenue();
 		
 		FragmentManager fm = getActivity().getSupportFragmentManager();
 		ReceiptDialogFragment receiptDialog = new ReceiptDialogFragment();
@@ -69,13 +75,13 @@ public class TimelineFragment extends ListFragment
 		//startActivity(intent);
 	}
 
-	private class PurchaseAdapter extends BaseAdapter
+	private class ReservationAdapter extends BaseAdapter
 	{
 		public final int YOU_AND_FRIENDS_TYPE = 0;
 		public final int VOUCHER_TYPE = 1;
 		public final int FRIEND_TYPE = 2;
 		public final int MONTH_TYPE = 3;
-		List<Purchase> purchases;
+		List<Reservation> reservations;
 
 		private class TimelineHolder
 		{
@@ -96,15 +102,15 @@ public class TimelineFragment extends ListFragment
 			public ImageView settingsButton;
 		}
 
-		public PurchaseAdapter(List<Purchase> purchases)
+		public ReservationAdapter(List<Reservation> reservations)
 		{
-			this.purchases = purchases;
+			this.reservations = reservations;
 		}
 
 		@Override
 		public int getCount()
 		{
-			return purchases.size();
+			return reservations.size();
 		}
 
 		@Override
@@ -141,7 +147,7 @@ public class TimelineFragment extends ListFragment
 		@Override
 		public Object getItem(int index)
 		{
-			return purchases.get(index);
+			return reservations.get(index);
 		}
 
 		@Override
@@ -213,7 +219,7 @@ public class TimelineFragment extends ListFragment
 				holder = (TimelineHolder) view.getTag();
 			}
 
-			Purchase purchase = purchases.get(position);
+			Reservation reservation = reservations.get(position);
 
 			return view;
 		}

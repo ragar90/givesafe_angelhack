@@ -7,16 +7,11 @@ import java.util.List;
 
 import org.json.JSONException;
 
-import com.paypal.android.sdk.payments.PayPalPayment;
-import com.paypal.android.sdk.payments.PaymentActivity;
-import com.paypal.android.sdk.payments.PaymentConfirmation;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,12 +27,14 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import co.foodcircles.R;
+import co.foodcircles.json.Charity;
 import co.foodcircles.json.Offer;
-import co.foodcircles.json.Purchase;
-import co.foodcircles.json.Restaurant;
-import co.foodcircles.json.Upgrade;
 import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
+
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 public class BuyFragment extends Fragment
 {
@@ -45,7 +42,8 @@ public class BuyFragment extends Fragment
 	private final BigDecimal CENTS_IN_DOLLAR = new BigDecimal(100);
 	FoodCirclesApplication app;
 	private Offer selectedOffer;
-	private Spinner numFriends;
+	private Charity selectedCharity;
+	private Spinner offerSpinner;
 	private SeekBar seekBar;
 	private TextView price;
 	private TextView meals;
@@ -62,26 +60,31 @@ public class BuyFragment extends Fragment
 		C.overrideFonts(getActivity(), view);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
-		selectedOffer = app.selectedVenue.getOffers().get(0);
 
-		numFriends = (Spinner) view.findViewById(R.id.spinnerNumFriends);
+		final List<Offer> offers = app.selectedVenue.getOffers();
+		selectedOffer = offers.get(0);
+		selectedCharity = app.charities.get(0);
+
+		offerSpinner = (Spinner) view.findViewById(R.id.spinnerNumFriends);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>()
 		{
 			{
-				add("1 Appetizer");
-				add("2 Appetizers");
+				for (Offer offer : offers)
+					add(offer.getTitle());
 			}
 		});
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
-		numFriends.setAdapter(adapter);
+		offerSpinner.setAdapter(adapter);
 
-		numFriends.setOnItemSelectedListener(new OnItemSelectedListener()
+		offerSpinner.setOnItemSelectedListener(new OnItemSelectedListener()
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
 			{
+				selectedOffer = offers.get(position);
+				
 				minPrice.setText(NumberFormat.getCurrencyInstance().format(position + 1));
 
 				BigDecimal medianPriceValue = new BigDecimal(selectedOffer.getFullPrice().intValue() * (position + 1) * 2);
@@ -104,14 +107,28 @@ public class BuyFragment extends Fragment
 		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>()
 		{
 			{
-				add("Charity 1");
-				add("Charity 2");
+				for(Charity charity : app.charities)
+					add(charity.getName());
 			}
 		});
 		// Specify the layout to use when the list of choices appears
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		donateTo.setAdapter(adapter2);
+		
+		donateTo.setOnItemSelectedListener(new OnItemSelectedListener()
+		{
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
+			{
+				selectedCharity = app.charities.get(position);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView)
+			{
+			}
+		});
 
 		price = (TextView) view.findViewById(R.id.textViewTotalPrice);
 		meals = (TextView) view.findViewById(R.id.textViewDonated);
@@ -153,16 +170,16 @@ public class BuyFragment extends Fragment
 			public void onClick(View v)
 			{
 				PayPalPayment voucherPayment = new PayPalPayment(priceValue, "USD", "Food Circles");
-		        
-		        Intent intent = new Intent(getActivity(), PaymentActivity.class);
-		        
-		        intent.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, PaymentActivity.ENVIRONMENT_NO_NETWORK);
-		        intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, "ATpY8BAwAkcjGxyOJ9IjArCzDNfrqdQV3FaADv-iWszrCOxpjQ_I2elLntHS");
-		        intent.putExtra(PaymentActivity.EXTRA_RECEIVER_EMAIL, "jtkumario@gmail.com");
-		        intent.putExtra(PaymentActivity.EXTRA_PAYER_ID, "your-customer-id-in-your-system");
-		        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, voucherPayment);
-		        
-		        startActivityForResult(intent, 0);
+
+				Intent intent = new Intent(getActivity(), PaymentActivity.class);
+
+				intent.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, PaymentActivity.ENVIRONMENT_NO_NETWORK);
+				intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, "ATpY8BAwAkcjGxyOJ9IjArCzDNfrqdQV3FaADv-iWszrCOxpjQ_I2elLntHS");
+				intent.putExtra(PaymentActivity.EXTRA_RECEIVER_EMAIL, "jtkumario@gmail.com");
+				intent.putExtra(PaymentActivity.EXTRA_PAYER_ID, "your-customer-id-in-your-system");
+				intent.putExtra(PaymentActivity.EXTRA_PAYMENT, voucherPayment);
+
+				startActivityForResult(intent, 0);
 			}
 		});
 
@@ -187,7 +204,7 @@ public class BuyFragment extends Fragment
 			{
 				FragmentManager fm = getActivity().getSupportFragmentManager();
 				SimpleDialogFragment dialog = new SimpleDialogFragment();
-				dialog.setText("Charity Description", "This is a description about the charities.");
+				dialog.setText(selectedCharity.getName(), selectedCharity.getDescription());
 				dialog.show(fm, "simple_dialog");
 			}
 		});
@@ -207,8 +224,7 @@ public class BuyFragment extends Fragment
 				{
 					Log.i("paymentExample", confirm.toJSONObject().toString(4));
 					// TODO: Server Verification here!!!
-					
-					app.justPurchased = new Purchase("");
+
 					getActivity().finish();
 				}
 				catch (JSONException e)
@@ -229,7 +245,7 @@ public class BuyFragment extends Fragment
 
 	private void setPrices()
 	{
-		int numVouchers = numFriends.getSelectedItemPosition() + 1;
+		int numVouchers = offerSpinner.getSelectedItemPosition() + 1;
 		// Seekbar.getprogress = number of cents
 		BigDecimal priceAmount = new BigDecimal(seekBar.getProgress());
 		priceAmount = priceAmount.add(CENTS_IN_DOLLAR);
@@ -243,6 +259,6 @@ public class BuyFragment extends Fragment
 		priceValue = priceAmount;
 
 		price.setText(NumberFormat.getCurrencyInstance().format(priceAmount));
-		meals.setText(priceAmount.intValue() + " meals");
+		meals.setText(priceAmount.intValue() + " meal" + (priceAmount.intValue() > 1 ? "s" : ""));
 	}
 }

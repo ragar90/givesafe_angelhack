@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<co.foodcircles.customviews.SquareLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<co.foodcircles.customviews.SquareFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="0dip" >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:scaleType="fitXY"
+        android:src="@drawable/polshadow" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_height="match_parent"
+        android:visibility="visible" >
 
         <LinearLayout
             android:layout_width="@dimen/polaroidIcon"
@@ -23,15 +32,15 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitEnd"
                 android:src="@drawable/tag_blue_cropped" />
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
             android:background="@android:color/white"
             android:orientation="vertical" >
 
@@ -45,7 +54,7 @@
                 android:text="TWO BEARD&apos;S DELI"
                 android:textAllCaps="true"
                 android:textAppearance="?android:attr/textAppearance"
-                android:textColor="@color/copy_text"
+                android:textColor="@color/dark_font"
                 android:textStyle="bold" />
 
             <ImageView
@@ -87,7 +96,6 @@
                     android:text=".5 mi"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/secondary_text" />
-
             </LinearLayout>
         </LinearLayout>
 
@@ -119,17 +127,6 @@
                 android:text="left"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </FrameLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/layout_shadow" >
-    </View>
-
-</co.foodcircles.customviews.SquareLinearLayout>
+</co.foodcircles.customviews.SquareFrameLayout>

@@ -4,22 +4,22 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
-public class SquareLinearLayout extends LinearLayout
+public class SquareFrameLayout extends FrameLayout
 {
-	public SquareLinearLayout(Context context)
+	public SquareFrameLayout(Context context)
 	{
 		super(context);
 	}
 
-	public SquareLinearLayout(Context context, AttributeSet attrs)
+	public SquareFrameLayout(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public SquareLinearLayout(Context context, AttributeSet attrs, int defStyle)
+	public SquareFrameLayout(Context context, AttributeSet attrs, int defStyle)
 	{
 		super(context, attrs, defStyle);
 	}

@@ -90,16 +90,18 @@
                 android:gravity="center"
                 android:tag="neu"
                 android:text="Loaded Crack Fries"
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/venue_item_name_text_size"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewItemFlavorText"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:tag="neu"
                 android:text="They&apos;re really that addictive. House blend seasoned beer battered fries with the addition of our house soft cheese sauce, pepper-jack cheese, onion, jalepenos, &amp; bacon."
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/venue_flavor_text_size" />
 
             <android.support.v7.widget.Space
@@ -142,6 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:tag="neu"
+                    android:textColor="#701a1a"
                     android:text="Make Someone&apos;s Day "
                     android:textSize="@dimen/venue_small_text_size"
                     android:textStyle="bold" />
@@ -161,6 +164,7 @@
                 android:gravity="center"
                 android:tag="neu"
                 android:text="Don&apos;t need the upgrade today? Send one to a table next to you or the person in line behind ya. 100% still goes to buy food for children who need it."
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/venue_small_text_size" />
 
         </LinearLayout>

@@ -8,5 +8,6 @@
     android:paddingLeft="4dp"
     android:paddingRight="4dp"
     android:numColumns="2"
-    android:verticalSpacing="2dp"
+    android:verticalSpacing="6dp"
+    android:horizontalSpacing="6dp"
     tools:listitem="@layout/polaroid" />

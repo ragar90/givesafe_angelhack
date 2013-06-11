@@ -1,18 +1,19 @@
 package co.foodcircles.util;
 
+import java.util.List;
+
 import android.app.Application;
-import co.foodcircles.activities.SignInActivity;
-import co.foodcircles.json.Purchase;
-import co.foodcircles.json.Restaurant;
-import co.foodcircles.json.Upgrade;
+import co.foodcircles.activities.SignUpActivity;
+import co.foodcircles.json.Charity;
+import co.foodcircles.json.Offer;
 import co.foodcircles.json.Venue;
 
 public class FoodCirclesApplication extends Application
 {
+	public SignUpActivity signUpActivity;
 	public Venue selectedVenue;
-	public Restaurant selectedRestaurant;
-	public Upgrade selectedUpgrade;
-	public Purchase selectedPurchase;
+	public Offer selectedOffer;
 	
-	public Purchase justPurchased;
+	public List<Venue> venues;
+	public List<Charity> charities;
 }

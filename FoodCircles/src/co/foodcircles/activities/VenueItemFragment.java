@@ -11,7 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.foodcircles.R;
-import co.foodcircles.json.Restaurant;
+import co.foodcircles.json.Offer;
+import co.foodcircles.json.Venue;
 import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
@@ -34,7 +35,11 @@ public class VenueItemFragment extends Fragment
 		button = (Button) view.findViewById(R.id.button);
 
 		FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
-		Restaurant restaurant = app.selectedRestaurant;
+		Venue venue = app.selectedVenue;
+		Offer offer = venue.getOffers().get(0);
+		
+		itemName.setText(offer.getTitle());
+		itemFlavorText.setText(offer.getDetails());
 
 		button.setOnClickListener(new OnClickListener()
 		{

@@ -66,7 +66,8 @@
             android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:gravity="right"
-            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:tag="rob"
             android:text="What&apos;s your name?"
             android:textStyle="italic" />
@@ -79,7 +80,8 @@
             android:layout_toRightOf="@+id/textView3"
             android:layout_weight="1"
             android:gravity="right"
-            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:tag="rob"
             android:text="jonathan@foodcircles.net"
             android:textStyle="italic" />
@@ -93,11 +95,11 @@
             android:layout_weight="1"
             android:gravity="right"
             android:inputType="textPassword"
-            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:tag="rob"
             android:text="thisisapassword"
             android:textStyle="italic" />
-
     </RelativeLayout>
 
     <TextView
@@ -174,7 +176,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="4dp"
         android:tag="rob"
-        android:text="Follow Us" />
+        android:text="Contact Us" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -208,7 +210,7 @@
         android:layout_height="@dimen/standard_button_height"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="@drawable/white_button_selector"
+        android:background="@drawable/red_button"
         android:height="40dp"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
@@ -218,6 +220,7 @@
         android:shadowRadius="2"
         android:tag="rob"
         android:text="Logout"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/standard_button_text" />
 
 </LinearLayout>

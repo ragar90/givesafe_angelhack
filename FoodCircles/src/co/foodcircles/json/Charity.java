@@ -9,12 +9,11 @@ import org.json.JSONObject;
 
 public class Charity
 {
-	public String id;
+	public int id;
 	private String name;
 	private String address;
 	private String city;
 	private String state;
-	private String zip;
 	private String description;
 	private String imageUrl;
 
@@ -34,17 +33,16 @@ public class Charity
 	{
 		JSONObject json = new JSONObject(jsonString);
 
-		id = json.getString("id");
+		id = json.getInt("id");
 		name = json.getString("name");
 		address = json.getString("address");
 		city = json.getString("city");
 		state = json.getString("state");
-		zip = json.getString("zip");
 		description = json.getString("description");
-		imageUrl = json.getString("image_url");
+		imageUrl = json.getString("image");
 	}
 
-	public Charity(String id, String name, String address, String city, String state, String zip, String description, String imageUrl)
+	public Charity(int id, String name, String address, String city, String state, String zip, String description, String imageUrl)
 	{
 		super();
 		this.id = id;
@@ -52,17 +50,16 @@ public class Charity
 		this.address = address;
 		this.city = city;
 		this.state = state;
-		this.zip = zip;
 		this.description = description;
 		this.imageUrl = imageUrl;
 	}
 
-	public String getId()
+	public int getId()
 	{
 		return id;
 	}
 
-	public void setId(String id)
+	public void setId(int id)
 	{
 		this.id = id;
 	}
@@ -105,16 +102,6 @@ public class Charity
 	public void setState(String state)
 	{
 		this.state = state;
-	}
-
-	public String getZip()
-	{
-		return zip;
-	}
-
-	public void setZip(String zip)
-	{
-		this.zip = zip;
 	}
 
 	public String getDescription()

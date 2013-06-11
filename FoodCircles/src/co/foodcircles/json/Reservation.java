@@ -18,6 +18,9 @@ public class Reservation
 
 	public static List<Reservation> parseReservations(String jsonString) throws JSONException
 	{
+		List<Reservation> reservations = new ArrayList<Reservation>();
+		return reservations;
+		/*
 		JSONArray jsonArray = new JSONArray(jsonString);
 		List<Reservation> reservations = new ArrayList<Reservation>();
 
@@ -26,6 +29,7 @@ public class Reservation
 			reservations.add(new Reservation(jsonArray.getString(i)));
 		}
 		return reservations;
+		*/
 	}
 
 	public Reservation(String jsonString) throws JSONException

@@ -22,6 +22,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.foodcircles.R;
+import co.foodcircles.json.Charity;
 import co.foodcircles.json.Venue;
 import co.foodcircles.net.Net;
 import co.foodcircles.util.C;
@@ -35,19 +36,21 @@ import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 public class RestaurantGridFragment extends Fragment
 {
-	private List<Venue> venues = new ArrayList<Venue>();
 	private VenueAdapter adapter;
 	private GridView gridView;
 	private ProgressDialog progressDialog;
 	private String TAG = "RestaurantGridFragment";
 	private DisplayImageOptions options;
 	private ImageLoader imageLoader = ImageLoader.getInstance();
+	private FoodCirclesApplication app;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.polaroid_grid, null);
 		C.overrideFonts(getActivity(), view);
+
+		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 
 		options = new DisplayImageOptions.Builder().cacheInMemory().cacheOnDisc().build();
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity().getApplicationContext()).threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
@@ -56,46 +59,55 @@ public class RestaurantGridFragment extends Fragment
 		ImageLoader.getInstance().init(config);
 
 		gridView = (GridView) view.findViewById(R.id.gridView);
-		adapter = new VenueAdapter(venues);
-		gridView.setAdapter(adapter);
 
-		progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Loading venues...");
-		new AsyncTask<Object, Void, Boolean>()
+		if (app.venues == null)
 		{
-			protected Boolean doInBackground(Object... param)
+			progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Loading venues...");
+			new AsyncTask<Object, Void, Boolean>()
 			{
-				try
+				protected Boolean doInBackground(Object... param)
 				{
-					venues.addAll(Net.getVenuesList(null));
-					return true;
-				}
-				catch (Exception e)
-				{
-					Log.v(TAG, "Error loading venues", e);
-					return false;
-				}
-			}
-
-			protected void onPostExecute(Boolean success)
-			{
-				adapter.notifyDataSetChanged();
-				progressDialog.dismiss();
-				if (!success)
-				{
-					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-					builder.setMessage("Could not load venues.").setTitle("Network Error");
-					builder.setPositiveButton("OK", new OnClickListener()
+					try
 					{
-						@Override
-						public void onClick(DialogInterface dialog, int id)
-						{
-							RestaurantGridFragment.this.getActivity().finish();
-						}
-					});
-					builder.create().show();
+						app.venues = new ArrayList<Venue>();
+						app.venues.addAll(Net.getVenuesList(null));
+						
+						app.charities = new ArrayList<Charity>();
+						app.charities.addAll(Net.getCharities());
+
+						return true;
+					}
+					catch (Exception e)
+					{
+						Log.v(TAG, "Error loading venues", e);
+						return false;
+					}
 				}
-			}
-		}.execute();
+
+				protected void onPostExecute(Boolean success)
+				{
+					adapter.notifyDataSetChanged();
+					progressDialog.dismiss();
+					if (!success)
+					{
+						AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+						builder.setMessage("Could not load venues.").setTitle("Network Error");
+						builder.setPositiveButton("OK", new OnClickListener()
+						{
+							@Override
+							public void onClick(DialogInterface dialog, int id)
+							{
+								RestaurantGridFragment.this.getActivity().finish();
+							}
+						});
+						builder.create().show();
+					}
+				}
+			}.execute();
+		}
+
+		adapter = new VenueAdapter(app.venues);
+		gridView.setAdapter(adapter);
 
 		gridView.setOnItemClickListener(new OnItemClickListener()
 		{
@@ -103,7 +115,7 @@ public class RestaurantGridFragment extends Fragment
 			public void onItemClick(AdapterView<?> l, View v, int position, long id)
 			{
 				FoodCirclesApplication app = (FoodCirclesApplication) RestaurantGridFragment.this.getActivity().getApplicationContext();
-				app.selectedVenue = venues.get(position);
+				app.selectedVenue = app.venues.get(position);
 				Intent intent = new Intent(RestaurantGridFragment.this.getActivity(), RestaurantActivity.class);
 				startActivity(intent);
 			}

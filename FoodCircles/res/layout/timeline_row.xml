@@ -2,16 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
+    android:background="@color/background"
     android:orientation="horizontal" >
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="28dp"
+        android:gravity="center_vertical|left"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:background="@drawable/timeline_textborder"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/timeline_date_tag"
         android:padding="5dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="1.0"
+        android:shadowDy="1.0"
+        android:shadowRadius="2"
         android:tag="rob"
         android:text="04/22"
         android:textColor="@color/secondary_text" />
@@ -31,7 +39,6 @@
                 android:layout_gravity="center"
                 android:scaleType="matrix"
                 android:src="@drawable/timeline_stripe" />
-
         </FrameLayout>
 
         <ImageView
@@ -43,11 +50,22 @@
             android:src="@drawable/timeline_circle" />
     </FrameLayout>
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/pinhead" />
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
         android:layout_weight="1"
         android:background="@drawable/timeline_textborder"
         android:gravity="center_vertical"
@@ -58,8 +76,13 @@
             android:id="@+id/textViewVenue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="2"
             android:tag="rob"
-            android:text="STELLA&apos;S LOUNGE" />
+            android:text="STELLA&apos;S LOUNGE"
+            android:textColor="@color/dark_font" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,6 +99,10 @@
                 android:id="@+id/textViewChildrenFed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="2"
                 android:tag="rob"
                 android:text="2 children fed"
                 android:textColor="@color/blue_text"
@@ -91,8 +118,13 @@
                 android:id="@+id/textViewUsed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="2"
                 android:tag="rob"
-                android:text="Used" />
+                android:text="Used"
+                android:textColor="@color/dark_font" />
 
         </LinearLayout>
     </LinearLayout>

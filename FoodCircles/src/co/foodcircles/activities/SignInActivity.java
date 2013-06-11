@@ -8,14 +8,17 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
+import co.foodcircles.util.FoodCirclesApplication;
 
 public class SignInActivity extends Activity
 {
 	EditText email;
 	EditText password;
-	Button signInButton, signUpButton;
+	Button signInButton;
+	TextView signUpButton;
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -27,7 +30,7 @@ public class SignInActivity extends Activity
 		email = (EditText) findViewById(R.id.editTextEmail);
 		password = (EditText) findViewById(R.id.editTextPassword);
 		signInButton = (Button) findViewById(R.id.buttonSignIn);
-		signUpButton = (Button) findViewById(R.id.buttonSignUp);
+		signUpButton = (TextView) findViewById(R.id.buttonSignUp);
 
 		signInButton.setOnClickListener(new View.OnClickListener()
 		{
@@ -50,6 +53,12 @@ public class SignInActivity extends Activity
 						intent.putExtra("tab", 1);
 						startActivity(intent);
 						SignInActivity.this.finish();
+						FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
+						if(app.signUpActivity != null)
+						{
+							app.signUpActivity.finish();
+							app.signUpActivity = null;
+						}
 					}
 				}.execute("");
 			}
@@ -60,8 +69,6 @@ public class SignInActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
-				startActivity(intent);
 				SignInActivity.this.finish();
 			}
 		});

@@ -51,11 +51,11 @@ public class C
 					overrideFonts(context, child);
 				}
 			}
-			else if (v instanceof TextView && !(v instanceof Button) && !(v instanceof EditText))
+			else if ((v instanceof TextView || (v.getClass().getSimpleName().equals("TabView"))) && !(v instanceof Button) && !(v instanceof EditText))
 			{
 				TextView textView = (TextView) v;
 
-				if ((v.getTag() != null) && ((String) v.getTag()).equals("neu"))
+				if ((v.getClass().getSimpleName().equals("TabView")) || ((v.getTag() != null) && ((String) v.getTag()).equals("neu")))
 				{
 					Typeface newFont = font;
 

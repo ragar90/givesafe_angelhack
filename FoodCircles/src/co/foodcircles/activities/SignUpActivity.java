@@ -2,22 +2,30 @@ package co.foodcircles.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.TextAppearanceSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
+import co.foodcircles.util.FoodCirclesApplication;
 
 public class SignUpActivity extends Activity
 {
 	EditText email;
 	EditText password;
 	Button signUpButton;
-	Button signInButton;
+	TextView signInButton;
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -25,6 +33,20 @@ public class SignUpActivity extends Activity
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.signup);
 		C.overrideFonts(this, findViewById(R.id.root));
+		
+		FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
+		app.signUpActivity = this;
+
+		TextView copyText = (TextView) findViewById(R.id.textViewCopy);
+		Spannable spannable = new SpannableString("Buy one appetizer or dessert for $1 or more, feed one child in need.");
+		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources().getDimension(R.dimen.signup_smaller_text)), 36, 43, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBold), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBold), 45, 53, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 45, 53, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources().getDimension(R.dimen.signup_small_text)), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources().getDimension(R.dimen.signup_small_text)), 45, 53, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		copyText.setText(spannable);
 
 		email = (EditText) findViewById(R.id.editTextEmail);
 		password = (EditText) findViewById(R.id.editTextPassword);
@@ -56,7 +78,7 @@ public class SignUpActivity extends Activity
 			}
 		});
 		
-		signInButton = (Button) findViewById(R.id.buttonSignIn);
+		signInButton = (TextView) findViewById(R.id.buttonSignIn);
 		signInButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -64,7 +86,6 @@ public class SignUpActivity extends Activity
 			{
 				Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
 				startActivity(intent);
-				SignUpActivity.this.finish();
 			}
 		});
 	}

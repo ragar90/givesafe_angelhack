@@ -20,6 +20,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 
 import android.util.Log;
+import co.foodcircles.json.Charity;
 import co.foodcircles.json.Reservation;
 import co.foodcircles.json.Venue;
 
@@ -34,6 +35,7 @@ public class Net
 	private static final String GET_RESERVATION = "/reservations/[reservationId]";
 	private static final String POST_RESERVATION = "/reservations";
 	private static final String PUT_RESERVATION = "/reservations/[reservationId]";
+	private static final String GET_CHARITY_1 = "/charities/1.json";
 
 	private static String post(String path, List<BasicNameValuePair> postValues)
 	{
@@ -76,7 +78,7 @@ public class Net
 				path += paramString;
 			}
 
-			Log.w(TAG, "Execute HTTP Post Request");
+			Log.w(TAG, "Execute HTTP Get Request: " + httpget.getURI());
 			HttpResponse httpResp = httpclient.execute(httpget, httpContext);
 			response = EntityUtils.toString(httpResp.getEntity());
 
@@ -102,7 +104,7 @@ public class Net
 			String paramString = URLEncodedUtils.format(urlParams, "utf-8");
 			path += paramString;
 
-			Log.w(TAG, "Execute HTTP Post Request");
+			Log.w(TAG, "Execute HTTP Post Request: " + httpput.getURI());
 			HttpResponse httpResp = httpclient.execute(httpput, httpContext);
 			response = EntityUtils.toString(httpResp.getEntity());
 
@@ -174,7 +176,7 @@ public class Net
 		reservationPairs.add(new BasicNameValuePair("user", reservation.getUser()));
 		reservationPairs.add(new BasicNameValuePair("venue", reservation.getVenue().getId()));
 		reservationPairs.add(new BasicNameValuePair("offer", reservation.getOffer().getId()));
-		reservationPairs.add(new BasicNameValuePair("charity", reservation.getCharity().getId()));
+		reservationPairs.add(new BasicNameValuePair("charity", "" + reservation.getCharity().getId()));
 
 		String response = post(POST_RESERVATION, reservationPairs);
 		return response.equals("success");
@@ -184,5 +186,21 @@ public class Net
 	{
 		String response = put(PUT_RESERVATION.replace("[reservationId]", reservation.getId()), null);
 		return response.equals("success");
+	}
+
+	public static List<Charity> getCharities() throws NetException
+	{
+		List<Charity> charities = new ArrayList<Charity>();
+		String response = get(GET_CHARITY_1, null);
+
+		try
+		{
+			charities.add(new Charity(response));
+		}
+		catch (JSONException e)
+		{
+			throw new NetException();
+		}
+		return charities;
 	}
 }

@@ -17,6 +17,7 @@
             android:layout_gravity="center"
             android:tag="rob"
             android:text="Purchase Options"
+            android:textColor="@color/dark_font"
             android:textSize="@dimen/buy_options_text_large" />
 
         <RelativeLayout
@@ -31,6 +32,7 @@
                 android:layout_gravity="center"
                 android:tag="rob"
                 android:text="Bringing Friends?"
+                android:textColor="@color/dark_font"
                 android:textSize="@dimen/buy_options_text"
                 android:textStyle="bold" />
 
@@ -64,6 +66,7 @@
             android:layout_margin="5dp"
             android:tag="rob"
             android:text="Pay what you want."
+            android:textColor="@color/dark_font"
             android:textSize="@dimen/buy_options_text"
             android:textStyle="bold" />
 
@@ -79,6 +82,7 @@
             android:paddingTop="5dp"
             android:tag="rob"
             android:text="$2"
+            android:textColor="@color/dark_font"
             android:textSize="@dimen/buy_options_text_large"
             android:textStyle="bold" />
 
@@ -164,7 +168,8 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:tag="rob"
-                android:text="$1" />
+                android:text="$1"
+                android:textColor="@color/dark_font" />
 
             <TextView
                 android:id="@+id/textViewPrice2"
@@ -173,7 +178,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:tag="rob"
-                android:text="$9" />
+                android:text="$9"
+                android:textColor="@color/dark_font" />
 
             <TextView
                 android:id="@+id/textViewPrice3"
@@ -182,7 +188,8 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:tag="rob"
-                android:text="$18" />
+                android:text="$18"
+                android:textColor="@color/dark_font" />
 
         </LinearLayout>
 
@@ -215,6 +222,7 @@
                     android:layout_height="wrap_content"
                     android:tag="rob"
                     android:text=" donated to..."
+                    android:textColor="@color/dark_font"
                     android:textSize="@dimen/buy_options_text"
                     android:textStyle="bold" />
 
@@ -244,7 +252,7 @@
 
         <Button
             android:id="@+id/buttonBuy"
-            style="@style/buttonStyle"
+            android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="@dimen/standard_button_height"
             android:layout_marginTop="10dp"
