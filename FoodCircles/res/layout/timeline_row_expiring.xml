@@ -9,8 +9,8 @@
         android:layout_width="60dp"
         android:layout_height="fill_parent"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="5dp"
         android:gravity="center" >
 
@@ -22,23 +22,31 @@
             android:background="@drawable/timeline_date_tag_outlined"
             android:gravity="left|center_vertical"
             android:paddingLeft="8dp"
-            android:shadowColor="@android:color/black"
-            android:shadowDx="1.0"
-            android:shadowDy="1.0"
-            android:shadowRadius="2"
             android:tag="rob"
             android:text="04/22"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/timeline_date" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:text="expiring"
-            android:textColor="@color/timeline_expiring"
-            android:textSize="10sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="91"
+                android:gravity="center"
+                android:text="expiring"
+                android:textColor="@color/timeline_expiring"
+                android:textSize="10sp" />
+
+            <android.support.v7.widget.Space
+                android:id="@+id/space3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="23" />
+        </LinearLayout>
     </FrameLayout>
 
     <FrameLayout
