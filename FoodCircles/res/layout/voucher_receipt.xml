@@ -7,7 +7,7 @@
     android:padding="5dp" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
@@ -76,43 +76,35 @@
                 android:text="Stella&apos;s Lounge"
                 android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_medium_text"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
 
-            <TextView
+            <co.foodcircles.customviews.FontFitTextView
                 android:id="@+id/textViewMinGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/receipt_medium_text" 
+                android:gravity="center"
                 android:tag="rob"
-                android:text="(min group: 4)"
-                android:textColor="@color/dark_font"
-                android:textSize="@dimen/receipt_medium_text" />
+                android:text="(min group 4, use by 6/15/13)"
+                android:textColor="@color/dark_font" />
 
             <Button
                 android:id="@+id/buttonMarkAsUsed"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/standard_button_height"
-                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/receipt_button_height"
                 android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/button_selector"
-                android:paddingLeft="45dp"
-                android:paddingRight="45dp"
                 android:shadowColor="@android:color/black"
                 android:shadowDx="1.0"
                 android:shadowDy="1.0"
-                android:shadowRadius="2"
+                android:shadowRadius="1"
                 android:tag="rob"
                 android:text="Mark as used"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/standard_button_text" />
-
-            <TextView
-                android:id="@+id/textViewUseBy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:tag="rob"
-                android:text="Use by Jun 15, 2013"
-                android:textColor="@color/dark_font"
-                android:textSize="@dimen/receipt_small_text" />
+                android:textSize="@dimen/receipt_button_text" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

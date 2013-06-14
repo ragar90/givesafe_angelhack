@@ -20,6 +20,8 @@
     <dimen name="receipt_medium_text">15sp</dimen>
     <dimen name="receipt_small_text">15sp</dimen>
     <dimen name="receipt_social_height">40dp</dimen>
+    <dimen name="receipt_button_height">40dp</dimen>
+    <dimen name="receipt_button_text">18sp</dimen>
     
     <dimen name="landing_large_text">25sp</dimen>
     <dimen name="landing_small_text">15sp</dimen>
@@ -41,8 +43,8 @@
     <dimen name="venue_item_slash">30sp</dimen>
     <dimen name="venue_item_image_height">150dp</dimen>
     <dimen name="venue_item_name_text_size">24sp</dimen>
-    <dimen name="venue_flavor_text_size">10sp</dimen>
-    <dimen name="venue_small_text_size">10sp</dimen>
+    <dimen name="venue_flavor_text_size">12sp</dimen>
+    <dimen name="venue_small_text_size">12sp</dimen>
     <dimen name="venue_heart_height">10dp</dimen>
     <dimen name="venue_button_padding">8dp</dimen>
     

@@ -112,12 +112,12 @@
                 android:gravity="center"
                 android:orientation="vertical" >
 
-                <co.foodcircles.util.FontFitTextView
+                <co.foodcircles.customviews.FontFitTextView
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:tag="neu"
+                    android:tag="rob"
                     android:text="Your appetite is powerful. Sign up today!"
                     android:textSize="@dimen/signup_powerful_text" />
             </LinearLayout>
@@ -131,14 +131,14 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/standard_button_height"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1" >
 
                     <Button
                         android:id="@+id/buttonFacebook"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/standard_button_height"
-                        android:background="@drawable/facebook_button"
+                        android:background="@drawable/facebook_button_selector"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
@@ -149,50 +149,45 @@
                         android:text=""
                         android:textSize="@dimen/standard_button_text" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1.0"
+                        android:shadowDy="1.0"
+                        android:shadowRadius="1"
+                        android:tag="rob"
+                        android:text="Log in "
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/standard_button_text" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="5dp" >
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/facebook_white" />
 
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:shadowColor="@android:color/black"
-                            android:shadowDx="1.0"
-                            android:shadowDy="1.0"
-                            android:shadowRadius="2"
-                            android:tag="rob"
-                            android:text="Log in "
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/standard_button_text" />
-
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:adjustViewBounds="true"
-                            android:padding="5dp"
-                            android:src="@drawable/facebook_white" />
-                    </LinearLayout>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="@dimen/standard_button_height"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="1" >
 
                     <Button
                         android:id="@+id/buttonTwitter"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/standard_button_height"
-                        android:background="@drawable/twitter_button"
+                        android:background="@drawable/twitter_button_selector"
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
@@ -203,37 +198,31 @@
                         android:text=""
                         android:textSize="@dimen/standard_button_text" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1.0"
+                        android:shadowDy="1.0"
+                        android:shadowRadius="1"
+                        android:tag="rob"
+                        android:text="Log in "
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/standard_button_text" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="5dp" >
+                        android:layout_gravity="right"
+                        android:adjustViewBounds="true"
+                        android:padding="10dp"
+                        android:src="@drawable/twitter_white" />
 
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:shadowColor="@android:color/black"
-                            android:shadowDx="1.0"
-                            android:shadowDy="1.0"
-                            android:shadowRadius="2"
-                            android:tag="rob"
-                            android:text="Log in "
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/standard_button_text" />
-
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:adjustViewBounds="true"
-                            android:padding="5dp"
-                            android:src="@drawable/twitter_white" />
-                    </LinearLayout>
                 </FrameLayout>
+
             </LinearLayout>
 
             <EditText
@@ -266,7 +255,7 @@
                 android:shadowColor="@android:color/black"
                 android:shadowDx="1.0"
                 android:shadowDy="1.0"
-                android:shadowRadius="2"
+                android:shadowRadius="1"
                 android:tag="rob"
                 android:text="Sign Up"
                 android:textColor="@android:color/white"

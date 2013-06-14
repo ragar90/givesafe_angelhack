@@ -32,6 +32,8 @@
     <dimen name="receipt_medium_text">50sp</dimen>
     <dimen name="receipt_small_text">40sp</dimen>
     <dimen name="receipt_social_height">60dp</dimen>
+    <dimen name="receipt_button_height">100dp</dimen>
+    <dimen name="receipt_button_text">30sp</dimen>
     
     <dimen name="landing_large_text">55sp</dimen>
     <dimen name="landing_small_text">40sp</dimen>
@@ -50,6 +52,6 @@
     
     <dimen name="splash_size">50sp</dimen>
     
-    <dimen name="standard_button_height">60dp</dimen>
+    <dimen name="standard_button_height">80dp</dimen>
     <dimen name="standard_button_text">24sp</dimen>
 </resources>

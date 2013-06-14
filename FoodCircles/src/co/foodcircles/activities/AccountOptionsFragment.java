@@ -33,6 +33,18 @@ public class AccountOptionsFragment extends Fragment
 			}
 		});
 
+		TextView textViewEmail = (TextView) view.findViewById(R.id.textViewEmail);
+		textViewEmail.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				FragmentManager fm = getActivity().getSupportFragmentManager();
+				EmailDialogFragment emailDialog = new EmailDialogFragment();
+				emailDialog.show(fm, "email_dialog");
+			}
+		});
+
 		TextView textViewPassword = (TextView) view.findViewById(R.id.textViewPassword);
 		textViewPassword.setOnClickListener(new OnClickListener()
 		{

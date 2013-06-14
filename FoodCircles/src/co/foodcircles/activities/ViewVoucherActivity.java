@@ -3,15 +3,19 @@ package co.foodcircles.activities;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
 
@@ -40,6 +44,11 @@ public class ViewVoucherActivity extends FragmentActivity
 		{
 			teeth.setBackground(teethDrawable);
 		}
+
+		TextView venueName = (TextView) findViewById(R.id.textViewVenue);
+		SpannableString content = new SpannableString(venueName.getText());
+		content.setSpan(new UnderlineSpan(), 0, venueName.getText().length(), 0);
+		venueName.setText(content);
 
 		markAsUsedButton = (Button) findViewById(R.id.buttonMarkAsUsed);
 		markAsUsedButton.setOnClickListener(new OnClickListener()

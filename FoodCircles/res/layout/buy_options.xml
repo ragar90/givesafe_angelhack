@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:tag="rob"
-            android:text="Purchase Options"
+            android:text="Options"
             android:textColor="@color/dark_font"
             android:textSize="@dimen/buy_options_text_large" />
 
@@ -252,7 +252,6 @@
 
         <Button
             android:id="@+id/buttonBuy"
-            android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="@dimen/standard_button_height"
             android:layout_marginTop="10dp"
@@ -260,9 +259,10 @@
             android:shadowColor="@android:color/black"
             android:shadowDx="1.0"
             android:shadowDy="1.0"
-            android:shadowRadius="2"
+            android:shadowRadius="1"
             android:tag="rob"
             android:text="Buy"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/standard_button_text" />
 
     </LinearLayout>

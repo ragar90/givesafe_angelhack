@@ -51,7 +51,7 @@ public class C
 					overrideFonts(context, child);
 				}
 			}
-			else if ((v instanceof TextView || (v.getClass().getSimpleName().equals("TabView"))) && !(v instanceof Button) && !(v instanceof EditText))
+			else if ((v instanceof TextView || (v.getClass().getSimpleName().equals("TabView"))))
 			{
 				TextView textView = (TextView) v;
 

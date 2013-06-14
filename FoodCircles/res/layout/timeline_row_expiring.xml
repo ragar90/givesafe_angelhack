@@ -15,7 +15,7 @@
         android:gravity="center" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textViewDate"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
@@ -75,15 +75,6 @@
             android:src="@drawable/timeline_circle" />
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/pinhead" />
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -92,19 +83,14 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
-        android:background="@drawable/timeline_textborder"
+        android:background="@drawable/supercoolshadowedtimeline"
         android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="5dp" >
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/textViewVenue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="@android:color/black"
-            android:shadowDx="1.0"
-            android:shadowDy="1.0"
-            android:shadowRadius="2"
             android:tag="rob"
             android:text="STELLA&apos;S LOUNGE"
             android:textColor="@color/dark_font" />
@@ -124,10 +110,6 @@
                 android:id="@+id/textViewChildrenFed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@android:color/black"
-                android:shadowDx="1.0"
-                android:shadowDy="1.0"
-                android:shadowRadius="2"
                 android:tag="rob"
                 android:text="2 children fed"
                 android:textColor="@color/blue_text"

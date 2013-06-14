@@ -5,22 +5,28 @@
     android:background="@color/background"
     android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/textViewDate"
+    <FrameLayout
         android:layout_width="60dp"
-        android:layout_height="18dp"
-        android:layout_gravity="center"
+        android:layout_height="fill_parent"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/timeline_date_tag"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="8dp"
-        android:tag="rob"
-        android:text="04/22"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/timeline_date" />
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/timeline_date_tag"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="8dp"
+            android:tag="rob"
+            android:text="04/22"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/timeline_date" />
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="32dp"
@@ -48,15 +54,6 @@
             android:src="@drawable/timeline_circle_yellow" />
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/pinhead" />
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -65,10 +62,9 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
-        android:background="@android:color/white"
+        android:background="@drawable/supercoolshadowedtimeline"
         android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="5dp" >
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/textViewVenue"

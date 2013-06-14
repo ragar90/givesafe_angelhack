@@ -43,7 +43,7 @@
             android:layout_weight="3"
             android:orientation="vertical" >
 
-            <co.foodcircles.util.FontFitTextView
+            <co.foodcircles.customviews.FontFitTextView
                 android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -155,8 +155,9 @@
             android:id="@+id/textViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.1"
             android:padding="20dp"
-            android:tag="neu"
+            android:tag="rob"
             android:text="Fasion axe tofu laboris delectus, VHS godard single-origin deserunt. Small batch craft beer, organic pitchfork. Synth cliche readymade kogi sustainable, artisan chillwave seitan cosby sweater."
             android:textSize="@dimen/profile_small_text" />
 

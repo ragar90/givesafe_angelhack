@@ -1,4 +1,4 @@
-package co.foodcircles.util;
+package co.foodcircles.customviews;
 
 import android.content.Context;
 import android.util.AttributeSet;

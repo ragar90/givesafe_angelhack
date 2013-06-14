@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -50,6 +51,9 @@ public class ReceiptDialogFragment extends DialogFragment
 		{
 			teeth.setBackground(teethDrawable);
 		}
+		
+		TextView venueText = (TextView) v.findViewById(R.id.textViewVenue);
+		venueText.setPaintFlags(venueText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 		markAsUsedButton = (Button) v.findViewById(R.id.buttonMarkAsUsed);
 		markAsUsedButton.setOnClickListener(new OnClickListener()

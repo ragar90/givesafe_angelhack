@@ -225,7 +225,7 @@
         android:shadowColor="@android:color/black"
         android:shadowDx="1.0"
         android:shadowDy="1.0"
-        android:shadowRadius="2"
+        android:shadowRadius="1"
         android:tag="rob"
         android:text="Logout"
         android:textColor="@android:color/white"

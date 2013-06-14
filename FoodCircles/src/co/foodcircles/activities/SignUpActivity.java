@@ -38,14 +38,13 @@ public class SignUpActivity extends Activity
 		app.addPoppableActivity(this);
 
 		TextView copyText = (TextView) findViewById(R.id.textViewCopy);
-		Spannable spannable = new SpannableString("Buy one appetizer or dessert for $1 or more, feed one child in need.");
-		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources().getDimension(R.dimen.signup_smaller_text)), 36, 43, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		Spannable spannable = new SpannableString("Buy one appetizer or dessert for $1, feed one child in need.");
 		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBold), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBold), 45, 53, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBold), 37, 45, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 45, 53, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 37, 45, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources().getDimension(R.dimen.signup_small_text)), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources().getDimension(R.dimen.signup_small_text)), 45, 53, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources().getDimension(R.dimen.signup_small_text)), 37, 45, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		copyText.setText(spannable);
 
 		email = (EditText) findViewById(R.id.editTextEmail);
