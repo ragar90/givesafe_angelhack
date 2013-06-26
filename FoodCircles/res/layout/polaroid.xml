@@ -10,9 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:background="@color/background"
+        android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:src="@drawable/polshadow" />
+        android:src="@drawable/polshadow"
+        android:layout_margin="2dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -20,8 +21,8 @@
         android:visibility="visible" >
 
         <LinearLayout
-            android:layout_width="@dimen/polaroidIcon"
-            android:layout_height="@dimen/polaroidIcon"
+            android:layout_width="@dimen/polaroidIconH"
+            android:layout_height="@dimen/polaroidIconH"
             android:layout_gravity="right"
             android:layout_marginTop="@dimen/polaroidIconTopMargin"
             android:gravity="center"
@@ -42,7 +43,8 @@
             android:paddingTop="2dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:paddingBottom="3dp" >
+            android:paddingBottom="3dp"
+        android:layout_margin="2dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,7 +89,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="left"
-                        android:tag="neu"
+                        android:tag="rob"
                         android:text="Pizza"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/secondary_text" />
@@ -99,7 +101,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:tag="neu"
+                        android:tag="rob"
                         android:text=".5 mi"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/secondary_text" />
@@ -108,8 +110,8 @@
         </FrameLayout>
 
         <LinearLayout
-            android:layout_width="@dimen/polaroidIcon"
-            android:layout_height="@dimen/polaroidIcon"
+            android:layout_width="@dimen/polaroidIconW"
+            android:layout_height="@dimen/polaroidIconH"
             android:layout_gravity="right"
             android:layout_marginTop="@dimen/polaroidIconTopMargin"
             android:background="@drawable/tag_blue_top"
@@ -121,7 +123,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:tag="neu"
+                android:lineSpacingMultiplier=".9"
+                android:tag="rob"
                 android:text="10"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
@@ -131,10 +134,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:tag="neu"
+                android:lineSpacingMultiplier=".9"
+                android:tag="rob"
                 android:text="left"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+
         </LinearLayout>
     </FrameLayout>
 

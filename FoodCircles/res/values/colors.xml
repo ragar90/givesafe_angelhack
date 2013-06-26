@@ -4,8 +4,10 @@
     <color name="timeline_expiring">#be1e2d</color>
     <color name="timeline_date_pin">#CFC6BC</color>
     <color name="timeline_used_pinhead">#F9F9F9</color>
-    <color name="timeline_used_text">#bfbab4</color>
-
+    <color name="timeline_used_text">#BFBAB4</color>
+	<color name="timeline_embed_shadow">#EFE8DD</color>
+	<color name="timeline_rule">#D8D0C7</color>
+	
     <color name="grey">#E6E6E6</color>
     <color name="dark_grey">#666666</color>
     <color name="fc_text">#76320A</color>
@@ -17,7 +19,14 @@
     <color name="reverse_text">#000000</color>
     <color name="button_shadow">#461212</color>
     
+    <color name="contact_button_dark">#7C766F</color>
+    <color name="contact_button_light">#9F9B96</color>
+    
+    <color name="num_meals">#1c75bc</color>
+    
     <color name="dark_font">#4E3E34</color>
+    
+    <color name="show_server_shadow_color">#A57807</color>
     
     <color name="transparent_lighter_grey">#44999999</color>
     <color name="transparent_grey">#DD222222</color>
@@ -25,13 +34,15 @@
     
     <color name="links_inactive">#A34A4B</color>
     <color name="links_hover">#701A1A</color>
+    <color name="button_shadow_red">#701A1A</color>
     <color name="text_field">#999999</color>
 
     <color name="blue_text">#3AABEF</color>
     
     <color name="dark_red">#6E1414</color>
     <color name="yellow_circle">#D09A00</color>
-    <color name="timeline_date_circle">#D8D0C7</color>
+    <color name="timeline_date_circle_inside">#EFE8DD</color>
+    <color name="timeline_date_circle_outside">#D8D0C7</color>
     
     <color name="facebook">#3b5998</color>
     <color name="facebook_dark">#274584</color>
@@ -57,6 +68,6 @@
     <color name="button_grey_light">#AEAEAE</color>
     <color name="button_grey_dark">#707070</color>
     
-    <color name="price_background_grey">#E1E1E1</color>
+    <color name="price_background_grey">#D9D9D9</color>
     
 </resources>

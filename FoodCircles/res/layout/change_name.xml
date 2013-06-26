@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/background_shine_strip"
     android:minWidth="300dp"
     android:orientation="vertical"
     android:padding="10dp" >
@@ -46,13 +46,10 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/button_selector"
         android:height="50dp"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="1.0"
-        android:shadowDy="1.0"
-        android:shadowRadius="1"
         android:tag="rob"
         android:text="Save"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/standard_button_text" />
+        android:textSize="@dimen/standard_button_text"
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -7,7 +7,7 @@
         android:dither="false"
         android:filter="false"
         android:gravity="left|center_vertical"
-        android:src="@drawable/slider_fill"
+        android:src="@drawable/small_slider_fill"
         android:tileMode="disabled" />
 
 </clip>

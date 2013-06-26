@@ -6,22 +6,27 @@
     android:orientation="horizontal" >
 
     <FrameLayout
-        android:layout_width="60dp"
+        android:layout_width="45dp"
         android:layout_height="fill_parent"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="5dp"
         android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/new_date_tag" />
 
         <TextView
             android:id="@+id/textViewDate"
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/timeline_date_tag"
             android:gravity="left|center_vertical"
-            android:paddingLeft="8dp"
+            android:paddingLeft="11dp"
             android:tag="rob"
             android:text="04/22"
             android:textColor="@color/secondary_text"
@@ -29,7 +34,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="32dp"
+        android:layout_width="26dp"
         android:layout_height="match_parent" >
 
         <FrameLayout
@@ -72,7 +77,8 @@
             android:layout_height="wrap_content"
             android:tag="rob"
             android:text="STELLA&apos;S LOUNGE"
-            android:textColor="@color/dark_font" />
+            android:textColor="@color/dark_font"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,17 +87,21 @@
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/kid_icon" />
 
             <TextView
                 android:id="@+id/textViewChildrenFed"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
                 android:tag="rob"
                 android:text="2 children fed"
                 android:textColor="@color/blue_text"
+                android:textSize="@dimen/timeline_children_fed"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.Space

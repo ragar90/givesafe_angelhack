@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@color/background"
+        android:background="@drawable/background_shine_strip"
         android:orientation="horizontal" >
 
         <android.support.v7.widget.Space
@@ -51,12 +51,11 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:tag="neu"
-                    android:text="Buy One, Feed One."
+                    android:text="Buy One,\n Feed One."
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/dark_font"
                     android:textSize="@dimen/loginBuyOneFeedOne"
                     android:textStyle="italic" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -79,10 +78,6 @@
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
-                        android:shadowColor="@android:color/black"
-                        android:shadowDx="1.0"
-                        android:shadowDy="1.0"
-                        android:shadowRadius="2"
                         android:text=""
                         android:textSize="@dimen/standard_button_text" />
 
@@ -97,9 +92,10 @@
                         android:shadowDy="1.0"
                         android:shadowRadius="1"
                         android:tag="rob"
-                        android:text="Log in "
+                        android:text="Log in"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/standard_button_text" />
+                        android:textSize="@dimen/standard_button_text"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -107,10 +103,9 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:adjustViewBounds="true"
-                        android:padding="10dp"
+                        android:padding="13dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/facebook_white" />
-
                 </FrameLayout>
 
                 <FrameLayout
@@ -128,10 +123,6 @@
                         android:paddingBottom="15dp"
                         android:paddingTop="15dp"
                         android:scaleType="fitEnd"
-                        android:shadowColor="@android:color/black"
-                        android:shadowDx="1.0"
-                        android:shadowDy="1.0"
-                        android:shadowRadius="2"
                         android:text=""
                         android:textSize="@dimen/standard_button_text" />
 
@@ -145,9 +136,10 @@
                         android:shadowDy="1.0"
                         android:shadowRadius="1"
                         android:tag="rob"
-                        android:text="Log in "
+                        android:text="Log in"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/standard_button_text" />
+                        android:textSize="@dimen/standard_button_text"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -155,11 +147,9 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:adjustViewBounds="true"
-                        android:padding="10dp"
+                        android:padding="13dp"
                         android:src="@drawable/twitter_white" />
-
                 </FrameLayout>
-
             </LinearLayout>
 
             <EditText
@@ -189,14 +179,11 @@
                 android:layout_height="@dimen/standard_button_height"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_selector"
-                android:shadowColor="@android:color/black"
-                android:shadowDx="1.0"
-                android:shadowDy="1.0"
-                android:shadowRadius="1"
                 android:tag="rob"
                 android:text="Sign In"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/standard_button_text" />
+                android:textSize="@dimen/standard_button_text"
+                android:textStyle="bold" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space3"

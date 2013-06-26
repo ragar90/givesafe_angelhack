@@ -38,8 +38,7 @@ import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 public class BuyFragment extends Fragment
 {
-	private final BigDecimal CENT_PRECISION = new BigDecimal(50);
-	private final BigDecimal CENTS_IN_DOLLAR = new BigDecimal(100);
+	int CENTS_IN_DOLLAR = 100;
 	FoodCirclesApplication app;
 	private Offer selectedOffer;
 	private Charity selectedCharity;
@@ -49,7 +48,7 @@ public class BuyFragment extends Fragment
 	private TextView meals;
 	private Spinner donateTo;
 	private TextView minPrice, medianPrice, maxPrice;
-	private BigDecimal priceValue = new BigDecimal(1);
+	private int priceValue;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -66,19 +65,17 @@ public class BuyFragment extends Fragment
 		selectedCharity = app.charities.get(0);
 
 		offerSpinner = (Spinner) view.findViewById(R.id.spinnerNumFriends);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>()
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_text, new ArrayList<String>()
 		{
 			{
-				int i = 1;
 				for (Offer offer : offers)
 				{
-					add(offer.getTitle() + " - min. group " + 2*i + " deal" + (i > 1 ? " (+$" + i + ")" : ""));
-					i++;
+					add(offer.getTitle());
 				}
 			}
 		});
 		// Specify the layout to use when the list of choices appears
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapter.setDropDownViewResource(R.layout.spinner_content_text);
 		// Apply the adapter to the spinner
 		offerSpinner.setAdapter(adapter);
 
@@ -88,16 +85,15 @@ public class BuyFragment extends Fragment
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
 			{
 				selectedOffer = offers.get(position);
-				
-				minPrice.setText(NumberFormat.getCurrencyInstance().format(position + 1));
 
-				BigDecimal medianPriceValue = new BigDecimal(selectedOffer.getFullPrice().intValue() * (position + 1) * 2);
-				medianPriceValue = medianPriceValue.subtract(new BigDecimal(position + 1));
-				medianPriceValue = medianPriceValue.divide(new BigDecimal(2));
-				medianPriceValue = medianPriceValue.add(new BigDecimal(position + 1));
-				medianPrice.setText(NumberFormat.getCurrencyInstance().format(medianPriceValue));
+				minPrice.setText(NumberFormat.getCurrencyInstance().format(position + 1).replaceAll("\\.00", ""));
 
-				maxPrice.setText(NumberFormat.getCurrencyInstance().format(selectedOffer.getFullPrice().intValue() * (position + 1) * 2));
+				int maxValue = selectedOffer.getFullPrice() * (position + 1) * 2;
+				int range = maxValue - (position + 1);
+				int medianValue = (range / 2) + position + 1;
+
+				medianPrice.setText(NumberFormat.getCurrencyInstance().format(medianValue).replaceAll("\\.00", ""));
+				maxPrice.setText(NumberFormat.getCurrencyInstance().format(maxValue).replaceAll("\\.00", ""));
 				setPrices();
 			}
 
@@ -108,18 +104,18 @@ public class BuyFragment extends Fragment
 		});
 
 		donateTo = (Spinner) view.findViewById(R.id.spinnerDonateTo);
-		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>()
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_text, new ArrayList<String>()
 		{
 			{
-				for(Charity charity : app.charities)
+				for (Charity charity : app.charities)
 					add(charity.getName());
 			}
 		});
 		// Specify the layout to use when the list of choices appears
-		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapter2.setDropDownViewResource(R.layout.spinner_content_text);
 		// Apply the adapter to the spinner
 		donateTo.setAdapter(adapter2);
-		
+
 		donateTo.setOnItemSelectedListener(new OnItemSelectedListener()
 		{
 			@Override
@@ -137,10 +133,8 @@ public class BuyFragment extends Fragment
 		price = (TextView) view.findViewById(R.id.textViewTotalPrice);
 		meals = (TextView) view.findViewById(R.id.textViewDonated);
 
-		int price = selectedOffer.getFullPrice().intValue();
-
 		seekBar = (SeekBar) view.findViewById(R.id.seekBar);
-		seekBar.setMax(100 * (price * 2 - 1) - 1);
+		seekBar.setMax(100 * (selectedOffer.getFullPrice() * 2 - 1));
 		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
 		{
 			@Override
@@ -173,7 +167,7 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				PayPalPayment voucherPayment = new PayPalPayment(priceValue, "USD", "Food Circles");
+				PayPalPayment voucherPayment = new PayPalPayment(new BigDecimal(priceValue), "USD", "Food Circles");
 
 				Intent intent = new Intent(getActivity(), PaymentActivity.class);
 
@@ -196,7 +190,7 @@ public class BuyFragment extends Fragment
 				setPrices();
 			}
 		});
-		
+
 		medianPrice.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -206,7 +200,7 @@ public class BuyFragment extends Fragment
 				setPrices();
 			}
 		});
-		
+
 		maxPrice.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -281,20 +275,18 @@ public class BuyFragment extends Fragment
 
 	private void setPrices()
 	{
-		int numVouchers = offerSpinner.getSelectedItemPosition() + 1;
+		int voucherLevel = offerSpinner.getSelectedItemPosition() + 1;
 		// Seekbar.getprogress = number of cents
-		BigDecimal priceAmount = new BigDecimal(seekBar.getProgress());
-		priceAmount = priceAmount.add(CENTS_IN_DOLLAR);
+		int priceAmount = seekBar.getProgress();
 
-		priceAmount = priceAmount.multiply(new BigDecimal(numVouchers));
-
-		priceAmount = priceAmount.divide(CENTS_IN_DOLLAR);
-		priceAmount = priceAmount.multiply(CENTS_IN_DOLLAR.divide(CENT_PRECISION));
-		priceAmount = priceAmount.setScale(0, BigDecimal.ROUND_HALF_UP);
-		priceAmount = priceAmount.divide(CENTS_IN_DOLLAR.divide(CENT_PRECISION));
+		priceAmount += CENTS_IN_DOLLAR;
+		priceAmount = priceAmount * voucherLevel;
+		priceAmount = priceAmount / CENTS_IN_DOLLAR;
 		priceValue = priceAmount;
 
-		price.setText(NumberFormat.getCurrencyInstance().format(priceAmount));
-		meals.setText(priceAmount.intValue() + " meal" + (priceAmount.intValue() > 1 ? "s" : ""));
+		String priceText = NumberFormat.getCurrencyInstance().format(priceAmount);
+		priceText = priceText.replaceAll("\\.00", "");
+		price.setText(priceText);
+		meals.setText("" + priceAmount + " meal" + (priceAmount > 1 ? "s" : ""));
 	}
 }

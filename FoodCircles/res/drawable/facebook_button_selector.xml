@@ -4,6 +4,6 @@
     <item android:drawable="@drawable/button_active_facebook" android:state_pressed="true"/>
     <item android:drawable="@drawable/button_active_facebook" android:state_focused="true"/>
     <item android:drawable="@drawable/button_active_facebook" android:state_selected="true"/>
-    <item android:drawable="@drawable/button_default_facebook"/>
+    <item android:drawable="@drawable/facebook_button"/>
 
 </selector>

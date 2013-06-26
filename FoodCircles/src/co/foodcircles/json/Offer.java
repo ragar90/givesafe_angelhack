@@ -1,6 +1,5 @@
 package co.foodcircles.json;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,8 @@ public class Offer
 	private String title;
 	private String details;
 	private int minDiners;
-	private BigDecimal discountPrice;
-	private BigDecimal fullPrice;
+	private int discountPrice;
+	private int fullPrice;
 	private String imageUrl;
 
 	public static List<Offer> parseOffers(String jsonString) throws JSONException
@@ -38,15 +37,15 @@ public class Offer
 		title = json.getString("title");
 		details = json.getString("details");
 		minDiners = json.getInt("minimum_diners");
-		discountPrice = new BigDecimal(1);
-		fullPrice = new BigDecimal(9);
+		discountPrice = 1;
+		fullPrice = 9;
 		imageUrl = "/media/BAhbBlsHOgZmSSIvMjAxMi8wNS8yNC8xM180N181MF81OTRfR29qb19FdGhpb3BpYW4ucG5nBjoGRVQ";
 		//discountPrice = new BigDecimal(json.getString("discount_price"));
 		//fullPrice = new BigDecimal(json.getString("full_price"));
 		//imageUrl = json.getString("image_url");
 	}
 
-	public Offer(String id, String title, String details, int minDiners, BigDecimal discountPrice, BigDecimal fullPrice, String imageUrl)
+	public Offer(String id, String title, String details, int minDiners, int discountPrice, int fullPrice, String imageUrl)
 	{
 		super();
 		this.id = id;
@@ -65,8 +64,8 @@ public class Offer
 		this.title = "Loaded Crack Fries";
 		this.details = "Delicious!";
 		this.minDiners = 2;
-		this.discountPrice = new BigDecimal(2);
-		this.fullPrice = new BigDecimal(4);
+		this.discountPrice = 2;
+		this.fullPrice = 4;
 		this.imageUrl = "/media/BAhbBlsHOgZmSSIvMjAxMi8wNS8yNC8xM180N181MF81OTRfR29qb19FdGhpb3BpYW4ucG5nBjoGRVQ";
 	}
 
@@ -110,22 +109,22 @@ public class Offer
 		this.minDiners = minDiners;
 	}
 
-	public BigDecimal getDiscountPrice()
+	public int getDiscountPrice()
 	{
 		return discountPrice;
 	}
 
-	public void setDiscountPrice(BigDecimal discountPrice)
+	public void setDiscountPrice(int discountPrice)
 	{
 		this.discountPrice = discountPrice;
 	}
 
-	public BigDecimal getFullPrice()
+	public int getFullPrice()
 	{
 		return fullPrice;
 	}
 
-	public void setFullPrice(BigDecimal fullPrice)
+	public void setFullPrice(int fullPrice)
 	{
 		this.fullPrice = fullPrice;
 	}

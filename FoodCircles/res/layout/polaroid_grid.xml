@@ -4,7 +4,7 @@
     android:id="@+id/gridView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
+    android:background="@drawable/background_shine_strip"
     android:paddingLeft="4dp"
     android:paddingRight="4dp"
     android:numColumns="2"
