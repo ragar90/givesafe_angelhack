@@ -62,7 +62,7 @@
                 android:shadowDy="1.0"
                 android:shadowRadius="3.0"
                 android:tag="neu"
-                android:text="Buy one appetizer or dessert for $1 or more,\n feed one child in need."
+                android:text="Buy one appetizer or dessert for $1 or more, feed one child in need."
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/signup_small_text"
                 android:textStyle="italic" />

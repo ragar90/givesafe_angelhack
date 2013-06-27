@@ -51,7 +51,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:tag="neu"
-                    android:text="Buy One,\n Feed One."
+                    android:text="Buy One, Feed One."
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/dark_font"
                     android:textSize="@dimen/loginBuyOneFeedOne"
