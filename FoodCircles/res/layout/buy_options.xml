@@ -52,7 +52,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/new_dropdown"
                 android:tag="rob"
-                android:textSize="@dimen/buy_options_text" />
+                android:textSize="@dimen/buy_options_spinner" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space1"
@@ -66,7 +66,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:tag="rob"
-                android:text="Pay what you want."
+                android:text="Pay What You Want"
                 android:textColor="@color/dark_font"
                 android:textSize="@dimen/buy_options_text"
                 android:textStyle="bold" />
@@ -104,23 +104,30 @@
                     <ImageView
                         android:id="@+id/imageView1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
                         android:background="@drawable/smaller_slider" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
 
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1" >
+                        android:layout_weight="1"
+                        android:visibility="invisible" >
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
                             android:layout_marginLeft="19dp"
-                            android:layout_marginRight="19dp"
-                            android:layout_marginTop="5dp" >
+                            android:layout_marginRight="19dp" >
 
                             <ImageView
                                 android:id="@+id/pip1"
@@ -152,12 +159,6 @@
                                 android:src="@drawable/small_pip" />
                         </LinearLayout>
                     </FrameLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" >
 
                     <SeekBar
                         android:id="@+id/seekBar"
@@ -171,6 +172,49 @@
                         android:progressDrawable="@drawable/seekbar_progress"
                         android:thumb="@drawable/slider_knob_small"
                         android:thumbOffset="20dp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginRight="19dp" >
+
+                            <ImageView
+                                android:id="@+id/pip1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_weight="1"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitStart"
+                                android:src="@drawable/small_pip" />
+
+                            <ImageView
+                                android:id="@+id/pip2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:adjustViewBounds="true"
+                                android:gravity="center"
+                                android:src="@drawable/small_pip" />
+
+                            <ImageView
+                                android:id="@+id/pip3"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:adjustViewBounds="true"
+                                android:gravity="right"
+                                android:scaleType="fitEnd"
+                                android:src="@drawable/small_pip" />
+                        </LinearLayout>
+                    </FrameLayout>
                 </LinearLayout>
             </FrameLayout>
 
@@ -271,7 +315,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/new_dropdown"
                 android:tag="rob"
-                android:textSize="@dimen/buy_options_text" />
+                android:textSize="@dimen/buy_options_spinner" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space1"
@@ -290,7 +334,6 @@
         android:tag="rob"
         android:text="Buy"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/standard_button_text"
-        android:textStyle="bold" />
+        android:textSize="@dimen/standard_button_text" />
 
 </LinearLayout>

@@ -151,15 +151,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:shadowColor="@android:color/black"
-                        android:shadowDx="1.0"
-                        android:shadowDy="1.0"
-                        android:shadowRadius="1"
                         android:tag="rob"
                         android:text="Log in"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/standard_button_text"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/standard_button_text" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -167,7 +162,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:adjustViewBounds="true"
-                        android:padding="13dp"
+                        android:padding="15dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/facebook_white" />
 
@@ -196,15 +191,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:shadowColor="@android:color/black"
-                        android:shadowDx="1.0"
-                        android:shadowDy="1.0"
-                        android:shadowRadius="1"
                         android:tag="rob"
                         android:text="Log in"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/standard_button_text"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/standard_button_text" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -212,7 +202,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:adjustViewBounds="true"
-                        android:padding="13dp"
+                        android:padding="15dp"
                         android:src="@drawable/twitter_white" />
 
                 </FrameLayout>
@@ -249,8 +239,7 @@
                 android:tag="rob"
                 android:text="Sign Up"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/standard_button_text"
-                android:textStyle="bold" />
+                android:textSize="@dimen/standard_button_text" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space3"

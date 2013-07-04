@@ -94,8 +94,7 @@
                         android:tag="rob"
                         android:text="Log in"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/standard_button_text"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/standard_button_text" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -138,8 +137,7 @@
                         android:tag="rob"
                         android:text="Log in"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/standard_button_text"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/standard_button_text" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -182,8 +180,7 @@
                 android:tag="rob"
                 android:text="Sign In"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/standard_button_text"
-                android:textStyle="bold" />
+                android:textSize="@dimen/standard_button_text" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space3"

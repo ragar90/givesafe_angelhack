@@ -58,10 +58,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:ellipsize="start"
                     android:gravity="center"
                     android:tag="neu"
                     android:text="TWO BEARD&apos;S DELI"
                     android:textAllCaps="true"
+                    android:maxLines="1"
                     android:textAppearance="?android:attr/textAppearance"
                     android:textColor="@color/dark_font"
                     android:textStyle="bold" />

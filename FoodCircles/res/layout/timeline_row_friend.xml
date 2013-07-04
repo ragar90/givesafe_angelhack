@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="@color/background"
     android:orientation="horizontal" >
 
     <FrameLayout
@@ -80,6 +79,12 @@
             android:textColor="@color/dark_font"
             android:textStyle="bold" />
 
+        <android.support.v7.widget.Space
+            android:id="@+id/space1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -90,7 +95,9 @@
                 android:layout_height="wrap_content"
                 android:tag="rob"
                 android:text="JONATHAN KUMAR"
-                android:textColor="@color/secondary_text" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/timeline_friend_name" />
 
             <android.support.v7.widget.Space
                 android:id="@+id/space1"
@@ -102,9 +109,12 @@
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/kid_icon_yellow"
-                android:layout_marginRight="2dp" />
+                android:scaleType="fitEnd"
+                android:paddingTop="2dp"
+                android:paddingBottom="3dp"
+                android:src="@drawable/kid_icon_yellow" />
 
             <TextView
                 android:id="@+id/textViewChildrenFed"

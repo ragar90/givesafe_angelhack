@@ -12,6 +12,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.TextAppearanceSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +70,7 @@ public class BuyFragment extends Fragment
 		selectedCharity = app.charities.get(0);
 
 		offerSpinner = (Spinner) view.findViewById(R.id.spinnerNumFriends);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_text, new ArrayList<String>()
+		ArrayList<String> offersList = new ArrayList<String>()
 		{
 			{
 				for (Offer offer : offers)
@@ -73,7 +78,30 @@ public class BuyFragment extends Fragment
 					add(offer.getTitle());
 				}
 			}
-		});
+		};
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_text, offersList)
+		{
+			public View getView(int position, View convertView, ViewGroup parent)
+			{
+				View v = super.getView(position, convertView, parent);
+				TextView tv = (TextView) v;
+				String str = tv.getText().toString();
+
+				if (str.contains("("))
+				{
+
+					Spannable spannable = new SpannableString(str);
+					float textSize = tv.getTextSize();
+					spannable.setSpan(new TextAppearanceSpan(getActivity(), R.style.TextAppearanceNormal), str.indexOf("("), str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+					spannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.secondary_text)), str.indexOf("("), str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+					spannable.setSpan(new AbsoluteSizeSpan((int) textSize), str.indexOf("("), str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+					tv.setText(spannable);
+				}
+
+				return v;
+			}
+		};
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(R.layout.spinner_content_text);
 		// Apply the adapter to the spinner

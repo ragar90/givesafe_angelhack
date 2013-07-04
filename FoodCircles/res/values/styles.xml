@@ -36,5 +36,9 @@
         <item name="android:textStyle">bold</item>
     </style>
     
+    <style name="TextAppearanceNormal" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textStyle">normal</item>
+    </style>
+    
 
 </resources>

@@ -248,6 +248,12 @@ public class Venue
 	{
 		return tags.toString().replace("[", "").replace("]",  "");
 	}
+	
+	public String getFirstTag()
+	{
+		if(tags.size() == 0) return "";
+		else return tags.get(0);
+	}
 
 	public List<Offer> getOffers()
 	{

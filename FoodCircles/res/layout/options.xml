@@ -225,7 +225,6 @@
         android:tag="rob"
         android:text="Logout"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/standard_button_text"
-        android:textStyle="bold" />
+        android:textSize="@dimen/standard_button_text" />
 
 </LinearLayout>

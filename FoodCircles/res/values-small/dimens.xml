@@ -5,8 +5,10 @@
     <dimen name="timeline_bottom_left">10sp</dimen>
     <dimen name="timeline_bottom_middle">12sp</dimen>
     <dimen name="timeline_children_fed">12sp</dimen>
+    <dimen name="timeline_friend_name">12sp</dimen>
     
-    <dimen name="buy_options_text">15dp</dimen>
+    <dimen name="buy_options_text">18dp</dimen>
+    <dimen name="buy_options_spinner">12dp</dimen>
     <dimen name="buy_options_text_large">25dp</dimen>
     
     <dimen name="polaroidIconH">48dp</dimen>
@@ -53,5 +55,5 @@
     <dimen name="splash_size">20sp</dimen>
     
     <dimen name="standard_button_height">40dp</dimen>
-    <dimen name="standard_button_text">16sp</dimen>
+    <dimen name="standard_button_text">14sp</dimen>
 </resources>

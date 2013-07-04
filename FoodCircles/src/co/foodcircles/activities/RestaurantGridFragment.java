@@ -187,7 +187,7 @@ public class RestaurantGridFragment extends Fragment
 			Venue venue = venues.get(position);
 			imageLoader.displayImage("http://foodcircles.net" + venues.get(position).getImageUrl(), holder.logo, options);
 			holder.name.setText(venue.getName());
-			holder.cuisine.setText(venue.getTagsString());
+			holder.cuisine.setText(venue.getFirstTag());
 			holder.distance.setText("10.0 mi");
 
 			return view;
