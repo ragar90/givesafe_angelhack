@@ -58,4 +58,7 @@
     
     <dimen name="standard_button_height">80dp</dimen>
     <dimen name="standard_button_text">22sp</dimen>
+    
+    <dimen name="wantthis_button_height">100dp</dimen>
+    <dimen name="wantthis_button_text">26sp</dimen>
 </resources>

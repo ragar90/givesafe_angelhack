@@ -70,7 +70,7 @@ public class MainActivity extends FragmentActivity
 				case 0:
 					return new CarouselFragment();
 				case 1:
-					return new RestaurantGridFragment();
+					return new RestaurantListFragment();
 				case 2:
 					return new TimelineFragment();
 				default:

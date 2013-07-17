@@ -7,7 +7,9 @@
     <color name="timeline_used_text">#BFBAB4</color>
 	<color name="timeline_embed_shadow">#EFE8DD</color>
 	<color name="timeline_rule">#D8D0C7</color>
+	<color name="timeline_date_text">#BFBAB4</color>
 	
+	<color name="background_gradient_solid">#EFE8DD</color>
     <color name="grey">#E6E6E6</color>
     <color name="dark_grey">#666666</color>
     <color name="fc_text">#76320A</color>

@@ -10,6 +10,7 @@
 			<attribute name="javadoc_location" value="file:/Users/markgatesman/Development/sdk/extras/google/google_play_services/libproject/google-play-services_lib/libs/../../../docs/reference/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/MixpanelAPI.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/library"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/google-play-services_lib"/>
 	<classpathentry kind="output" path="bin/classes"/>

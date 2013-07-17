@@ -28,13 +28,14 @@ import co.foodcircles.net.Net;
 import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
-public class RestaurantGridFragment extends Fragment
+public class RestaurantListFragment extends Fragment
 {
 	private VenueAdapter adapter;
 	private GridView gridView;
@@ -43,6 +44,22 @@ public class RestaurantGridFragment extends Fragment
 	private DisplayImageOptions options;
 	private ImageLoader imageLoader = ImageLoader.getInstance();
 	private FoodCirclesApplication app;
+	
+	MixpanelAPI mixpanel;
+
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		mixpanel = MixpanelAPI.getInstance(getActivity(), getResources().getString(R.string.mixpanel_token));
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		mixpanel.flush();
+		super.onDestroy();
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -52,7 +69,8 @@ public class RestaurantGridFragment extends Fragment
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 
-		options = new DisplayImageOptions.Builder().cacheInMemory().cacheOnDisc().build();
+		options = new DisplayImageOptions.Builder().cacheInMemory().cacheOnDisc().showStubImage(R.drawable.transparent_box).showImageForEmptyUri(R.drawable.transparent_box)
+				.showImageOnFail(R.drawable.transparent_box).build();
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity().getApplicationContext()).threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
 				.memoryCacheSize(2 * 1024 * 1024).denyCacheImageMultipleSizesInMemory().discCacheFileNameGenerator(new Md5FileNameGenerator())
 				.imageDownloader(new BaseImageDownloader(getActivity().getApplicationContext())).enableLogging().build();
@@ -71,7 +89,7 @@ public class RestaurantGridFragment extends Fragment
 					try
 					{
 						app.venues.addAll(Net.getVenuesList(null));
-						
+
 						app.charities = new ArrayList<Charity>();
 						app.charities.addAll(Net.getCharities());
 
@@ -90,6 +108,7 @@ public class RestaurantGridFragment extends Fragment
 					progressDialog.dismiss();
 					if (!success)
 					{
+						MP.track(mixpanel, "Restaurant List", "Failed to load venues");
 						AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 						builder.setMessage("Could not load venues.").setTitle("Network Error");
 						builder.setPositiveButton("OK", new OnClickListener()
@@ -97,13 +116,14 @@ public class RestaurantGridFragment extends Fragment
 							@Override
 							public void onClick(DialogInterface dialog, int id)
 							{
-								RestaurantGridFragment.this.getActivity().finish();
+								RestaurantListFragment.this.getActivity().finish();
 							}
 						});
 						builder.create().show();
 					}
 					else
 					{
+						MP.track(mixpanel, "Restaurant List", "Loaded venues");
 						adapter.notifyDataSetChanged();
 					}
 				}
@@ -118,9 +138,9 @@ public class RestaurantGridFragment extends Fragment
 			@Override
 			public void onItemClick(AdapterView<?> l, View v, int position, long id)
 			{
-				FoodCirclesApplication app = (FoodCirclesApplication) RestaurantGridFragment.this.getActivity().getApplicationContext();
+				FoodCirclesApplication app = (FoodCirclesApplication) RestaurantListFragment.this.getActivity().getApplicationContext();
 				app.selectedVenue = app.venues.get(position);
-				Intent intent = new Intent(RestaurantGridFragment.this.getActivity(), RestaurantActivity.class);
+				Intent intent = new Intent(RestaurantListFragment.this.getActivity(), RestaurantActivity.class);
 				startActivity(intent);
 			}
 		});

@@ -14,7 +14,7 @@ public class C
 	public static Typeface boldFont;
 	public static Typeface italicFont;
 	public static Typeface boldItalicFont;
-	
+
 	public static Typeface sysFont;
 	public static Typeface sysBoldFont;
 	public static Typeface sysItalicFont;
@@ -28,7 +28,7 @@ public class C
 			boldFont = Typeface.createFromAsset(context.getAssets(), "neutrafaceslabtextbold.ttf");
 			italicFont = Typeface.createFromAsset(context.getAssets(), "neutrafaceslabtextbookitalic.ttf");
 			boldItalicFont = Typeface.createFromAsset(context.getAssets(), "neutrafaceslabtextbolditalic.ttf");
-			
+
 			sysFont = Typeface.createFromAsset(context.getAssets(), "Roboto-Regular.ttf");
 			sysBoldFont = Typeface.createFromAsset(context.getAssets(), "Roboto-Bold.ttf");
 			sysItalicFont = Typeface.createFromAsset(context.getAssets(), "Roboto-Italic.ttf");
@@ -42,6 +42,11 @@ public class C
 
 		try
 		{
+			if (v == null)
+			{
+				return;
+			}
+
 			if (v instanceof ViewGroup)
 			{
 				ViewGroup vg = (ViewGroup) v;
@@ -76,7 +81,7 @@ public class C
 					}
 					textView.setTypeface(newFont);
 				}
-				
+
 				else if ((v.getTag() != null) && ((String) v.getTag()).equals("rob"))
 				{
 					Typeface newFont = sysFont;

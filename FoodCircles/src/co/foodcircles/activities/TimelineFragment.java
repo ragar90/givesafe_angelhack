@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.json.JSONException;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +29,22 @@ public class TimelineFragment extends ListFragment
 {
 	private List<Reservation> reservations;
 	private ReservationAdapter adapter;
+	
+	MixpanelAPI mixpanel;
+
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		mixpanel = MixpanelAPI.getInstance(getActivity(), getResources().getString(R.string.mixpanel_token));
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		mixpanel.flush();
+		super.onDestroy();
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -50,13 +68,40 @@ public class TimelineFragment extends ListFragment
 		this.setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
 
+		final boolean connectedToSocialAccount = false;
+		TextView inviteOrImportFriends = (TextView) view.findViewById(R.id.textViewInviteOrImport);
+
+		if (connectedToSocialAccount)
+		{
+			inviteOrImportFriends.setText("Invite Friends");
+		}
+		else
+		{
+			inviteOrImportFriends.setText("Import Friends");
+		}
+
 		LinearLayout inviteFriends = (LinearLayout) view.findViewById(R.id.inviteFriendsLayout);
 		inviteFriends.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				Toast.makeText(getActivity(), "Inviting friends!", Toast.LENGTH_SHORT).show();
+				boolean connectedToSocialAccount = false;
+				if (connectedToSocialAccount)
+				{
+					MP.track(mixpanel, "Timeline", "Clicked invite friends");
+					Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+					shareIntent.setType("text/plain");
+					shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Food Circles");
+					shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Buy one appetizer or dessert for $1, feed one child in need.");
+					startActivity(Intent.createChooser(shareIntent, "Share with"));
+				}
+				else
+				{
+					MP.track(mixpanel, "Timeline", "Clicked import friends");
+					Intent intent = new Intent(getActivity(), AccountOptionsActivity.class);
+					startActivity(intent);
+				}
 			}
 		});
 		return view;
@@ -72,6 +117,8 @@ public class TimelineFragment extends ListFragment
 		FragmentManager fm = getActivity().getSupportFragmentManager();
 		ReceiptDialogFragment receiptDialog = new ReceiptDialogFragment();
 		receiptDialog.show(fm, "receipt_dialog");
+
+		MP.track(mixpanel, "Timeline", "Opened voucher");
 	}
 
 	private class ReservationAdapter extends BaseAdapter
@@ -128,7 +175,7 @@ public class TimelineFragment extends ListFragment
 		@Override
 		public boolean isEnabled(int position)
 		{
-			return getItemViewType(position) == VOUCHER_TYPE;
+			return getItemViewType(position) == VOUCHER_TYPE || getItemViewType(position) == EXPIRING_VOUCHER_TYPE;
 		}
 
 		@Override
@@ -243,7 +290,7 @@ public class TimelineFragment extends ListFragment
 				holder = (TimelineHolder) view.getTag();
 			}
 
-			//Reservation reservation = reservations.get(position);
+			// Reservation reservation = reservations.get(position);
 
 			return view;
 		}

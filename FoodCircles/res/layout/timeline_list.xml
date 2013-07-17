@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_shine_strip" >
+    android:background="@color/background" >
+
+    <include layout="@layout/background_shine_strip" />
 
     <ListView
         android:id="@android:id/list"
@@ -44,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="You can feed a child"
+                android:text="See where friends are eating"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/timeline_bottom_left" />
 
@@ -53,13 +55,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="Your network can feed a classroom"
+                android:text="and how many kids they\'re feeding"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/timeline_bottom_left" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textViewInviteOrImport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

@@ -61,10 +61,10 @@
                 android:id="@+id/textViewCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:layout_marginTop="-10dp"
                 android:tag="rob"
                 android:text="4J2S3"
                 android:textColor="@color/dark_red"
@@ -75,21 +75,22 @@
                 android:id="@+id/textViewVenue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:tag="rob"
                 android:text="Stella&apos;s Lounge"
                 android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_medium_text"
-                android:textStyle="bold"
-                android:layout_marginBottom="5dp" />
+                android:textStyle="bold" />
 
             <co.foodcircles.customviews.FontFitTextView
                 android:id="@+id/textViewMinGroup"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/receipt_medium_text" 
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:tag="rob"
                 android:text="(min. group 4, use by 6/15/13)"
-                android:textColor="@color/dark_font" />
+                android:textColor="@color/dark_font"
+                android:textSize="@dimen/receipt_small_text" />
 
             <Button
                 android:id="@+id/buttonMarkAsUsed"

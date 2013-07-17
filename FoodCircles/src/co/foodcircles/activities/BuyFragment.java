@@ -37,6 +37,7 @@ import co.foodcircles.json.Offer;
 import co.foodcircles.util.C;
 import co.foodcircles.util.FoodCirclesApplication;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
@@ -54,6 +55,28 @@ public class BuyFragment extends Fragment
 	private Spinner donateTo;
 	private TextView minPrice, medianPrice, maxPrice;
 	private int priceValue;
+
+	private int minPriceValue, medianPriceValue, maxPriceValue;
+
+	private boolean selectedDifferentOffer = false;
+	private boolean adjustedSlider = false;
+	private boolean selectedDifferentCharity = false;
+	
+	MixpanelAPI mixpanel;
+
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		mixpanel = MixpanelAPI.getInstance(getActivity(), getResources().getString(R.string.mixpanel_token));
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		mixpanel.flush();
+		super.onDestroy();
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -113,15 +136,16 @@ public class BuyFragment extends Fragment
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
 			{
 				selectedOffer = offers.get(position);
+				selectedDifferentOffer = true;
 
-				minPrice.setText(NumberFormat.getCurrencyInstance().format(position + 1).replaceAll("\\.00", ""));
+				minPriceValue = position + 1;
+				maxPriceValue = selectedOffer.getFullPrice() * (position + 1) * 2;
+				int range = maxPriceValue - (position + 1);
+				medianPriceValue = (range / 2) + position + 1;
 
-				int maxValue = selectedOffer.getFullPrice() * (position + 1) * 2;
-				int range = maxValue - (position + 1);
-				int medianValue = (range / 2) + position + 1;
-
-				medianPrice.setText(NumberFormat.getCurrencyInstance().format(medianValue).replaceAll("\\.00", ""));
-				maxPrice.setText(NumberFormat.getCurrencyInstance().format(maxValue).replaceAll("\\.00", ""));
+				minPrice.setText(NumberFormat.getCurrencyInstance().format(minPriceValue).replaceAll("\\.00", ""));
+				medianPrice.setText(NumberFormat.getCurrencyInstance().format(medianPriceValue).replaceAll("\\.00", ""));
+				maxPrice.setText(NumberFormat.getCurrencyInstance().format(maxPriceValue).replaceAll("\\.00", ""));
 				setPrices();
 			}
 
@@ -149,6 +173,7 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
 			{
+				selectedDifferentCharity = true;
 				selectedCharity = app.charities.get(position);
 			}
 
@@ -168,6 +193,8 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
 			{
+				if (fromUser)
+					BuyFragment.this.adjustedSlider = true;
 				setPrices();
 			}
 
@@ -195,6 +222,23 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
+				if (selectedDifferentOffer)
+					MP.track(mixpanel, "Selected Different Offer");
+				if (selectedDifferentCharity)
+					MP.track(mixpanel, "Selected Different Charity");
+				if (adjustedSlider)
+					MP.track(mixpanel, "Adjusted Slider");
+				if (priceValue == minPriceValue)
+					MP.track(mixpanel, "Buying Voucher", "Price", "Minimum Price");
+				else if (priceValue < medianPriceValue)
+					MP.track(mixpanel, "Buying Voucher", "Price", "Between Minimum and Regular Price");
+				else if (priceValue == medianPriceValue)
+					MP.track(mixpanel, "Buying Voucher", "Price", "Regular Price");
+				else if (priceValue < maxPriceValue)
+					MP.track(mixpanel, "Buying Voucher", "Price", "Between Regular and Double Price");
+				else
+					MP.track(mixpanel, "Buying Voucher", "Price", "Double Price");
+
 				PayPalPayment voucherPayment = new PayPalPayment(new BigDecimal(priceValue), "USD", "Food Circles");
 
 				Intent intent = new Intent(getActivity(), PaymentActivity.class);
@@ -214,6 +258,7 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
+				BuyFragment.this.adjustedSlider = true;
 				seekBar.setProgress(0);
 				setPrices();
 			}
@@ -224,6 +269,7 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
+				BuyFragment.this.adjustedSlider = true;
 				seekBar.setProgress(seekBar.getMax() / 2);
 				setPrices();
 			}
@@ -234,6 +280,7 @@ public class BuyFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
+				BuyFragment.this.adjustedSlider = true;
 				seekBar.setProgress(seekBar.getMax());
 				setPrices();
 			}
@@ -273,6 +320,7 @@ public class BuyFragment extends Fragment
 	{
 		if (resultCode == Activity.RESULT_OK)
 		{
+			MP.track(mixpanel, "Successful Payment");
 			PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 			if (confirm != null)
 			{

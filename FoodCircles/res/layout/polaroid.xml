@@ -9,11 +9,11 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="2dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:src="@drawable/polshadow"
-        android:layout_margin="2dp" />
+        android:src="@drawable/polshadow" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,12 +39,12 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
-            android:paddingTop="2dp"
+            android:layout_margin="2dp"
+            android:paddingBottom="3dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:paddingBottom="3dp"
-        android:layout_margin="2dp" >
+            android:paddingTop="2dp"
+            android:visibility="visible" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,10 +60,10 @@
                     android:layout_gravity="center"
                     android:ellipsize="start"
                     android:gravity="center"
+                    android:maxLines="1"
                     android:tag="neu"
                     android:text="TWO BEARD&apos;S DELI"
                     android:textAllCaps="true"
-                    android:maxLines="1"
                     android:textAppearance="?android:attr/textAppearance"
                     android:textColor="@color/dark_font"
                     android:textStyle="bold" />
@@ -120,28 +120,64 @@
             android:gravity="center"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView2"
+            <android.support.v7.widget.Space
+                android:id="@+id/space1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:lineSpacingMultiplier=".9"
-                android:tag="rob"
-                android:text="10"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:layout_height="0dp"
+                android:layout_weight="16" />
 
-            <TextView
-                android:id="@+id/textView3"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="200" >
+
+                <android.support.v7.widget.Space
+                    android:id="@+id/space1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="16" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="200"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:tag="rob"
+                        android:paddingTop="2dp"
+                        android:layout_marginBottom="-2dp"
+                        android:text="10"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:layout_marginTop="-2dp"
+                        android:paddingBottom="2dp"
+                        android:tag="rob"
+                        android:text="left"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.Space
+                android:id="@+id/space1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:lineSpacingMultiplier=".9"
-                android:tag="rob"
-                android:text="left"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
+                android:layout_height="0dp"
+                android:layout_weight="16" />
         </LinearLayout>
     </FrameLayout>
 

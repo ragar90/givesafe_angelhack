@@ -1,5 +1,8 @@
 <resources>
 
     <string name="app_name">FoodCircles</string>
-
+    <string name="mixpanel_token">a7f79aaa98013376271cb811ec95ff99</string>
+    
+    <string name="preferences">pref</string>
+    <string name="last_notification">notification</string>
 </resources>

@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 public class VenueProfileFragment extends Fragment implements OnClickListener, OnMarkerClickListener, OnMapClickListener, OnInfoWindowClickListener
 {
@@ -39,6 +40,22 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 
 	GoogleMap map;
 	MarkerOptions destinationMarker;
+
+	MixpanelAPI mixpanel;
+
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		mixpanel = MixpanelAPI.getInstance(getActivity(), getResources().getString(R.string.mixpanel_token));
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		mixpanel.flush();
+		super.onDestroy();
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -58,6 +75,7 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 			@Override
 			public void onClick(View v)
 			{
+				MP.track(mixpanel, "Clicked Call");
 				Intent intent = new Intent(Intent.ACTION_DIAL);
 				intent.setData(Uri.parse("tel:" + venue.getPhone()));
 				startActivity(intent);
@@ -69,6 +87,43 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 			@Override
 			public void onClick(View v)
 			{
+				MP.track(mixpanel, "Clicked Website");
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(venue.getWeb()));
+				startActivity(i);
+			}
+		});
+
+		((ImageButton) view.findViewById(R.id.imageViewFacebook)).setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				MP.track(mixpanel, "Clicked Facebook");
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(venue.getWeb()));
+				startActivity(i);
+			}
+		});
+
+		((ImageButton) view.findViewById(R.id.imageViewTwitter)).setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				MP.track(mixpanel, "Clicked Twitter");
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(venue.getWeb()));
+				startActivity(i);
+			}
+		});
+
+		((ImageButton) view.findViewById(R.id.imageViewYelp)).setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				MP.track(mixpanel, "Clicked Yelp");
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(venue.getWeb()));
 				startActivity(i);
@@ -82,7 +137,8 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 			map = mySupportMapFragment.getMap();
 
 			MapsInitializer.initialize(getActivity());
-			LatLng destinationLatLng = new LatLng(venue.getLatitude(), venue.getLongitude());
+			// TODO: This is backwards! But so is the server at the moment...
+			LatLng destinationLatLng = new LatLng(venue.getLongitude(), venue.getLatitude());
 			destinationMarker = new MarkerOptions();
 
 			destinationMarker = destinationMarker.position(destinationLatLng);
@@ -128,6 +184,7 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 	@Override
 	public boolean onMarkerClick(Marker marker)
 	{
+		MP.track(mixpanel, "Clicked Map");
 		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?daddr=" + venue.getAddress()));
 		intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
 		startActivity(intent);

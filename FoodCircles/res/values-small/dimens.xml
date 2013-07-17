@@ -34,7 +34,7 @@
     <dimen name="signup_powerful_text">10sp</dimen>
     <dimen name="signup_small_text">15sp</dimen>
     <dimen name="signup_smaller_text">12sp</dimen>
-    <dimen name="signup_message_height">40dp</dimen>
+    <dimen name="signup_message_height">50dp</dimen>
     
     <dimen name="profile_large_text">16sp</dimen>
     <dimen name="profile_small_text">12sp</dimen>
@@ -56,4 +56,7 @@
     
     <dimen name="standard_button_height">40dp</dimen>
     <dimen name="standard_button_text">14sp</dimen>
+    
+    <dimen name="wantthis_button_height">50dp</dimen>
+    <dimen name="wantthis_button_text">18sp</dimen>
 </resources>

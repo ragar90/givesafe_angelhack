@@ -29,7 +29,7 @@
             android:paddingLeft="11dp"
             android:tag="rob"
             android:text="04/22"
-            android:textColor="@color/secondary_text"
+            android:textColor="@color/timeline_date_text"
             android:textSize="@dimen/timeline_date" />
 
             <TextView
@@ -77,7 +77,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
-        android:background="@drawable/supercoolshadowedtimeline"
+        android:background="@drawable/timeline_tile"
         android:gravity="center_vertical"
         android:orientation="vertical" >
 
@@ -85,6 +85,7 @@
             android:id="@+id/textViewVenue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
             android:tag="rob"
             android:text="STELLA&apos;S LOUNGE"
             android:textColor="@color/dark_font"
@@ -92,20 +93,22 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp" >
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_marginRight="2dp"
                 android:adjustViewBounds="true"
+                android:scaleType="fitStart"
                 android:src="@drawable/kid_icon" />
 
             <TextView
                 android:id="@+id/textViewChildrenFed"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:includeFontPadding="false"
                 android:tag="rob"

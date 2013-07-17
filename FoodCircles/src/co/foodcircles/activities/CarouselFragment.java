@@ -12,8 +12,26 @@ import android.widget.ImageView;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 public class CarouselFragment extends Fragment
 {
+	MixpanelAPI mixpanel;
+
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		mixpanel = MixpanelAPI.getInstance(getActivity(), getResources().getString(R.string.mixpanel_token));
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		mixpanel.flush();
+		super.onDestroy();
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -25,6 +43,7 @@ public class CarouselFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
+				MP.track(mixpanel, "Shared Via Facebook", "activity", "News");
 				String url = "https://twitter.com/intent/tweet?source=webclient&text=TWEET+THIS!";
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
@@ -37,6 +56,7 @@ public class CarouselFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
+				MP.track(mixpanel, "Shared Via Twitter", "activity", "News");
 				String url = "https://twitter.com/intent/tweet?source=webclient&text=Food+Circles+twitter+copy";
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));

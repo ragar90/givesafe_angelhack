@@ -2,8 +2,8 @@ package co.foodcircles.activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
-import android.graphics.Paint;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -19,9 +19,27 @@ import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.util.C;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 public class ViewVoucherActivity extends FragmentActivity
 {
 	Button markAsUsedButton;
+
+	MixpanelAPI mixpanel;
+
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		mixpanel = MixpanelAPI.getInstance(this, getResources().getString(R.string.mixpanel_token));
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		mixpanel.flush();
+		super.onDestroy();
+	}
 
 	@SuppressLint("NewApi")
 	@Override
@@ -56,8 +74,16 @@ public class ViewVoucherActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
+				MP.track(mixpanel, "Voucher", "Clicked mark as used");
 				AlertDialog.Builder builder = new AlertDialog.Builder(ViewVoucherActivity.this);
-				builder.setMessage("Are you sure?").setPositiveButton("Yes", null).setNegativeButton("No", null).show();
+				builder.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						MP.track(mixpanel, "Voucher", "Marked as used");
+					}
+				}).setNegativeButton("No", null).show();
 			}
 		});
 
