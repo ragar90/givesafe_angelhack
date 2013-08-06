@@ -34,7 +34,7 @@ import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Charity;
 import co.foodcircles.json.Offer;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -84,7 +84,7 @@ public class BuyFragment extends Fragment
 		View view;
 
 		view = inflater.inflate(R.layout.buy_options, null);
-		C.overrideFonts(getActivity(), view);
+		FontSetter.overrideFonts(getActivity(), view);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class C
+public class FontSetter
 {
 	public static Typeface font;
 	public static Typeface boldFont;

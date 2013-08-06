@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import co.foodcircles.R;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 
 public class AccountOptionsFragment extends Fragment
 {
@@ -37,7 +37,7 @@ public class AccountOptionsFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.options, null);
-		C.overrideFonts(getActivity(), view);
+		FontSetter.overrideFonts(getActivity(), view);
 
 		TextView textViewName = (TextView) view.findViewById(R.id.textViewName);
 		textViewName.setOnClickListener(new OnClickListener()

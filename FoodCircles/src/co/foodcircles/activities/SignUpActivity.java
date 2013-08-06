@@ -25,7 +25,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.services.AlarmReceiver;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -60,7 +60,7 @@ public class SignUpActivity extends Activity
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.signup);
-		C.overrideFonts(this, findViewById(R.id.root));
+		FontSetter.overrideFonts(this, findViewById(R.id.root));
 
 		FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
 		app.addPoppableActivity(this);

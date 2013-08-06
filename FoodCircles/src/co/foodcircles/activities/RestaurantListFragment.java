@@ -25,7 +25,7 @@ import co.foodcircles.R;
 import co.foodcircles.json.Charity;
 import co.foodcircles.json.Venue;
 import co.foodcircles.net.Net;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -65,7 +65,7 @@ public class RestaurantListFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.polaroid_grid, null);
-		C.overrideFonts(getActivity(), view);
+		FontSetter.overrideFonts(getActivity(), view);
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 
@@ -191,7 +191,7 @@ public class RestaurantListFragment extends Fragment
 			if (convertView == null)
 			{
 				view = getActivity().getLayoutInflater().inflate(R.layout.polaroid, parent, false);
-				C.overrideFonts(parent.getContext(), view);
+				FontSetter.overrideFonts(parent.getContext(), view);
 				holder = new ViewHolder();
 				holder.logo = (ImageView) view.findViewById(R.id.imageViewLogo);
 				holder.name = (TextView) view.findViewById(R.id.textViewName);

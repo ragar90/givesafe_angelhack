@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import co.foodcircles.R;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
@@ -36,7 +36,7 @@ public class CarouselFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.carousel, null);
-		C.overrideFonts(getActivity(), view);
+		FontSetter.overrideFonts(getActivity(), view);
 
 		((ImageView) view.findViewById(R.id.imageViewFacebook)).setOnClickListener(new OnClickListener()
 		{

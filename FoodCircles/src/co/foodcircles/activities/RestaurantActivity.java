@@ -11,7 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Window;
 import co.foodcircles.R;
 import co.foodcircles.json.Venue;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 import com.viewpagerindicator.TabPageIndicator;
@@ -37,7 +37,7 @@ public class RestaurantActivity extends FragmentActivity {
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
 
-		C.overrideFonts(this, findViewById(R.id.root));
+		FontSetter.overrideFonts(this, findViewById(R.id.root));
     }
 
     class GoogleMusicAdapter extends FragmentPagerAdapter {

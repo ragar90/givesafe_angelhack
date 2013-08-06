@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Window;
 import co.foodcircles.R;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 import com.viewpagerindicator.TabPageIndicator;
@@ -35,7 +35,7 @@ public class MainActivity extends FragmentActivity
 
 		pager.setCurrentItem(getIntent().getIntExtra("tab", 0));
 
-		C.overrideFonts(this, findViewById(R.id.root));
+		FontSetter.overrideFonts(this, findViewById(R.id.root));
 	}
 
 	@Override

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import co.foodcircles.R;
 import co.foodcircles.json.Offer;
 import co.foodcircles.json.Venue;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class VenueItemFragment extends Fragment
@@ -27,7 +27,7 @@ public class VenueItemFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.venue_profile, null);
-		C.overrideFonts(getActivity(), view);
+		FontSetter.overrideFonts(getActivity(), view);
 
 		itemImage = (ImageView) view.findViewById(R.id.imageView);
 		itemName = (TextView) view.findViewById(R.id.textViewItemName);

@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.foodcircles.R;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
@@ -48,7 +48,7 @@ public class ViewVoucherActivity extends FragmentActivity
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.voucher_receipt);
-		C.overrideFonts(this, findViewById(R.id.root));
+		FontSetter.overrideFonts(this, findViewById(R.id.root));
 
 		View teeth = findViewById(R.id.viewTiledTeeth);
 		BitmapDrawable teethDrawable = new BitmapDrawable(getResources(), BitmapFactory.decodeResource(getResources(), R.drawable.receipt_tooth));

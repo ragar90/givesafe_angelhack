@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import co.foodcircles.R;
 import co.foodcircles.json.Reservation;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class TimelineFragment extends ListFragment
@@ -50,7 +50,7 @@ public class TimelineFragment extends ListFragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = getActivity().getLayoutInflater().inflate(R.layout.timeline_list, null);
-		C.overrideFonts(getActivity(), view);
+		FontSetter.overrideFonts(getActivity(), view);
 
 		try
 		{
@@ -221,7 +221,7 @@ public class TimelineFragment extends ListFragment
 				{
 					case YOU_AND_FRIENDS_TYPE:
 						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_top_row, parent, false);
-						C.overrideFonts(parent.getContext(), view);
+						FontSetter.overrideFonts(parent.getContext(), view);
 						holder = new TimelineHolder();
 						holder.me = (TextView) view.findViewById(R.id.textViewMe);
 						holder.friends = (TextView) view.findViewById(R.id.textViewFriends);
@@ -239,7 +239,7 @@ public class TimelineFragment extends ListFragment
 						break;
 					case VOUCHER_TYPE:
 						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_row, parent, false);
-						C.overrideFonts(parent.getContext(), view);
+						FontSetter.overrideFonts(parent.getContext(), view);
 						holder = new TimelineHolder();
 						holder.date = (TextView) view.findViewById(R.id.textViewDate);
 						holder.venue = (TextView) view.findViewById(R.id.textViewVenue);
@@ -248,7 +248,7 @@ public class TimelineFragment extends ListFragment
 						break;
 					case EXPIRING_VOUCHER_TYPE:
 						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_row_expiring, parent, false);
-						C.overrideFonts(parent.getContext(), view);
+						FontSetter.overrideFonts(parent.getContext(), view);
 						holder = new TimelineHolder();
 						holder.date = (TextView) view.findViewById(R.id.textViewDate);
 						holder.venue = (TextView) view.findViewById(R.id.textViewVenue);
@@ -257,7 +257,7 @@ public class TimelineFragment extends ListFragment
 						break;
 					case USED_VOUCHER_TYPE:
 						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_row_used, parent, false);
-						C.overrideFonts(parent.getContext(), view);
+						FontSetter.overrideFonts(parent.getContext(), view);
 						holder = new TimelineHolder();
 						holder.date = (TextView) view.findViewById(R.id.textViewDate);
 						holder.venue = (TextView) view.findViewById(R.id.textViewVenue);
@@ -266,7 +266,7 @@ public class TimelineFragment extends ListFragment
 						break;
 					case FRIEND_TYPE:
 						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_row_friend, parent, false);
-						C.overrideFonts(parent.getContext(), view);
+						FontSetter.overrideFonts(parent.getContext(), view);
 						holder = new TimelineHolder();
 						holder.date = (TextView) view.findViewById(R.id.textViewDate);
 						holder.venue = (TextView) view.findViewById(R.id.textViewVenue);
@@ -277,7 +277,7 @@ public class TimelineFragment extends ListFragment
 						break;
 					case MONTH_TYPE:
 						view = getActivity().getLayoutInflater().inflate(R.layout.timeline_row_month, parent, false);
-						C.overrideFonts(parent.getContext(), view);
+						FontSetter.overrideFonts(parent.getContext(), view);
 						holder = new TimelineHolder();
 						holder.month = (TextView) view.findViewById(R.id.textViewMonth);
 						holder.year = (TextView) view.findViewById(R.id.textViewYear);

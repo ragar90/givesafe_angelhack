@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.foodcircles.R;
-import co.foodcircles.util.C;
+import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
 public class ReceiptDialogFragment extends DialogFragment
@@ -35,7 +35,7 @@ public class ReceiptDialogFragment extends DialogFragment
 		this.getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 		View v = inflater.inflate(R.layout.voucher_receipt, container, false);
-		C.overrideFonts(getActivity(), v.findViewById(R.id.root));
+		FontSetter.overrideFonts(getActivity(), v.findViewById(R.id.root));
 		
 		final FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
 
