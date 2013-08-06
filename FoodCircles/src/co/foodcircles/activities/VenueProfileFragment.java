@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import co.foodcircles.R;
@@ -94,7 +94,7 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 			}
 		});
 
-		((ImageButton) view.findViewById(R.id.imageViewFacebook)).setOnClickListener(new OnClickListener()
+		((ImageView) view.findViewById(R.id.imageViewFacebook)).setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -106,7 +106,7 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 			}
 		});
 
-		((ImageButton) view.findViewById(R.id.imageViewTwitter)).setOnClickListener(new OnClickListener()
+		((ImageView) view.findViewById(R.id.imageViewTwitter)).setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -118,7 +118,7 @@ public class VenueProfileFragment extends Fragment implements OnClickListener, O
 			}
 		});
 
-		((ImageButton) view.findViewById(R.id.imageViewYelp)).setOnClickListener(new OnClickListener()
+		((ImageView) view.findViewById(R.id.imageViewYelp)).setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)

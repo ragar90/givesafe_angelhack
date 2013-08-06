@@ -24,7 +24,7 @@ public class RestaurantActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.simple_tabs);
-        
+
         FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
         Venue selectedVenue = app.selectedVenue;
         CONTENT[0] = selectedVenue.getName().toUpperCase(Locale.getDefault());
