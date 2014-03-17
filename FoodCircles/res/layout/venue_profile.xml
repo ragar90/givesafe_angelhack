@@ -28,10 +28,10 @@
                     <ImageView
                         android:id="@+id/imageView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="210dp"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/fries" />
+                        />
 
                     <TextView
                         android:id="@+id/textViewPrice"

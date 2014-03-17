@@ -32,7 +32,7 @@
     
     
     <dimen name="receipt_code_text">80sp</dimen>
-    <dimen name="receipt_large_text">50sp</dimen>
+    <dimen name="receipt_large_text">48sp</dimen>
     <dimen name="receipt_medium_text">40sp</dimen>
     <dimen name="receipt_small_text">30sp</dimen>
     <dimen name="receipt_social_height">40dp</dimen>
@@ -45,7 +45,7 @@
     <dimen name="signup_large_text">45sp</dimen>
     <dimen name="signup_powerful_text">15sp</dimen>
     <dimen name="signup_small_text">30sp</dimen>
-    <dimen name="signup_small_text">25sp</dimen>
+    <!-- dimen name="signup_small_text">25sp</dimen-->
     <dimen name="signup_message_height">80dp</dimen>
     
     <dimen name="profile_large_text">30sp</dimen>

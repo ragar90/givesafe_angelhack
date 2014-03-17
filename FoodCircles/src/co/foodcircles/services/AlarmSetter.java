@@ -7,15 +7,18 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 public class AlarmSetter extends BroadcastReceiver
 {
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
+		Log.i("AlarmSetter","onReceive");
 		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.DAY_OF_WEEK, 5);
 		calendar.set(Calendar.HOUR_OF_DAY, 16);
-		calendar.set(Calendar.MINUTE, 30);
+		calendar.set(Calendar.MINUTE, 00);
 		calendar.set(Calendar.SECOND, 00);
 
 		Intent alarmIntent = new Intent(context, AlarmReceiver.class);

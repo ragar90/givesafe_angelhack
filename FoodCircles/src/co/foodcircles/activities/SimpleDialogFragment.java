@@ -23,7 +23,6 @@ public class SimpleDialogFragment extends DialogFragment
 		titleTextView.setText(titleText);
 		TextView messageTextView = (TextView) v.findViewById(R.id.textViewMessage);
 		messageTextView.setText(messageText);
-
 		return v;
 	}
 	

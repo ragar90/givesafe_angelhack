@@ -25,13 +25,14 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:tag="neu"
+                android:singleLine="true"
                 android:text="2 free appetizers"
                 android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_large_text"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewLeft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/yellow_circle"
@@ -88,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:tag="rob"
+                android:singleLine="true"
                 android:text="(min. group 4, use by 6/15/13)"
                 android:textColor="@color/dark_font"
                 android:textSize="@dimen/receipt_small_text" />

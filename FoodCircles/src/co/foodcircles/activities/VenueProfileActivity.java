@@ -13,7 +13,6 @@ public class VenueProfileActivity extends FragmentActivity
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.account_options_activity);
-
 		VenueProfileFragment venueProfileFragment = new VenueProfileFragment();
 		venueProfileFragment.setArguments(getIntent().getExtras());
 		getSupportFragmentManager().beginTransaction().add(R.id.fragment1, venueProfileFragment).commit();

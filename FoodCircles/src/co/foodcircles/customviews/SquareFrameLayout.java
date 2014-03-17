@@ -27,6 +27,8 @@ public class SquareFrameLayout extends FrameLayout
 	@Override
 	public void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
 	{
+		
 		super.onMeasure(widthMeasureSpec, widthMeasureSpec);
+		
 	}
 }

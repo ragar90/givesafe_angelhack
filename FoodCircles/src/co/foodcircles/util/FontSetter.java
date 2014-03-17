@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class FontSetter
@@ -14,7 +12,6 @@ public class FontSetter
 	public static Typeface boldFont;
 	public static Typeface italicFont;
 	public static Typeface boldItalicFont;
-
 	public static Typeface sysFont;
 	public static Typeface sysBoldFont;
 	public static Typeface sysItalicFont;
@@ -39,14 +36,9 @@ public class FontSetter
 	public static void overrideFonts(final Context context, final View v)
 	{
 		initFonts(context);
-
 		try
 		{
-			if (v == null)
-			{
-				return;
-			}
-
+			if (v == null) return;
 			if (v instanceof ViewGroup)
 			{
 				ViewGroup vg = (ViewGroup) v;
@@ -59,19 +51,14 @@ public class FontSetter
 			else if ((v instanceof TextView || (v.getClass().getSimpleName().equals("TabView"))))
 			{
 				TextView textView = (TextView) v;
-
 				if ((v.getClass().getSimpleName().equals("TabView")) || ((v.getTag() != null) && ((String) v.getTag()).equals("neu")))
 				{
 					Typeface newFont = font;
-
 					if (textView.getTypeface() != null)
 					{
 						if (textView.getTypeface().isBold())
 						{
-							if (textView.getTypeface().isItalic())
-								newFont = boldItalicFont;
-							else
-								newFont = boldFont;
+							newFont = (textView.getTypeface().isItalic()) ? boldItalicFont : boldFont;
 						}
 						else
 						{
@@ -85,15 +72,11 @@ public class FontSetter
 				else if ((v.getTag() != null) && ((String) v.getTag()).equals("rob"))
 				{
 					Typeface newFont = sysFont;
-
 					if (textView.getTypeface() != null)
 					{
 						if (textView.getTypeface().isBold())
 						{
-							if (textView.getTypeface().isItalic())
-								newFont = sysBoldItalicFont;
-							else
-								newFont = sysBoldFont;
+							newFont = (textView.getTypeface().isItalic()) ? boldItalicFont : boldFont;
 						}
 						else
 						{

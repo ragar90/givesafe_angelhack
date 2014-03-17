@@ -73,7 +73,7 @@
                     android:layout_weight="1" >
 
                     <Button
-                        android:id="@+id/buttonFacebook"
+                        android:id="@+id/buttonFacebookI"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/standard_button_height"
                         android:background="@drawable/facebook_button_selector"
@@ -121,7 +121,7 @@
                     android:layout_weight="1" >
 
                     <Button
-                        android:id="@+id/buttonTwitter"
+                        android:id="@+id/buttonTwitterI"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/standard_button_height"
                         android:background="@drawable/twitter_button_selector"
@@ -195,7 +195,13 @@
                 android:text="Sign In"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/standard_button_text" />
-
+<TextView
+    android:id="@+id/forgotpassword"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:text="@string/forgotpass"/>
             <android.support.v7.widget.Space
                 android:id="@+id/space3"
                 android:layout_width="wrap_content"

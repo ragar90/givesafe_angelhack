@@ -126,7 +126,8 @@
                     android:layout_marginRight="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    android:src="@drawable/kid_icon_yellow" />
+                    android:src="@drawable/kid_icon_yellow"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/textViewChildrenFed"
@@ -137,7 +138,8 @@
                     android:text="1"
                     android:textColor="@color/yellow_circle"
                     android:textSize="@dimen/timeline_children_fed"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
             </LinearLayout>
         </LinearLayout>

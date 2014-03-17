@@ -19,7 +19,6 @@
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
             android:src="@drawable/gear" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -49,7 +48,8 @@
         android:tag="rob"
         android:text="You"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/dark_font" />
+        android:textColor="@color/dark_font"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/textViewMe"
@@ -59,7 +59,8 @@
         android:text="12"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/blue_text"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/textView3"
@@ -69,7 +70,8 @@
         android:tag="rob"
         android:text=" Friends"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/dark_font" />
+        android:textColor="@color/dark_font"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/textViewFriends"
@@ -79,6 +81,27 @@
         android:text="31"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/yellow_circle"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:tag="rob"
+        android:text="Kids Fed"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/dark_font" />
+
+    <TextView
+        android:id="@+id/textViewKidsFed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/blue_text"
         android:textStyle="bold" />
 
 </LinearLayout>

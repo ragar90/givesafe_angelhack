@@ -17,15 +17,10 @@ public class BuyOptionsActivity extends FragmentActivity
 		super.onCreate(savedInstanceState);
 
 		Intent intent = new Intent(this, PayPalService.class);
-
-		// live: don't put any environment extra
-		// sandbox: use PaymentActivity.ENVIRONMENT_SANDBOX
 		intent.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, PaymentActivity.ENVIRONMENT_NO_NETWORK);
 		intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, "<YOUR_CLIENT_ID>");
-
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.buy_options_activity);
-
 		BuyFragment buyFragment = new BuyFragment();
 		buyFragment.setArguments(getIntent().getExtras());
 		getSupportFragmentManager().beginTransaction().add(R.id.fragment1, buyFragment).commit();

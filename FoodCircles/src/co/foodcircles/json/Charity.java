@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import co.foodcircles.util.AndroidUtils;
+
 public class Charity
 {
 	public int id;
@@ -33,13 +35,13 @@ public class Charity
 	{
 		JSONObject json = new JSONObject(jsonString);
 
-		id = json.getInt("id");
-		name = json.getString("name");
-		address = json.getString("address");
-		city = json.getString("city");
-		state = json.getString("state");
-		description = json.getString("description");
-		imageUrl = json.getString("image");
+		id = AndroidUtils.safelyGetJsonInt(json,"id");
+		name = AndroidUtils.safelyGetJsonString(json,"name");
+		address = AndroidUtils.safelyGetJsonString(json,"address");
+		city = AndroidUtils.safelyGetJsonString(json,"city");
+		state = AndroidUtils.safelyGetJsonString(json,"state");
+		description = AndroidUtils.safelyGetJsonString(json,"description");
+		imageUrl = AndroidUtils.safelyGetJsonString(json,"image");
 	}
 
 	public Charity(int id, String name, String address, String city, String state, String zip, String description, String imageUrl)

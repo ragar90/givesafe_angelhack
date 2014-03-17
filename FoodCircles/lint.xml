@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="MissingTranslation" severity="ignore" />
+    <issue id="NewApi">
+        <ignore path="src/co/foodcircles/activities/ReceiptDialogFragment.java" />
+    </issue>
+    <issue id="SimpleDateFormat">
+        <ignore path="src/co/foodcircles/activities/ReceiptDialogFragment.java" />
+    </issue>
 </lint>

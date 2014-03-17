@@ -144,7 +144,7 @@
                         android:layout_weight="1" >
 
                         <Button
-                            android:id="@+id/buttonFacebook"
+                            android:id="@+id/buttonFacebookU"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/standard_button_height"
                             android:background="@drawable/facebook_button_selector"
@@ -192,7 +192,7 @@
                         android:layout_weight="1" >
 
                         <Button
-                            android:id="@+id/buttonTwitter"
+                            android:id="@+id/buttonTwitterU"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/standard_button_height"
                             android:background="@drawable/twitter_button_selector"
@@ -255,6 +255,7 @@
                     android:inputType="textPassword"
                     android:tag="rob"
                     android:textColorHint="@color/secondary_text" />
+                
 
                 <Button
                     android:id="@+id/buttonSignUp"

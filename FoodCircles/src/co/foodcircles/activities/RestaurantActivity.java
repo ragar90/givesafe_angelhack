@@ -24,24 +24,19 @@ public class RestaurantActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.simple_tabs);
-
         FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
         Venue selectedVenue = app.selectedVenue;
         CONTENT[0] = selectedVenue.getName().toUpperCase(Locale.getDefault());
-
-        FragmentPagerAdapter adapter = new GoogleMusicAdapter(getSupportFragmentManager());
-
+        FragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         ViewPager pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
-
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
-
 		FontSetter.overrideFonts(this, findViewById(R.id.root));
     }
 
-    class GoogleMusicAdapter extends FragmentPagerAdapter {
-        public GoogleMusicAdapter(FragmentManager fm) {
+    class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+        public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
