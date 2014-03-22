@@ -53,7 +53,7 @@ public class TwitterDialog extends Dialog {
 	@SuppressLint("SetJavaScriptEnabled")
 	private void setUpWebView() {
 		
-	   WebView mWebView;
+		WebView mWebView;
 		mWebView = new WebView(getContext());
 	    LinearLayout mContent;
 		mContent = new LinearLayout(getContext());
@@ -136,4 +136,5 @@ public class TwitterDialog extends Dialog {
 		}
 
 	}
+	
 }

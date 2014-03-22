@@ -1,7 +1,6 @@
 package co.foodcircles.util;
 
 import twitter4j.Twitter;
-import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
@@ -24,6 +23,7 @@ public class TwitterLogin {
 	public TwDialogListener mListener;
 	public static String twitter_uid;
 	Context mcontext;
+	private boolean onCompleteCalled;
 	public TwitterLogin(Context context){
 		this.mcontext = context;
 	}
@@ -32,6 +32,7 @@ public class TwitterLogin {
 		Thread t = new Thread() {
 			public void run() {
 				try {
+					onCompleteCalled = false;
 					ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 					configurationBuilder
 							.setOAuthConsumerKey(Const.CONSUMER_KEY);
@@ -39,13 +40,9 @@ public class TwitterLogin {
 							.setOAuthConsumerSecret(Const.CONSUMER_SECRET);
 					Configuration configuration = configurationBuilder.build();
 					twitter = new TwitterFactory(configuration).getInstance();
-					requestToken = twitter.getOAuthRequestToken();
+					requestToken = twitter.getOAuthRequestToken(Const.CALLBACK_URL);
 					twitterMsgkHandler.sendEmptyMessage(0);
-				} catch (TwitterException e) {
-					e.printStackTrace();
-				}catch (NullPointerException e) {
-					e.printStackTrace();
-				}catch (Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -74,13 +71,16 @@ public class TwitterLogin {
 		final TwDialogListener listener = new TwDialogListener() {
 			@Override
 			public void onComplete(String value) {
-				processToken(value);
+				if (onCompleteCalled == false) {
+					processToken(value);
+					onCompleteCalled = true;
+				}
 			}
 
 			@Override
 			public void onError(String value) {
 				try{
-				mListener.onError("Failed opening authorization page");
+					mListener.onError("Failed opening authorization page");
 				}catch (NullPointerException e) {
 					e.printStackTrace();
 				}catch (Exception e) {
@@ -112,9 +112,7 @@ public class TwitterLogin {
 							FoodCirclesUtils.saveToken(mcontext,token);
 							gotoSignedInPage();
 						}
-					} catch (NullPointerException e) {
-						e.printStackTrace();
-					}catch (Exception e) {
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}

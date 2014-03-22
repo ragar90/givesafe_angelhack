@@ -98,14 +98,14 @@ public class AlarmReceiver extends BroadcastReceiver
 									if(offer.getMinDiners()==2) deal=offer.getTitle();
 								}
 								MP.track(mixpanel, "Notification", "Geo notification displayed");
-								makeNotification(context, "You're near " + name +"!", "Grab "+ deal +" for a 1$.  Your $1 provides one child dinner!");
+								makeNotification(context, name + " is close by!", deal +" for just $1!");
 								setNotifiedTime(context);
 								
 							}
 							else 
 							{
 								MP.track(mixpanel, "Notification", "Generic notification displayed");
-								makeNotification(context, "Hungry?Grab a dish on us", "Feed 1 child in need for each $1 spent.");
+								makeNotification(context, "Your hunger is powerful", "Feed a child for $1.");
 								setNotifiedTime(context);
 							}
 						}
@@ -114,7 +114,7 @@ public class AlarmReceiver extends BroadcastReceiver
 				else if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)
 				{
 					MP.track(mixpanel, "Notification", "Generic notification displayed");
-					makeNotification(context, "I don't know, what do you want to eat?", "Know what to say. Grab a 'Buy One, Feed One' special.");
+					makeNotification(context, "Your hunger is powerful", "Feed a child for $1.");
 					setNotifiedTime(context);
 				}
 			} catch (Exception e) {
@@ -125,7 +125,6 @@ public class AlarmReceiver extends BroadcastReceiver
 
 	public void makeNotification(Context context, String title, String message)
 	{
-		Log.v("NotificationService", "Making notification: " + title + " :: " + message);
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context).setSmallIcon(R.drawable.logo).setContentTitle(title).setContentText(message);
 		mBuilder.setSmallIcon(R.drawable.ic_stat_android_notification);
 		Intent rateIntent = new Intent(context, SignInActivity.class);
