@@ -19,7 +19,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import co.foodcircles.R;
 import co.foodcircles.activities.MP;
 import co.foodcircles.activities.SignInActivity;

@@ -88,18 +88,20 @@ public class AndroidUtils {
 	}
 	
 	public static String getSharePrefferences(Context me,String name,String fieldName){
-		return getSharePrefferences( me, name, fieldName,"");
+		return getSharedPreferences( me, name, fieldName,"");
 	}
 	@SuppressWarnings("static-access")
-	public static String getSharePrefferences(Context me,String name,String fieldName,String defaultValue){
+	public static String getSharedPreferences(Context me,String name,String fieldName,String defaultValue){
 		SharedPreferences myPrefs = me.getSharedPreferences(name,  me.MODE_PRIVATE);
 		return myPrefs.getString(fieldName,defaultValue);
 	}
-	public static void saveSharePrefferences(Context me,String name,String fieldName,String value){
-		@SuppressWarnings("static-access")
-		SharedPreferences myPrefs = me.getSharedPreferences(name, me.MODE_PRIVATE);
-		SharedPreferences.Editor e = myPrefs.edit();
-		e.putString(fieldName, value).commit();
+	public static void saveSharedPreferences(Context me,String name,String fieldName,String value){
+		if (name != "") {
+			@SuppressWarnings("static-access")
+			SharedPreferences myPrefs = me.getSharedPreferences(name, me.MODE_PRIVATE);
+			SharedPreferences.Editor e = myPrefs.edit();
+			e.putString(fieldName, value).commit();
+		}
 	}
 
 	public static void clearSharePrefferences(Context me, String name, String fieldName){

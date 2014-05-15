@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import co.foodcircles.R;
 import co.foodcircles.json.Reservation;
 import co.foodcircles.net.Net;
@@ -32,11 +29,19 @@ import co.foodcircles.util.FoodCirclesApplication;
 import co.foodcircles.util.FoodCirclesUtils;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.sromku.simple.fb.Permission;
+import com.sromku.simple.fb.SimpleFacebook;
+import com.sromku.simple.fb.entities.Feed;
+import com.sromku.simple.fb.listeners.OnLoginListener;
+import com.sromku.simple.fb.listeners.OnPublishListener;
 
 public class TimelineFragment extends ListFragment {
 	private ReservationAdapter adapter;
 	private FoodCirclesApplication app;
-	MixpanelAPI mixpanel;
+	private MixpanelAPI mixpanel;
+	private SimpleFacebook mSimpleFacebook;
+	private Feed feed;
+
 
 	@Override
 	public void onStart() {
@@ -115,24 +120,16 @@ public class TimelineFragment extends ListFragment {
 		inviteFriends.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-				shareIntent.setType("text/plain");
-				shareIntent.putExtra(
-						android.content.Intent.EXTRA_TEXT,
-						"Local restaurants, a $1 dish, and $1 donated to feed a hungry child. #bofo http://www.joinfoodcircles.org");
-				PackageManager pm = v.getContext().getPackageManager();
-				List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
-				for (final ResolveInfo app : activityList) {
-					if ((app.activityInfo.name).contains("facebook")) {
-						final ActivityInfo activity = app.activityInfo;
-						final ComponentName name = new ComponentName( 
-								activity.applicationInfo.packageName, activity.name);
-						shareIntent .addCategory(Intent.CATEGORY_LAUNCHER);
-						shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-						shareIntent.setComponent(name);
-						v.getContext().startActivity(shareIntent);
-						break;
-					}
+				feed = new Feed.Builder()
+				.setMessage("Try FoodCircles!")
+				.setName("Savings with a Conscience!")
+				.setCaption("Local restaurants, a $1 dish, and $1 donated to feed a hungry child.")
+				.setDescription("#bofo: http://www.joinfoodcircles.org  @foodcircles ")
+				.setPicture(Net.logo).setLink("http://www.joinfoodcircles.org").build();
+				if (mSimpleFacebook.isLogin()){
+					mSimpleFacebook.publish(feed, true, onPublishListener);
+				} else {
+					mSimpleFacebook.login(mOnLoginListener);
 				}
 			}
 		});
@@ -358,4 +355,50 @@ public class TimelineFragment extends ListFragment {
 			return view;
 		}
 	}
+	
+	private OnLoginListener mOnLoginListener = new OnLoginListener() {
+		@Override
+		public void onFail(String reason) {
+			Toast.makeText(getActivity().getBaseContext(), "Facebook Login Failed:" + reason, Toast.LENGTH_SHORT).show();
+		}
+
+		@Override
+		public void onException(Throwable throwable) {
+			Toast.makeText(getActivity().getBaseContext(), "Whoops- we've encountered a problem!", Toast.LENGTH_SHORT).show();
+			throwable.printStackTrace();
+		}
+
+		@Override
+		public void onThinking() {
+		}
+
+		@Override
+		public void onLogin() {
+			mSimpleFacebook.publish(feed, true, onPublishListener);
+		}
+
+		@Override
+		public void onNotAcceptingPermissions(Permission.Type type) {
+			Toast.makeText(getActivity().getBaseContext(),"Facebook permissions cancelled!", Toast.LENGTH_SHORT).show();
+		}
+	};
+
+	private OnPublishListener onPublishListener = new OnPublishListener() {
+		@Override
+		public void onFail(String reason) {
+			Toast.makeText(getActivity().getBaseContext(),"Whoops! The post didn't go through!", Toast.LENGTH_SHORT).show();
+		}
+		@Override
+		public void onException(Throwable throwable) {
+			Toast.makeText(getActivity().getBaseContext(),"Whoops! The post didn't go through!", Toast.LENGTH_SHORT).show();
+		}
+		@Override
+		public void onThinking() {
+		}
+
+		@Override
+		public void onComplete(String postId) {
+			Toast.makeText(getActivity().getBaseContext(),"Thanks for sharing the word!", Toast.LENGTH_SHORT).show();
+		}
+	};
 }

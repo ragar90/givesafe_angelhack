@@ -11,23 +11,23 @@ public class FoodCirclesUtils {
 	public static final String TAG = "foodcircles";
 
 	public static void saveToken(Context me, String token) {
-		AndroidUtils.saveSharePrefferences(me, TAG, "token", token);
+		AndroidUtils.saveSharedPreferences(me, TAG, "token", token);
 	}
 
 	public static String getToken(Context me) {
-		return AndroidUtils.getSharePrefferences(me, TAG, "token", "");
+		return AndroidUtils.getSharedPreferences(me, TAG, "token", "");
 	}
 
 	public static void saveEmail(Context me, String email) {
-		AndroidUtils.saveSharePrefferences(me, TAG, "email", email);
+		AndroidUtils.saveSharedPreferences(me, TAG, "email", email);
 	}
 
 	public static String getEmail(Context me) {
-		return AndroidUtils.getSharePrefferences(me, TAG, "email", "");
+		return AndroidUtils.getSharedPreferences(me, TAG, "email", "");
 	}
 
 	public static void savePassword(Context me, String password) {
-		AndroidUtils.saveSharePrefferences(me, TAG, "password", password);
+		AndroidUtils.saveSharedPreferences(me, TAG, "password", password);
 	}
 
 	public static void clearPassword(Context me) {
@@ -35,21 +35,21 @@ public class FoodCirclesUtils {
 	}
 
 	public static String getPassword(Context me) {
-		return AndroidUtils.getSharePrefferences(me, TAG, "password", "");
+		return AndroidUtils.getSharedPreferences(me, TAG, "password", "");
 	}
 
 	public static void saveName(Context me, String name) {
-		AndroidUtils.saveSharePrefferences(me, TAG, "name", name);
+		AndroidUtils.saveSharedPreferences(me, TAG, "name", name);
 	}
 
 	public static void saveFBUserId(Context me, String name) {
-		AndroidUtils.saveSharePrefferences(me, TAG, "fbuserid", name);
+		AndroidUtils.saveSharedPreferences(me, TAG, "fbuserid", name);
 	}
 	public static String getFBUserId(Context me) {
-	return	AndroidUtils.getSharePrefferences(me, TAG, "fbuserid","");
+	return	AndroidUtils.getSharedPreferences(me, TAG, "fbuserid","");
 	}
 	public static String getName(Context me) {
-		return AndroidUtils.getSharePrefferences(me, TAG, "name", "");
+		return AndroidUtils.getSharedPreferences(me, TAG, "name", "");
 	}
 
 	public static boolean isConnectedToSocialAccounts(Context me) {
@@ -57,12 +57,12 @@ public class FoodCirclesUtils {
 	}
 
 	public static void saveIsFacebookConnected(Context me, boolean isConnected) {
-		AndroidUtils.saveSharePrefferences(me, TAG, "isfacebookconnected", ""
+		AndroidUtils.saveSharedPreferences(me, TAG, "isfacebookconnected", ""
 				+ isConnected);
 	}
 
 	public static void saveIsTwitterConnected(Context me, boolean isConnected) {
-		AndroidUtils.saveSharePrefferences(me, TAG, "istwitterconnected", ""
+		AndroidUtils.saveSharedPreferences(me, TAG, "istwitterconnected", ""
 				+ isConnected);
 	}
 	

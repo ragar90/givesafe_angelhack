@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import co.foodcircles.activities.EmailPromptsActivity;
 import co.foodcircles.activities.MainActivity;
+import co.foodcircles.activities.SignUpActivity;
 import co.foodcircles.net.Net;
 
 public class TwitterLogin {
@@ -22,10 +23,10 @@ public class TwitterLogin {
 	public boolean running = false;
 	public TwDialogListener mListener;
 	public static String twitter_uid;
-	Context mcontext;
+	Context mContext;
 	private boolean onCompleteCalled;
 	public TwitterLogin(Context context){
-		this.mcontext = context;
+		this.mContext = context;
 	}
 	
 	public void twitterSignUp() {
@@ -88,7 +89,7 @@ public class TwitterLogin {
 				}
 			}
 		};
-		new TwitterDialog(mcontext, url, listener).show();
+		new TwitterDialog(mContext, url, listener).show();
 	}
 
 	public void processToken(final String callbackUrl) {
@@ -105,11 +106,11 @@ public class TwitterLogin {
 						String s = String.valueOf(accessToken.getUserId());
 						final String token = Net.twittersignIn(s);
 						if(token.equalsIgnoreCase("Wrong uid.")){
-							Intent in = new Intent(mcontext,EmailPromptsActivity.class);
+							Intent in = new Intent(mContext,EmailPromptsActivity.class);
 							in.putExtra("UID", accessToken.getUserId());
-							mcontext.startActivity(in);
+							mContext.startActivity(in);
 						}else{
-							FoodCirclesUtils.saveToken(mcontext,token);
+							FoodCirclesUtils.saveToken(mContext, token);
 							gotoSignedInPage();
 						}
 					} catch (Exception e) {
@@ -121,8 +122,9 @@ public class TwitterLogin {
 	}
 
 	private void gotoSignedInPage() {
-		Intent intent = new Intent(mcontext, MainActivity.class);
+		Intent intent = new Intent(mContext, MainActivity.class);
 		intent.putExtra("tab", 1);
-		mcontext.startActivity(intent);
+		mContext.startActivity(intent);
+		mContext = null;
 	}
 }

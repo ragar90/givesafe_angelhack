@@ -148,7 +148,6 @@ public class EmailPromptsActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-
 	}
 
 	private void signUp(final String email, final String uid) {
@@ -162,9 +161,8 @@ public class EmailPromptsActivity extends Activity {
 						public void run() {
 							AndroidUtils.dismissProgress();
 							FoodCirclesUtils.saveToken(EmailPromptsActivity.this,token);
-							//FoodCirclesUtils.saveUId(EmailPromptsActivity.this,uid);
-							//FoodCirclesUtils.saveEmail(EmailPromptsActivity.this,email);
-					
+							FoodCirclesUtils.saveEmail(EmailPromptsActivity.this,email);
+
 							gotoSignedInPage();
 						}
 					});

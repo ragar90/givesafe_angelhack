@@ -8,6 +8,8 @@ import java.util.List;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -87,6 +89,26 @@ public class BuyFragment extends Fragment
 
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
 
+		if (FoodCirclesUtils.getToken(getActivity()).isEmpty() 
+				|| FoodCirclesUtils.getEmail(getActivity()).isEmpty() 
+				|| FoodCirclesUtils.getToken(getActivity()).equals("")) {
+			try {
+				FoodCirclesUtils.saveToken(getActivity(), Net.facebookSignUp(FoodCirclesUtils.getFBUserId(getActivity()), FoodCirclesUtils.getEmail(getActivity())));
+			} catch (NetException2 e) {
+				e.printStackTrace();	
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+				builder.setMessage("It seems we've run across a problem!  Sorry about that!  Please contact our support team at joinfoodcircles.org/ and we'll work to get it sorted out as soon as possible!")
+					.setTitle("An Error Has Occurred").setCancelable(false)
+			       .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+			    	   @Override
+			    	   public void onClick(DialogInterface dialog, int which) {
+			    		   getActivity().finish();
+			    	   }
+			       });
+				AlertDialog dialog = builder.create();
+				dialog.show();
+			}
+		}
 		final List<Offer> offers = app.selectedVenue.getOffers();
 		selectedOffer = offers.get(0);
 		selectedCharity = app.charities.get(0);
@@ -301,11 +323,6 @@ public class BuyFragment extends Fragment
 	{
 		if (resultCode == Activity.RESULT_OK)
 		{
-			if(FoodCirclesUtils.getToken(getActivity()).equals("")){
-				try {
-					FoodCirclesUtils.saveToken(getActivity(), Net.facebookSignUp(FoodCirclesUtils.getFBUserId(getActivity()), FoodCirclesUtils.getEmail(getActivity())));
-				} catch (NetException2 e) {e.printStackTrace();}	
-			}
 			MP.track(mixpanel, "Successful Payment");
 			final PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 	
