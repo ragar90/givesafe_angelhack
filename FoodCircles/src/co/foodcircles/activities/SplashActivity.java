@@ -1,5 +1,6 @@
 package co.foodcircles.activities;
 
+import com.crashlytics.android.Crashlytics;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,6 +21,7 @@ public class SplashActivity extends Activity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		Crashlytics.start(this);
 		int SDK_INT = android.os.Build.VERSION.SDK_INT;
 		if (SDK_INT>8){
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
