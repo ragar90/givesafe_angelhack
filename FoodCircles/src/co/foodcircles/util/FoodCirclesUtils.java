@@ -31,7 +31,7 @@ public class FoodCirclesUtils {
 	}
 
 	public static void clearPassword(Context me) {
-		AndroidUtils.clearSharePrefferences(me, TAG, "password");
+		AndroidUtils.clearSharePreferences(me, TAG, "password");
 	}
 
 	public static String getPassword(Context me) {
@@ -68,13 +68,13 @@ public class FoodCirclesUtils {
 	
 
 	public static boolean isFacebookConnected(Context me) {
-		String isConected = AndroidUtils.getSharePrefferences(me, TAG,
+		String isConected = AndroidUtils.getSharePreferences(me, TAG,
 				"isfacebookconnected");
 		return (isConected.equalsIgnoreCase("true")) ? true : false;
 	}
 
 	public static boolean isTwitterConnected(Context me) {
-		String isConected = AndroidUtils.getSharePrefferences(me, TAG,
+		String isConected = AndroidUtils.getSharePreferences(me, TAG,
 				"istwitterconnected");
 		return (isConected.equalsIgnoreCase("true")) ? true : false;
 	}

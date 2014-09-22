@@ -87,7 +87,7 @@ public class AndroidUtils {
 		}
 	}
 	
-	public static String getSharePrefferences(Context me,String name,String fieldName){
+	public static String getSharePreferences(Context me,String name,String fieldName){
 		return getSharedPreferences( me, name, fieldName,"");
 	}
 	@SuppressWarnings("static-access")
@@ -104,7 +104,7 @@ public class AndroidUtils {
 		}
 	}
 
-	public static void clearSharePrefferences(Context me, String name, String fieldName){
+	public static void clearSharePreferences(Context me, String name, String fieldName){
 		@SuppressWarnings("static-access")
 		SharedPreferences myPrefs = me.getSharedPreferences(name, me.MODE_PRIVATE);
 		SharedPreferences.Editor e = myPrefs.edit();

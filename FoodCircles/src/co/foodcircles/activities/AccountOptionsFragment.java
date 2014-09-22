@@ -21,6 +21,7 @@ import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesUtils;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.sromku.simple.fb.SimpleFacebook;
 
 public class AccountOptionsFragment extends Fragment
 {
@@ -152,6 +153,7 @@ public class AccountOptionsFragment extends Fragment
 
 		return view;
 	}
+	
 	public static Intent getOpenFacebookIntent(Context context) {
 		   try {
 		    context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
