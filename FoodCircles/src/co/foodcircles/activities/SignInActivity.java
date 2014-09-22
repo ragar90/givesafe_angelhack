@@ -165,7 +165,7 @@ public class SignInActivity extends Activity {
 						@Override
 						public void run() {
 							AndroidUtils.showAlertOk(SignInActivity.this,
-									"Sign-up Failed - " + e.getMessage());
+									"Sign-in Failed - " + e.getMessage());
 							AndroidUtils.dismissProgress();
 						}
 					});

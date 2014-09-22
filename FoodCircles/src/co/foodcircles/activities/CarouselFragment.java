@@ -23,13 +23,14 @@ import com.sromku.simple.fb.listeners.OnPublishListener;
 public class CarouselFragment extends Fragment {
 	MixpanelAPI mixpanel;
 	SimpleFacebook mSimpleFacebook;
+	
 	@Override
 	public void onStart() {
 		super.onStart();
 		mixpanel = MixpanelAPI.getInstance(getActivity(), getResources()
 				.getString(R.string.mixpanel_token));
 	}
-
+	
 	@Override
 	public void onDestroy() {
 		mixpanel.flush();

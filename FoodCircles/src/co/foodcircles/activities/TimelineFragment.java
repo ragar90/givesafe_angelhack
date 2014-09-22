@@ -52,6 +52,7 @@ public class TimelineFragment extends ListFragment {
 
 	@Override
 	public void onDestroy() {
+		if (mixpanel != null)
 		mixpanel.flush();
 		super.onDestroy();
 	}
@@ -136,6 +137,12 @@ public class TimelineFragment extends ListFragment {
 		return view;
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		mSimpleFacebook = SimpleFacebook.getInstance(getActivity());
+	}
+	
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
 	    if (keyCode == KeyEvent.KEYCODE_MENU) {
 			Intent intent = new Intent(getActivity(), AccountOptionsActivity.class);

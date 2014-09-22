@@ -67,6 +67,9 @@ public class AlarmReceiver extends BroadcastReceiver
 							{
 								//Checks for venues near the user's location 
 								Location location = AndroidUtils.getLastBestLocation(context);
+								String loc = venues.get(0).getDistance();
+								String nums = loc.replaceAll("[^\\d.]", "");
+								
 								if(location==null){
 									venues.addAll(Net.getVenues(-85.632823,42.955202,null));
 								}else{
@@ -74,7 +77,7 @@ public class AlarmReceiver extends BroadcastReceiver
 								}
 								Collections.sort(venues,new SortListByDistance());
 								if (venues.size() > 0) {
-									return (Double.parseDouble(venues.get(0).getDistance()) < 10 ) ? venues.get(0).getName() : "";
+									return (Double.parseDouble(nums) < 10 ) ? venues.get(0).getName() : "";
 								} else {
 									return "";
 								}
