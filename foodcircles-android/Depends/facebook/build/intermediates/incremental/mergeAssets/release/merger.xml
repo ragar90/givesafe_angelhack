@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="C:\Users\Steve\Desktop\Take it easy\foodcircles-android\Depends\facebook\assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="C:\Users\Steve\Desktop\Take it easy\foodcircles-android\Depends\facebook\build-types\release\assets" />
+    </dataSet>
+
+</merger>
