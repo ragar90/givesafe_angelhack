@@ -142,7 +142,6 @@ public class AccountOptionsFragment extends Fragment
 				MP.track(mixpanel, "Options", "Logged out");
 				FoodCirclesUtils.savePassword(AccountOptionsFragment.this.getActivity(), null);
 				FoodCirclesUtils.saveToken(AccountOptionsFragment.this.getActivity(), null);
-				FoodCirclesUtils.saveEmail(AccountOptionsFragment.this.getActivity(), null);
 				Intent intent = new Intent(AccountOptionsFragment.this.getActivity(), SignUpActivity.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
