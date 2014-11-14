@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <shape android:shape="rectangle" >
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+
+</layer-list><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/drawable/timeline_textborder.xml -->
