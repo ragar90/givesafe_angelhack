@@ -189,7 +189,7 @@ public class Net {
 		try {
 			JSONObject json = new JSONObject(html);
 			if (json.getBoolean("error") == true) {
-				n.setMessage(json.getString("description"));
+				n.setMessage(getSignUpErrorMsg(json));
 				throw n;
 			}
 			String token=json.getString("auth_token");
@@ -200,6 +200,22 @@ public class Net {
 		}
 	}
 	
+	private static String getSignUpErrorMsg(JSONObject json) throws JSONException {
+		JSONObject errorsJson = json.getJSONObject("errors");
+		
+		JSONArray emailErrors = errorsJson.getJSONArray("email");
+		String emailErrMsg = emailErrors.getString(0);
+		
+		JSONArray passwordErrors = errorsJson.getJSONArray("password");
+		String passwordErrMsg = passwordErrors.getString(0);
+		
+		String errMsgDescription = json.getString("description");
+		
+		String errMsg = String.format("%s\nEmail %s\nPassword %s", errMsgDescription, emailErrMsg, passwordErrMsg);
+		return errMsg;
+		
+	}
+
 	public static String twitterSignUp(String userEmail, String UID)
 			throws NetException2 {
 		List<BasicNameValuePair> postValues = new ArrayList<BasicNameValuePair>();
