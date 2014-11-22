@@ -154,15 +154,9 @@ public class RestaurantListFragment extends Fragment
 				FoodCirclesApplication app = (FoodCirclesApplication) RestaurantListFragment.this.getActivity().getApplicationContext();
 				app.selectedVenue = app.venues.get(position);
 				if (app.selectedVenue.getVouchersAvailable() == 0){
-					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-					builder.setMessage("Limited Availability will be opening up soon. Check the website to join the waitlist!").setTitle("Sold Out!");
-					builder.setPositiveButton("OK", new OnClickListener()
-					{
-						@Override
-						public void onClick(DialogInterface dialog, int id){}
-					});
-					builder.create().show();
-					
+                    Intent intent = new Intent(RestaurantListFragment.this.getActivity(), RestaurantActivity.class);
+                    intent.putExtra(RestaurantActivity.IS_VENUE_ON_RESERVE_KEY, true);
+                    startActivity(intent);
 				} else if (app.selectedVenue.getOffers().isEmpty()){
 					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 					builder.setMessage("Seems like something's wrong here- check the website for this offer!").setTitle("Oops!");
@@ -174,6 +168,7 @@ public class RestaurantListFragment extends Fragment
 					builder.create().show();
 				} else {
 					Intent intent = new Intent(RestaurantListFragment.this.getActivity(), RestaurantActivity.class);
+                    intent.putExtra(RestaurantActivity.IS_VENUE_ON_RESERVE_KEY, false);
 					startActivity(intent);
 			  }
 			}

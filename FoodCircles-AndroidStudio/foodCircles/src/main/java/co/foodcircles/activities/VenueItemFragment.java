@@ -1,17 +1,11 @@
 package co.foodcircles.activities;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,6 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import co.foodcircles.R;
 import co.foodcircles.json.Offer;
 import co.foodcircles.json.Venue;
@@ -34,6 +34,31 @@ public class VenueItemFragment extends Fragment
 	TextView itemOriginalPrice;
 	Button button;
 
+    private boolean mIsVenueOnReserve;
+
+    public static VenueItemFragment newInstance(boolean isVenueOnReserve) {
+        VenueItemFragment fragment = new VenueItemFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(RestaurantActivity.IS_VENUE_ON_RESERVE_KEY, isVenueOnReserve);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public VenueItemFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mIsVenueOnReserve
+                    = getArguments().getBoolean(RestaurantActivity.IS_VENUE_ON_RESERVE_KEY);
+        }
+    }
+
+
+
 	//This fragment is the view that gives detailed information about the deal, including a picture and venue info 
 	
 	@Override
@@ -48,6 +73,10 @@ public class VenueItemFragment extends Fragment
 		itemOriginalPrice = (TextView) view.findViewById(R.id.textViewPrice);
 		itemFlavorText = (TextView) view.findViewById(R.id.textViewItemFlavorText);
 		button = (Button) view.findViewById(R.id.button);
+
+        if (mIsVenueOnReserve) {
+            button.setText(getString(R.string.venue_profile_btn_keep_me_posted));
+        }
 
 		final FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
 		Venue venue = app.selectedVenue;

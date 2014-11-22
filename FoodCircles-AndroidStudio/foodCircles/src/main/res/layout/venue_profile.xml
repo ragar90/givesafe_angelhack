@@ -129,7 +129,7 @@
                             android:paddingBottom="5dp"
                             android:paddingTop="5dp"
                             android:tag="rob"
-                            android:text="I want this"
+                            android:text="@string/venue_profile_btn_i_want_this"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/wantthis_button_text" />
 

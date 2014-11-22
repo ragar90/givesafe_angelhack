@@ -98,7 +98,7 @@
         			android:textStyle="bold"
         			android:visibility="gone"
         			android:background="#77393955"
-        			android:text="Sold\nOut"
+        			android:text="On\nReserve"
         			android:textSize="22dp" 
         			android:textColor="#FFFFFF"/>
 

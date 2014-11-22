@@ -1,7 +1,6 @@
 package co.foodcircles.activities;
 
-import java.util.Locale;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,21 +8,35 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Window;
+
+import com.viewpagerindicator.TabPageIndicator;
+
+import java.util.Locale;
+
 import co.foodcircles.R;
 import co.foodcircles.json.Venue;
 import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 
-import com.viewpagerindicator.TabPageIndicator;
-
 public class RestaurantActivity extends FragmentActivity {
+    public static final String IS_VENUE_ON_RESERVE_KEY = "on_reserved_key";
+
     private static String[] CONTENT = new String[] { "OFFER", "INFO" };
+
+    private boolean mIsVenueOnReserve;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.simple_tabs);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            boolean isReserve = intent.getBooleanExtra(IS_VENUE_ON_RESERVE_KEY, false);
+            mIsVenueOnReserve = isReserve;
+        }
+
         FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
         Venue selectedVenue = app.selectedVenue;
         CONTENT[0] = selectedVenue.getName().toUpperCase(Locale.getDefault());
@@ -44,7 +57,7 @@ public class RestaurantActivity extends FragmentActivity {
         public Fragment getItem(int position) {
         	switch(position)
         	{
-        		case 0: return new VenueItemFragment();
+        		case 0: return VenueItemFragment.newInstance(mIsVenueOnReserve);
         		case 1: return new VenueProfileFragment();
         		default: return null;
         	}
