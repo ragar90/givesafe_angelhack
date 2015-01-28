@@ -1,12 +1,5 @@
 package co.foodcircles.activities;
 
-import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -33,6 +26,19 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
+
+import org.json.JSONException;
+
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import co.foodcircles.R;
 import co.foodcircles.exception.NetException2;
 import co.foodcircles.json.Charity;
@@ -42,11 +48,6 @@ import co.foodcircles.net.Net;
 import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 import co.foodcircles.util.FoodCirclesUtils;
-
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
-import com.paypal.android.sdk.payments.PayPalPayment;
-import com.paypal.android.sdk.payments.PaymentActivity;
-import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 public class BuyFragment extends Fragment
 {
@@ -375,6 +376,13 @@ public class BuyFragment extends Fragment
 		String priceText = NumberFormat.getCurrencyInstance().format(priceAmount);
 		priceText = priceText.replaceAll("\\.00", "");
 		price.setText(priceText);
-		meals.setText("" + priceAmount + " meal" + (priceAmount > 1 ? "s" : ""));
+
+        String msg;
+        if (priceAmount > 1) {
+            msg = priceAmount + " people";
+        } else {
+            msg = priceAmount + " person";
+        }
+		meals.setText(msg);
 	}
 }

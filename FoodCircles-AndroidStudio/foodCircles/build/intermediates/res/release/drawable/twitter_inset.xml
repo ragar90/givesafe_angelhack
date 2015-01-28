@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/twitter_white"
+    android:insetLeft="5dip"
+    android:insetRight="5dip"
+    android:insetTop="5dip"
+    android:insetBottom="5dip" /><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/drawable/twitter_inset.xml -->

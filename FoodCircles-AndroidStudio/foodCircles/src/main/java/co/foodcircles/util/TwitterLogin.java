@@ -1,20 +1,20 @@
 package co.foodcircles.util;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+
+import co.foodcircles.activities.EmailPromptsActivity;
+import co.foodcircles.activities.MainActivity;
+import co.foodcircles.net.Net;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import co.foodcircles.activities.EmailPromptsActivity;
-import co.foodcircles.activities.MainActivity;
-import co.foodcircles.activities.SignUpActivity;
-import co.foodcircles.net.Net;
 
 public class TwitterLogin {
 
@@ -25,8 +25,11 @@ public class TwitterLogin {
 	public static String twitter_uid;
 	Context mContext;
 	private boolean onCompleteCalled;
-	public TwitterLogin(Context context){
+    private String mNumberOfPeople;
+
+	public TwitterLogin(Context context, String numberOfPeople){
 		this.mContext = context;
+        mNumberOfPeople = numberOfPeople;
 	}
 	
 	public void twitterSignUp() {
@@ -109,6 +112,7 @@ public class TwitterLogin {
 							
 							Intent in = new Intent(mContext,EmailPromptsActivity.class);
 							in.putExtra("UID", accessToken.getUserId());
+                            in.putExtra("peopleNumber", mNumberOfPeople);
 							mContext.startActivity(in);
 						}else{
 							

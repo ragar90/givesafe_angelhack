@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -160,8 +161,8 @@ public class VenueProfileFragment extends Fragment implements OnMarkerClickListe
 //		try
 //		{
 			FragmentManager myFragmentManager = getActivity().getSupportFragmentManager();
-			SupportMapFragment mySupportMapFragment = (SupportMapFragment) myFragmentManager.findFragmentById(R.id.map);
-			map = mySupportMapFragment.getMap();
+			//SupportMapFragment mySupportMapFragment = (SupportMapFragment) myFragmentManager.findFragmentById(R.id.map);
+			map = getMapFragment().getMap();
 			MapsInitializer.initialize(getActivity());
 			LatLng destinationLatLng = new LatLng(venue.getLatitude(), venue.getLongitude());
 			destinationMarker = new MarkerOptions();
@@ -190,7 +191,19 @@ public class VenueProfileFragment extends Fragment implements OnMarkerClickListe
 		return view;
 	}
 
-	@Override
+    private SupportMapFragment getMapFragment() {
+        FragmentManager fm = null;
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+            fm = getFragmentManager();
+        } else {
+            fm = getChildFragmentManager();
+        }
+
+        return (SupportMapFragment) fm.findFragmentById(R.id.map);
+    }
+
+    @Override
 	public void onMapClick(LatLng point)
 	{
 		map.addMarker(destinationMarker).showInfoWindow();

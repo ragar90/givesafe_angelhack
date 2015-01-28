@@ -1,19 +1,21 @@
 package co.foodcircles.json;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.view.View;
+import java.util.ArrayList;
+import java.util.List;
+
 import co.foodcircles.util.AndroidUtils;
 
 public class Venue
 {
 	private String id;
 	private String name;
+    private String slug;
 	private String address;
 	private String city;
 	private String state;
@@ -54,6 +56,7 @@ public class Venue
 		JSONObject json = new JSONObject(jsonString);
 		id = AndroidUtils.safelyGetJsonString(json,"id");
 		name = AndroidUtils.safelyGetJsonString(json,"name");
+        slug = AndroidUtils.safelyGetJsonString(json,"slug");
 		address = AndroidUtils.safelyGetJsonString(json,"address");;
 		city = AndroidUtils.safelyGetJsonString(json,"city");;
 		state = AndroidUtils.safelyGetJsonString(json,"state");;
@@ -103,12 +106,13 @@ public class Venue
 
 	}
 
-	public Venue(String id, String name, String address, String city, String state, String zip, double latitude, double longitude, String description, String phone,
+	public Venue(String id, String name, String slug, String address, String city, String state, String zip, double latitude, double longitude, String description, String phone,
 			String url, List<String> tags, List<Offer> offers, String openTimes, String imageUrl)
 	{
 		super();
 		this.id = id;
 		this.name = name;
+        this.slug = slug;
 		this.address = address;
 		this.city = city;
 		this.state = state;
@@ -129,6 +133,7 @@ public class Venue
 		super();
 		this.id = "1";
 		this.name = "Stella's Lounge";
+        this.slug = "test-slug";
 		this.address = "Address";
 		this.city = "City";
 		this.state = "State";
@@ -356,4 +361,11 @@ public class Venue
 		return vouchersAvailable;
 	}
 
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
 }

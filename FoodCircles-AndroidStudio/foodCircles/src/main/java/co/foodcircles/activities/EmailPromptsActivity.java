@@ -1,8 +1,5 @@
 package co.foodcircles.activities;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +17,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.sromku.simple.fb.SimpleFacebook;
+
 import co.foodcircles.R;
 import co.foodcircles.exception.NetException2;
 import co.foodcircles.net.Net;
@@ -27,9 +28,6 @@ import co.foodcircles.util.AndroidUtils;
 import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 import co.foodcircles.util.FoodCirclesUtils;
-
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
-import com.sromku.simple.fb.SimpleFacebook;
 
 
 public class EmailPromptsActivity extends Activity {
@@ -92,9 +90,8 @@ public class EmailPromptsActivity extends Activity {
 
 		TextView countText = (TextView) findViewById(R.id.textViewCount);
 		float size = countText.getTextSize();
-		int numPeople = 1000;
-		String numPeopleString = NumberFormat.getNumberInstance(
-				Locale.getDefault()).format(numPeople);
+
+        String numPeopleString = getIntent().getStringExtra("peopleNumber");
 		Spannable countSpannable = new SpannableString(
 				numPeopleString
 						+ " have joined the movement in Grand Rapids.\nToday, it\'s your turn.");

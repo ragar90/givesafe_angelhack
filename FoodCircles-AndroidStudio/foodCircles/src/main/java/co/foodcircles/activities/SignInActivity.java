@@ -1,7 +1,5 @@
 package co.foodcircles.activities;
 
-import java.util.Arrays;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,14 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import co.foodcircles.R;
-import co.foodcircles.exception.NetException2;
-import co.foodcircles.net.Net;
-import co.foodcircles.util.AndroidUtils;
-import co.foodcircles.util.FontSetter;
-import co.foodcircles.util.FoodCirclesApplication;
-import co.foodcircles.util.FoodCirclesUtils;
-import co.foodcircles.util.TwitterLogin;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -33,6 +23,15 @@ import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Profile;
 import com.sromku.simple.fb.listeners.OnLoginListener;
 import com.sromku.simple.fb.listeners.OnProfileListener;
+
+import co.foodcircles.R;
+import co.foodcircles.exception.NetException2;
+import co.foodcircles.net.Net;
+import co.foodcircles.util.AndroidUtils;
+import co.foodcircles.util.FontSetter;
+import co.foodcircles.util.FoodCirclesApplication;
+import co.foodcircles.util.FoodCirclesUtils;
+import co.foodcircles.util.TwitterLogin;
 
 public class SignInActivity extends Activity {
 	EditText email;
@@ -76,7 +75,8 @@ public class SignInActivity extends Activity {
 		buttonTwitter.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				new TwitterLogin(mcontext).twitterSignUp();
+                String peopleNumber = SignInActivity.this.getIntent().getStringExtra("peopleNumber");
+				new TwitterLogin(mcontext, peopleNumber).twitterSignUp();
 			}
 		});
 
@@ -134,7 +134,7 @@ public class SignInActivity extends Activity {
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					AndroidUtils.alert(SignInActivity.this, "Oops! Sign-in Failed : " + e.getMessage());
+					AndroidUtils.alert(SignInActivity.this, "Couldn't sign in: Email not registered");
 					AndroidUtils.dismissProgress();
 				}
 			});

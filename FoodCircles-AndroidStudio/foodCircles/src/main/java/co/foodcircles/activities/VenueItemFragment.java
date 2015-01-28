@@ -1,23 +1,27 @@
 package co.foodcircles.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Calendar;
 
 import co.foodcircles.R;
 import co.foodcircles.json.Offer;
@@ -25,7 +29,12 @@ import co.foodcircles.json.Venue;
 import co.foodcircles.net.Net;
 import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
+import co.foodcircles.util.FoodCirclesUtils;
 
+/**
+ * This fragment is the view that gives detailed information about the deal,
+ * including a picture and venue info
+ */
 public class VenueItemFragment extends Fragment
 {
 	ImageView itemImage;
@@ -34,7 +43,15 @@ public class VenueItemFragment extends Fragment
 	TextView itemOriginalPrice;
 	Button button;
 
-    private boolean mIsVenueOnReserve;
+    private boolean mIsVenueNeedToReserve;
+
+    private boolean mIsSubscribed;
+
+    private ProgressDialog progressDialog;
+
+    private String mVenueName;
+
+    private boolean mContinueBrowsing;
 
     public static VenueItemFragment newInstance(boolean isVenueOnReserve) {
         VenueItemFragment fragment = new VenueItemFragment();
@@ -52,14 +69,10 @@ public class VenueItemFragment extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mIsVenueOnReserve
+            mIsVenueNeedToReserve
                     = getArguments().getBoolean(RestaurantActivity.IS_VENUE_ON_RESERVE_KEY);
         }
     }
-
-
-
-	//This fragment is the view that gives detailed information about the deal, including a picture and venue info 
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -74,12 +87,19 @@ public class VenueItemFragment extends Fragment
 		itemFlavorText = (TextView) view.findViewById(R.id.textViewItemFlavorText);
 		button = (Button) view.findViewById(R.id.button);
 
-        if (mIsVenueOnReserve) {
+        if (mIsVenueNeedToReserve) {
             button.setText(getString(R.string.venue_profile_btn_keep_me_posted));
+            view.findViewById(R.id.ll_venue_days_left).setVisibility(View.VISIBLE);
+            calculateDaysLeft(view);
         }
 
 		final FoodCirclesApplication app = (FoodCirclesApplication) getActivity().getApplicationContext();
-		Venue venue = app.selectedVenue;
+		final Venue venue = app.selectedVenue;
+        mVenueName = venue.getName();
+
+        if (venue.getVouchersAvailable() == 0) {
+            isSubscribed(venue.getSlug());
+        }
 		
 		Offer offer = venue.getOffers().get(0);
 		itemImage.setTag(Net.HOST + venue.getImageUrl());
@@ -97,17 +117,116 @@ public class VenueItemFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				getActivity().startActivity(new Intent(getActivity(), BuyOptionsActivity.class));
-			
-				app.addPoppableActivity(getActivity());
+                if (mIsVenueNeedToReserve) {
+                    if (mIsSubscribed) {
+                        unsubscribe(venue.getSlug());
+                    } else {
+                        reserveVenue(venue.getSlug());
+                    }
+                } else {
+                    startBuyOptionsActivity(app);
+                }
 			}
 		});
 
 		return view;
 	}
 
-	
-	public class DownloadImagesTask extends AsyncTask<ImageView, Void, Bitmap> {
+    private void reserveVenue(final String slug) {
+        progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Reserving venues...");
+        new AsyncTask<Object, Void, Boolean>() {
+            protected Boolean doInBackground(Object... param) {
+                try {
+                    Net.subscribeVenue(slug, FoodCirclesUtils.getToken(getActivity()));
+                    return true;
+                } catch (Exception e) {
+                    Log.v("", "Error in venue subscribing", e);
+                    return false;
+                }
+            }
+
+            protected void onPostExecute(Boolean success) {
+                progressDialog.dismiss();
+                if (success) {
+                    startReservedActivity();
+                }
+            }
+        }.execute();
+    }
+
+    private void startReservedActivity() {
+        Intent intent = new Intent(getActivity(), ReservedActivity.class);
+        intent.putExtra("venue_name", mVenueName);
+        startActivity(intent);
+        mContinueBrowsing = true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mContinueBrowsing) {
+            getActivity().finish();
+        }
+    }
+
+    private void unsubscribe(final String slug) {
+        progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Discard reserving...");
+        new AsyncTask<Object, Void, Boolean>() {
+            protected Boolean doInBackground(Object... param) {
+                String response = Net.unsubscribeVenue(slug, FoodCirclesUtils.getToken(getActivity()));
+                return true;
+            }
+
+            protected void onPostExecute(Boolean success) {
+                progressDialog.dismiss();
+                if (success) {
+                    button.setText(getString(R.string.venue_profile_btn_keep_me_posted));
+                    button.setBackgroundResource(R.drawable.keepmeposted_btn_selector);
+                    mIsSubscribed = false;
+                }
+            }
+        }.execute();
+    }
+
+    private void isSubscribed(final String slug) {
+        progressDialog = ProgressDialog.show(getActivity(), "Please wait", "Checking for subscription...");
+        new AsyncTask<Object, Void, Boolean>() {
+            protected Boolean doInBackground(Object... param) {
+                return Net.isSubscribed(slug, FoodCirclesUtils.getToken(getActivity()));
+            }
+
+            protected void onPostExecute(Boolean success) {
+                progressDialog.dismiss();
+                if (success) {
+                    button.setText(getString(R.string.venue_profile_btn_nevermind));
+                    button.setBackgroundResource(R.drawable.nevermind_btn_selector);
+                    mIsSubscribed = true;
+                }
+            }
+        }.execute();
+    }
+
+    private void startBuyOptionsActivity(FoodCirclesApplication app) {
+        getActivity().startActivity(new Intent(getActivity(), BuyOptionsActivity.class));
+        app.addPoppableActivity(getActivity());
+    }
+
+    private void calculateDaysLeft(View v) {
+        Calendar c = Calendar.getInstance();
+        int daysLeftUntilSaturday = Calendar.SATURDAY - c.get(Calendar.DAY_OF_WEEK);
+
+        TextView daysLeft = (TextView) v.findViewById(R.id.tv_venue_days_left);
+        daysLeft.setText(getString(R.string.venue_days_left, daysLeftUntilSaturday));
+
+        LinearLayout llDaysKeftDots = (LinearLayout) v.findViewById(R.id.ll_days_left_dots);
+        for (int i = 0; i < Calendar.SATURDAY - daysLeftUntilSaturday; i++) {
+            View dot = llDaysKeftDots.getChildAt(i);
+            dot.setBackground(getResources().getDrawable(R.drawable.days_left_white));
+        }
+    }
+
+
+    public class DownloadImagesTask extends AsyncTask<ImageView, Void, Bitmap> {
 		ImageView imageView = null;
 
 		@Override

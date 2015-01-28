@@ -1,83 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/twitter4j-core-4.0.0-9649b7467202885c7987e542caa2d043123581db.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/twitter4j-core-4.0.0.jar"
+        jar="/Users/mat/adt-bundle-mac-x86_64-20130729/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="5f104e22c2820390f999fa0cc443a1fb21e60897"/>
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-19a9d3701e27e37a9c09b2ac949a01b8de5f3112.jar" />
+    </item>
     <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/universal-image-loader-1.8.4-c6fa840b708fdeb57b1485c4471b8c2af8240c87.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/universal-image-loader-1.8.4.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="eee81e43531ce82db1781c5a8b27781ca384eede"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/support-v4-19.1.0-f7652491f9437e033dd92734d6d8513a4739f920.jar"
-        jar="/Users/mat/adt-bundle-mac-x86_64-20130729/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-a4336a1b996efe046654fea9f0a888632e97a946.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/libs/bolts-android-1.1.2.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/MixpanelAPI-ee4de1ed29b92ca4ea4cfbd0442d4166a604bf0b.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/MixpanelAPI.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="c29aca65c9453e1339580cd49be9e445b418b045"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-6431e043f57f5cdc2b25b6721e2ca9a891766f56.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/simpleFacebook/unspecified/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="630fb635ae0ff8aed168a3421921eab90b6ddc6d"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/crashlytics-c042681cd5e1ec2b0463c7808ecc4d72f972961c.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/crashlytics.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="b8189e9eef2f07fae743e05d7fe7e69daebe98d1"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-398edc286d773fc0d83e4c2a7227dd88199655e3.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="2e0d6a038780fa32b92e856b0db36f45786fb5b0"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-3a76a134e8048b372f644764196906b64d5d8a06.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/library/unspecified/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="6c3d62223a55ec7afeee523115054cce767c08e8"/>
-    <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/maps-7934bdb15ac0fb5b4623149cf0e904f9e06d3bbf.jar"
         jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/maps.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="9c5e4add9f7e72566520ce964af5eca390ce9877"/>
+        sha1="9c5e4add9f7e72566520ce964af5eca390ce9877">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/maps-7934bdb15ac0fb5b4623149cf0e904f9e06d3bbf.jar" />
+    </item>
     <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-e3e27de3636bf5d3ed20b030de7f91e5d1d0c8f5.jar"
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-f48fee8b4294e8965c1d31f4db2f7bf334c4d3cd.jar" />
+    </item>
+    <item
         jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/19.1.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="af4cc326e6cd92f88db12298767e521743aedd36"/>
+        sha1="af4cc326e6cd92f88db12298767e521743aedd36">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-e3e27de3636bf5d3ed20b030de7f91e5d1d0c8f5.jar" />
+    </item>
     <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-6b3f011abf6a37256ae6454b4bf7a1ef146d5760.jar"
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services/5.0.77/classes.jar"
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/libs/bolts-android-1.1.2.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="b6a82434c1eca686607867cd906bcc80ed987837"/>
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-a4336a1b996efe046654fea9f0a888632e97a946.jar" />
+    </item>
     <item
-        dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/PayPalAndroidSDK-ad70e0d9839a5c714f1f710be8e29b55e281a311.jar"
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/universal-image-loader-1.8.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="eee81e43531ce82db1781c5a8b27781ca384eede">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/universal-image-loader-1.8.4-c6fa840b708fdeb57b1485c4471b8c2af8240c87.jar" />
+    </item>
+    <item
         jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/PayPalAndroidSDK.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="583b0ee4331af82ebac7a948f78ca71024270497"/>
+        sha1="583b0ee4331af82ebac7a948f78ca71024270497">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/PayPalAndroidSDK-ad70e0d9839a5c714f1f710be8e29b55e281a311.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/crashlytics.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b8189e9eef2f07fae743e05d7fe7e69daebe98d1">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/crashlytics-c042681cd5e1ec2b0463c7808ecc4d72f972961c.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/library/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2156b4858c2fc87bdbb591516e28f823cbbae43f">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-3a76a134e8048b372f644764196906b64d5d8a06.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/twitter4j-core-4.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="5f104e22c2820390f999fa0cc443a1fb21e60897">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/twitter4j-core-4.0.0-9649b7467202885c7987e542caa2d043123581db.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-1edf314a084beccea16d8967b4f4435239788cc1.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-95bf7f19bc8a31586d6122ae58851584accf9b6a.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2a5ce2513d43a56eeab1ccafbeee98c2cc64ef73">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-398edc286d773fc0d83e4c2a7227dd88199655e3.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/MixpanelAPI.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="c29aca65c9453e1339580cd49be9e445b418b045">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/MixpanelAPI-ee4de1ed29b92ca4ea4cfbd0442d4166a604bf0b.jar" />
+    </item>
+    <item
+        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/simpleFacebook/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="aaa477190cd7e51e855e3bca6d950503f3bf6f7e">
+        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-6431e043f57f5cdc2b25b6721e2ca9a891766f56.jar" />
+    </item>
 
-</pre-dex-items>
+</items>

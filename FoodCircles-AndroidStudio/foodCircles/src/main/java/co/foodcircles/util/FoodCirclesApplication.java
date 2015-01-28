@@ -1,19 +1,20 @@
 package co.foodcircles.util;
 
+import android.app.Activity;
+import android.app.Application;
+
+import com.sromku.simple.fb.Permission;
+import com.sromku.simple.fb.SimpleFacebook;
+import com.sromku.simple.fb.SimpleFacebookConfiguration;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
-import android.app.Application;
 import co.foodcircles.json.Charity;
 import co.foodcircles.json.Offer;
 import co.foodcircles.json.Reservation;
 import co.foodcircles.json.Venue;
 import co.foodcircles.json.Voucher;
-
-import com.sromku.simple.fb.Permission;
-import com.sromku.simple.fb.SimpleFacebook;
-import com.sromku.simple.fb.SimpleFacebookConfiguration;
 
 public class FoodCirclesApplication extends Application
 {
@@ -41,13 +42,13 @@ public class FoodCirclesApplication extends Application
 	
 	@Override
 	public void onCreate() {
-		// TODO Auto-generated method stub
 		super.onCreate();
 		SimpleFacebookConfiguration configuration = new SimpleFacebookConfiguration.Builder()
-		   .setAppId("526839707387980")
+		   //.setAppId("526839707387980")
+           .setAppId("1508523846087006")
 		   .setNamespace("foodcirclesapp")
-		    .setPermissions(permissions)
-		    .build();
+		   .setPermissions(permissions)
+		   .build();
 		SimpleFacebook.setConfiguration(configuration);
 	}
 	public void addPoppableActivity(Activity activity) {

@@ -69,7 +69,7 @@
                     android:shadowDy="1.0"
                     android:shadowRadius="3.0"
                     android:tag="neu"
-                    android:text="Buy one appetizer or dessert for $1 or more, feed one child in need."
+                    android:text="Try a local dish for $1 or greater.\n100% of your purchase is donated to charity."
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/signup_small_text"
                     android:textStyle="italic" />
@@ -127,7 +127,7 @@
                         android:paddingBottom="10dp"
                         android:paddingTop="10dp"
                         android:tag="rob"
-                        android:text="865 people repurpose their everyday dining.\nToday, it&apos;s your turn."
+                        android:text="865 people repurpose their Grand Rapids dining.\nToday, it&apos;s your turn."
                         android:textSize="@dimen/signup_powerful_text" />
                 </LinearLayout>
 

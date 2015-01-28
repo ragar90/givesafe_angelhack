@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.view.Window;
 
 import com.viewpagerindicator.TabPageIndicator;
@@ -46,6 +47,10 @@ public class RestaurantActivity extends FragmentActivity {
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
 		FontSetter.overrideFonts(this, findViewById(R.id.root));
+    }
+
+    public void onContinueBrowsingClick(View view) {
+        finish();
     }
 
     class MyFragmentPagerAdapter extends FragmentPagerAdapter {

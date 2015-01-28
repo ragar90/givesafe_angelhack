@@ -51,6 +51,8 @@ import co.foodcircles.util.MySSLSocketFactory;
 
 
 public class Net {
+    private static final String TAG = Net.class.getSimpleName();
+
 	//public static final String HOST = "http://staging.foodcircles.net";
     public static final String HOST = "https://joinfoodcircles.org";
 	private static final String API_URL = "/api";
@@ -67,9 +69,9 @@ public class Net {
 	private static String post(String path, List<BasicNameValuePair> postValues) {
 		HttpContext httpContext = new BasicHttpContext();
 		HttpClient httpclient = createHttpClient();
-		HttpPost httppost = new HttpPost(HOST + API_URL + path);
+		HttpPost httppost = new HttpPost(HOST + path);
 		String response = "";
-
+        Log.d(TAG, "post request url = " + HOST + path);
 		try {
             if (postValues != null)
 			    httppost.setEntity(new UrlEncodedFormEntity(postValues, HTTP.UTF_8));
@@ -79,7 +81,7 @@ public class Net {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+        Log.d(TAG, "get response = " + response);
 		return response;
 	}
 
@@ -101,38 +103,40 @@ public class Net {
 	    
 		return responseString;
 	}
-	
-	private static String get(String path, List<BasicNameValuePair> urlParams) {
-	    StringBuilder builder = new StringBuilder();
-		HttpClient httpclient = createHttpClient();
-		HttpGet httpGet = new HttpGet(HOST + API_URL + path);
 
-		try {
-	        HttpResponse response = httpclient.execute(httpGet);
-	        StatusLine statusLine = response.getStatusLine();
-	        int statusCode = statusLine.getStatusCode();
-	        if (statusCode == 200) {
-	          HttpEntity entity = response.getEntity();
-	          InputStream content = entity.getContent();
-	          BufferedReader reader = new BufferedReader(new InputStreamReader(content));
-	          String line;
-	          while ((line = reader.readLine()) != null) {
-	            builder.append(line);
-	          }
-	        } else { }
-	      } catch (ClientProtocolException e) {
-	        e.printStackTrace();
-	      } catch (IOException e) {
-	        e.printStackTrace();
-	      }
-		return builder.toString();
-	    }	
-	
-	private static String put(String path, List<BasicNameValuePair> urlParams) {
+    private static String get(String path, List<BasicNameValuePair> urlParams) {
+        StringBuilder builder = new StringBuilder();
+        HttpClient httpclient = createHttpClient();
+        HttpGet httpGet = new HttpGet(HOST + path);
+        try {
+            HttpResponse response = httpclient.execute(httpGet);
+            StatusLine statusLine = response.getStatusLine();
+            int statusCode = statusLine.getStatusCode();
+            if (statusCode == 200) {
+                HttpEntity entity = response.getEntity();
+                InputStream content = entity.getContent();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                }
+            } else {
+            }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String response = builder.toString();
+        return response;
+    }
+
+    private static String put(String path, List<BasicNameValuePair> urlParams) {
 		HttpContext httpContext = new BasicHttpContext();
 		HttpClient httpclient = createHttpClient();
 		HttpPut httpput = new HttpPut(HOST + API_URL + path);
 		String response = "";
+
 
 		try {
 			String paramString = URLEncodedUtils.format(urlParams, "utf-8");
@@ -142,7 +146,7 @@ public class Net {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+        Log.d(TAG, "post response = " + response);
 		return response;
 	}
 
@@ -175,7 +179,7 @@ public class Net {
 			throws NetException {
 		try {
 			String url=String.format(GET_VENUES,latitude,longitude);
-			String response = get(url, filters);
+			String response = get(API_URL + url, filters);
 			return Venue.parseVenues(response);
 		} catch (JSONException j) {
 			throw new NetException();
@@ -185,7 +189,7 @@ public class Net {
 	public static List<Reservation> getReservationsList(String token) throws NetException {
 		try {
 			String url=String.format(GET_TIMELINE,token);
-			String response = get(url, null);
+			String response = get(API_URL + url, null);
 			return Reservation.parseReservations(response);
 		} catch (JSONException j) {
 			throw new NetException();
@@ -196,7 +200,7 @@ public class Net {
 			throws NetException {
 		try {
 			String response = get(
-					GET_RESERVATION.replace("[reservationId]", reservationId),
+                    API_URL + GET_RESERVATION.replace("[reservationId]", reservationId),
 					null);
 			return new Reservation(response);
 		} catch (JSONException j) {
@@ -206,7 +210,7 @@ public class Net {
 
 	public static List<Charity> getCharities() throws NetException {
 		List<Charity> charities = new ArrayList<Charity>();
-		String response = get(GET_CHARITY_1, null);
+		String response = get(API_URL + GET_CHARITY_1, null);
 		try {
 			JSONObject jsonObject=new JSONObject(response);
 			JSONArray jsonArray=jsonObject.getJSONArray("content");
@@ -224,7 +228,7 @@ public class Net {
 		List<BasicNameValuePair> postValues = new ArrayList<BasicNameValuePair>();
 		postValues.add(new BasicNameValuePair("user_email", userEmail));
 		postValues.add(new BasicNameValuePair("user_password", userPassword));
-		String html = post("/sessions/sign_up", postValues);
+		String html = post(API_URL + "/sessions/sign_up", postValues);
 		NetException2 n = new NetException2();
 		try {
 			JSONObject json = new JSONObject(html);
@@ -261,7 +265,7 @@ public class Net {
 		List<BasicNameValuePair> postValues = new ArrayList<BasicNameValuePair>();
 		postValues.add(new BasicNameValuePair("user_email", userEmail));
 		postValues.add(new BasicNameValuePair("uid", UID));
-		String html = post("/sessions/sign_up", postValues);
+		String html = post(API_URL + "/sessions/sign_up", postValues);
 		NetException2 n = new NetException2();
 		try {
 			JSONObject json = new JSONObject(html);
@@ -282,7 +286,7 @@ public class Net {
 			throws NetException2 {
 		List<BasicNameValuePair> postValues = new ArrayList<BasicNameValuePair>();
 		postValues.add(new BasicNameValuePair("uid", uid));
-		String html = post("/sessions/sign_in", postValues);
+		String html = post(API_URL + "/sessions/sign_in", postValues);
 		JSONObject json;
 		NetException2 n = new NetException2();
 		try {
@@ -305,7 +309,7 @@ public class Net {
 		Log.i("Email",emailid);
 		postValues.add(new BasicNameValuePair("uid", userID));
 		postValues.add(new BasicNameValuePair("user_email", emailid));
-		String html = post("/sessions/sign_up", postValues);
+		String html = post(API_URL + "/sessions/sign_up", postValues);
 		NetException2 n = new NetException2();
 		try {
 			JSONObject json = new JSONObject(html);
@@ -328,7 +332,7 @@ public class Net {
 		List<BasicNameValuePair> postValues = new ArrayList<BasicNameValuePair>();
 		postValues.add(new BasicNameValuePair("user_email", userEmail));
 		postValues.add(new BasicNameValuePair("user_password", userPassword));
-		String html = post("/sessions/sign_in", postValues);
+		String html = post(API_URL + "/sessions/sign_in", postValues);
 		JSONObject json;
 		NetException2 n = new NetException2();
 		try {
@@ -370,7 +374,7 @@ public class Net {
 
 	public static void getNews() throws NetException2 {
 		List<BasicNameValuePair> getValues = new ArrayList<BasicNameValuePair>();
-		String html = get(GET_NEWS, getValues);
+		String html = get(API_URL + GET_NEWS, getValues);
 		NetException2 n = new NetException2();
 		JSONObject json;
 		try {
@@ -387,7 +391,7 @@ public class Net {
 
 	public static void getTimeLine() throws NetException2 {
 		List<BasicNameValuePair> getValues = new ArrayList<BasicNameValuePair>();
-		String html = get("/timeline/", getValues);
+		String html = get(API_URL + "/timeline/", getValues);
 		NetException2 n = new NetException2();
 		try {
 			JSONObject json = new JSONObject(html);
@@ -404,7 +408,7 @@ public class Net {
 
 	public static void getTimeLineVoucher(int id) throws NetException2 {
 		List<BasicNameValuePair> postValues = new ArrayList<BasicNameValuePair>();
-		String html = post("/timeline/voucher/" + id, postValues);
+		String html = post(API_URL + "/timeline/voucher/" + id, postValues);
 		NetException2 n = new NetException2();
 		try {
 			JSONObject json = new JSONObject(html);
@@ -431,7 +435,7 @@ public class Net {
 		putValues.add(new BasicNameValuePair("payment[offer_id]", offerId));
 		putValues.add(new BasicNameValuePair("payment[paypal_charge_token]", payKey));
 		putValues.add(new BasicNameValuePair("payment[charity_id]",""+ charity));
-		String html = post("/payments", putValues);
+		String html = post(API_URL + "/payments", putValues);
 		NetException2 n = new NetException2();
 		try {
 			return Voucher.parseVoucher(html);
@@ -444,7 +448,7 @@ public class Net {
 
 	public static String getMailChimp() throws NetException2 {
 		List<BasicNameValuePair> postValues = new ArrayList<BasicNameValuePair>();
-		String html = get("/general/users", postValues);
+		String html = get(API_URL + "/general/users", postValues);
 		try {
 			JSONObject json = new JSONObject(html);
 			if (json.getBoolean("error") == true) {
@@ -456,24 +460,24 @@ public class Net {
 		}
 	}
 
-    public static String subscribeVenue(String id) {
-        String html = post(String.format("/venues/%s/subscribe", id), null);
-        return null;
+    public static String subscribeVenue(String slug, String authToken) {
+        String html = post(String.format("/venues/%s/subscribe?auth_token=%s", slug, authToken), null);
+        return html;
     }
 
-    public static String unsubscribeVenue(String id) {
-        String html = post(String.format("/venues/%s/unsubscribe", id), null);
-        return null;
+    public static String unsubscribeVenue(String slug, String authToken) {
+        String html = post(String.format("/venues/%s/unsubscribe?auth_token=%s", slug, authToken), null);
+        return html;
     }
 
-    public static boolean isSubscribed(String id) throws NetException{
-        String html = get(String.format("/venues/%s/subscribed.json", id), null);
+    public static boolean isSubscribed(String slug, String authToken) {
+        String html = get(String.format("/venues/%s/subscribed.json?auth_token=%s", slug, authToken), null);
         boolean isSubscribed = false;
         try {
             JSONObject jsonObject=new JSONObject(html);
             isSubscribed = jsonObject.optBoolean("subscribed", false);
         } catch (JSONException e) {
-            throw new NetException();
+            isSubscribed = false;
         }
         return isSubscribed;
     }

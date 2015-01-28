@@ -43,6 +43,5 @@
     <style name="TextAppearanceNormal" parent="@android:style/TextAppearance.Medium">
         <item name="android:textStyle">normal</item>
     </style>
-    
 
 </resources>

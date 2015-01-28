@@ -1,13 +1,10 @@
 package co.foodcircles.activities;
 
-import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -21,6 +18,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.sromku.simple.fb.Permission;
+import com.sromku.simple.fb.SimpleFacebook;
+import com.sromku.simple.fb.entities.Profile;
+import com.sromku.simple.fb.listeners.OnLoginListener;
+import com.sromku.simple.fb.listeners.OnProfileListener;
+
+import java.util.Calendar;
+
 import co.foodcircles.R;
 import co.foodcircles.exception.NetException2;
 import co.foodcircles.net.Net;
@@ -30,13 +37,6 @@ import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
 import co.foodcircles.util.FoodCirclesUtils;
 import co.foodcircles.util.TwitterLogin;
-
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
-import com.sromku.simple.fb.Permission;
-import com.sromku.simple.fb.SimpleFacebook;
-import com.sromku.simple.fb.entities.Profile;
-import com.sromku.simple.fb.listeners.OnLoginListener;
-import com.sromku.simple.fb.listeners.OnProfileListener;
 
 
 public class SignUpActivity extends Activity {
@@ -77,28 +77,30 @@ public class SignUpActivity extends Activity {
 		FoodCirclesApplication app = (FoodCirclesApplication) getApplicationContext();
 		app.addPoppableActivity(this);
 
-		TextView copyText = (TextView) findViewById(R.id.textViewCopy);
-		Spannable spannable = new SpannableString( "Buy one appetizer or dessert for $1,\n feed one child in need.");
-		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBoldItalic), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBoldItalic), 38, 46, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 38, 46, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources()
-				.getDimension(R.dimen.signup_small_text)), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources()
-				.getDimension(R.dimen.signup_small_text)), 38, 46, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		copyText.setText(spannable);
+//		TextView copyText = (TextView) findViewById(R.id.textViewCopy);
+//		Spannable spannable = new SpannableString( "Buy one appetizer or dessert for $1,\n feed one child in need.");
+//		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBoldItalic), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		spannable.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceLargeBoldItalic), 38, 46, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		spannable.setSpan(new ForegroundColorSpan(Color.WHITE), 38, 46, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources()
+//				.getDimension(R.dimen.signup_small_text)), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		spannable.setSpan(new AbsoluteSizeSpan((int) this.getResources()
+//				.getDimension(R.dimen.signup_small_text)), 38, 46, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		copyText.setText(spannable);
 
 		TextView countText = (TextView) findViewById(R.id.textViewCount);
 		float size = countText.getTextSize();
-		String numPeopleString;
+		final String numPeopleString;
+        String peopleAmount;
 		try {
-			numPeopleString = Net.getMailChimp();
+            peopleAmount = Net.getMailChimp();
 		} catch (NetException2 e) {
-			numPeopleString = "Many";
+            peopleAmount = "Many";
 		}
+        numPeopleString = peopleAmount;
 		Spannable countSpannable = new SpannableString(numPeopleString + 
-				" people repurpose their everyday dining.\nToday, it\'s your turn.");
+				" people repurpose their Grand Rapids dining.\nToday, it\'s your turn.");
 		countSpannable.setSpan(new TextAppearanceSpan(this,
 				R.style.TextAppearanceLargeBold), 0, numPeopleString.length(),
 				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -144,6 +146,7 @@ public class SignUpActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(SignUpActivity.this,
 						SignInActivity.class);
+                intent.putExtra("peopleNumber", numPeopleString);
 				startActivity(intent);
 				SignUpActivity.this.finish();
 			}
@@ -165,7 +168,7 @@ public class SignUpActivity extends Activity {
 		buttonTwitter.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new TwitterLogin(mContext).twitterSignUp();
+				new TwitterLogin(mContext, numPeopleString).twitterSignUp();
 			}
 		});
 		startupNotifications();

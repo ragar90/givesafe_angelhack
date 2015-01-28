@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FoodCircles.iml" filepath="$PROJECT_DIR$/FoodCircles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FoodCircles-AndroidStudio.iml" filepath="$PROJECT_DIR$/FoodCircles-AndroidStudio.iml" />
       <module fileurl="file://$PROJECT_DIR$/facebookSDK/facebookSDK.iml" filepath="$PROJECT_DIR$/facebookSDK/facebookSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/foodCircles/foodCircles.iml" filepath="$PROJECT_DIR$/foodCircles/foodCircles.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />

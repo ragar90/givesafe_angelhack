@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.foodcircles"
+    android:installLocation="preferExternal"
     android:versionCode="38"
-    android:versionName="2.0.4" 
-    android:installLocation="preferExternal" >
+    android:versionName="2.0.4" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -17,23 +17,26 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
-        android:name="co.foodcircles.util.FoodCirclesApplication"
+        android:name=".util.FoodCirclesApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <meta-data android:value="@string/app_id" android:name="com.facebook.sdk.ApplicationId" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCullo0MN2QmHhYPZ0-TfYTVoRZ3RVN6FE" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -41,9 +44,8 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name="co.foodcircles.activities.SplashActivity"
+            android:name=".activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden"
-            
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
             <intent-filter>
@@ -53,90 +55,89 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="co.foodcircles.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/StyledIndicators"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.SignUpActivity"
+            android:name=".activities.SignUpActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.SignInActivity"
+            android:name=".activities.SignInActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
-            
         </activity>
         <activity
-            android:name="co.foodcircles.activities.EmailPromptsActivity"
+            android:name=".activities.EmailPromptsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
-            </activity>
+        </activity>
         <activity
-            android:name="co.foodcircles.activities.RestaurantActivity"
+            android:name=".activities.RestaurantActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/StyledIndicators"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.VouchersActivity"
+            android:name=".activities.VouchersActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/StyledIndicators"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.ViewVoucherActivity"
+            android:name=".activities.ViewVoucherActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.UpgradePurchasedActivity"
+            android:name=".activities.UpgradePurchasedActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.BuyOptionsActivity"
+            android:name=".activities.BuyOptionsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.AccountOptionsActivity"
+            android:name=".activities.AccountOptionsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name="co.foodcircles.activities.VenueProfileActivity"
+            android:name=".activities.VenueProfileActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
-          <activity
-            android:name="co.foodcircles.activities.TwitterWebviewActivity"
+        <activity
+            android:name=".activities.TwitterWebviewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
-        
+
         <receiver
-            android:name="co.foodcircles.services.AlarmReceiver"
+            android:name=".services.AlarmReceiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="co.foodcircles.geonotification" />
             </intent-filter>
         </receiver>
-        <receiver android:name="co.foodcircles.services.AlarmSetter" >
+        <receiver android:name=".services.AlarmSetter" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -146,28 +147,34 @@
 
         <service
             android:name="com.paypal.android.sdk.payments.PayPalService"
-            android:exported="false" ></service>
+            android:exported="false" />
 
-        <activity android:name="com.paypal.android.sdk.payments.PaymentActivity" ></activity>
-        <activity android:name="com.paypal.android.sdk.payments.LoginActivity" ></activity>
-        <activity android:name="com.paypal.android.sdk.payments.PaymentMethodActivity" ></activity>
-        <activity android:name="com.paypal.android.sdk.payments.PaymentConfirmActivity" ></activity>
-        <activity android:name="com.paypal.android.sdk.payments.PaymentCompletedActivity" ></activity>
+        <activity android:name="com.paypal.android.sdk.payments.PaymentActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.LoginActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentMethodActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentConfirmActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentCompletedActivity" />
         <activity
             android:name="io.card.payment.CardIOActivity"
-            android:configChanges="keyboardHidden|orientation" ></activity>
+            android:configChanges="keyboardHidden|orientation" />
         <activity
             android:name="io.card.payment.DataEntryActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity android:name="com.facebook.LoginActivity" />
 
-        <activity android:name="com.facebook.LoginActivity"/>
-		 <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="22535ca9de8554d530b74b9a578747941edd9284" />
 
-
-    
-
-    <meta-data android:name="com.crashlytics.ApiKey" android:value="22535ca9de8554d530b74b9a578747941edd9284"/>
+        <activity
+            android:name=".activities.ReservedActivity"
+            android:label="@string/title_activity_reserved"
+            android:theme="@android:style/Theme.Translucent">
+        </activity>
     </application>
 
 </manifest>
