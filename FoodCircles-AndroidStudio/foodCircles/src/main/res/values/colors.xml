@@ -61,6 +61,9 @@
     
     <color name="pol_yellow_icon_light">#DEBC42</color>
     <color name="pol_yellow_icon_dark">#C58134</color>
+
+    <color name="pol_green_days_left_light">#97cc7e</color>
+    <color name="pol_green_days_left_dark">#81be60</color>
     
     <color name="pol_grey_icon_light">#B7B7B7</color>
     <color name="pol_grey_icon_dark">#7A7A7A</color>
