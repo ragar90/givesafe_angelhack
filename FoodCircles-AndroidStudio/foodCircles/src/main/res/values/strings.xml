@@ -18,6 +18,9 @@
     <string name="venue_dish_is_gone_text_below">Tap below to get first dibs when it\'s back</string>
     <string name="venue_days_left">%1$d\nDAYS</string>
     <string name="title_activity_reserved">ReservedActivity</string>
+    <string name="this_week_mission">THIS WEEK\'S MISSION</string>
+    <string name="number_meals">%1$d MEALS</string>
+    <string name="kids_aided">KIDS AIDED</string>
 
     <!-- Reservation -->
     <string name="dish_reserved">Dish reserved!</string>
