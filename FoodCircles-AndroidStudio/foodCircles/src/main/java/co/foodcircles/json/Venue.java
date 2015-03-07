@@ -33,6 +33,9 @@ public class Venue
 	private String imageUrl;
 	private String largeImageUrl;
 	private int vouchersAvailable;
+    private int totalPeopleAided;
+    private int peopleAided;
+    private int weeklyGoal;
 
 	public static List<Venue> parseVenues(String jsonString) throws JSONException
 	{
@@ -43,7 +46,14 @@ public class Venue
 		for (int i = 0, ii = jsonArray.length(); i < ii; i++)
 		{
 			try {
-				venues.add(new Venue(jsonArray.getString(i)));
+                Venue venue = new Venue(jsonArray.getString(i));
+                int totalPeopleAided=AndroidUtils.safelyGetJsonInt(jsonObject, "total_people_aided");
+                int peopleAided=AndroidUtils.safelyGetJsonInt(jsonObject, "people_aided");
+                int weeklyGoal=AndroidUtils.safelyGetJsonInt(jsonObject, "weekly_goal");
+                venue.setTotalPeopleAided(totalPeopleAided);
+                venue.setPeopleAided(peopleAided);
+                venue.setWeeklyGoal(weeklyGoal);
+                venues.add(venue);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -367,5 +377,29 @@ public class Venue
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public int getTotalPeopleAided() {
+        return totalPeopleAided;
+    }
+
+    public void setTotalPeopleAided(int total_people_aided) {
+        this.totalPeopleAided = total_people_aided;
+    }
+
+    public int getPeopleAided() {
+        return peopleAided;
+    }
+
+    public void setPeopleAided(int people_aided) {
+        this.peopleAided = people_aided;
+    }
+
+    public int getWeeklyGoal() {
+        return weeklyGoal;
+    }
+
+    public void setWeeklyGoal(int weekly_goal) {
+        this.weeklyGoal = weekly_goal;
     }
 }
