@@ -33,6 +33,7 @@ import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -323,48 +324,47 @@ public class BuyFragment extends Fragment
 
 	
 	//Verify the PayPal sale and add the certificate to the user's account
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		if (resultCode == Activity.RESULT_OK)
-		{
-			MP.track(mixpanel, "Successful Payment");
-			final PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-	
-			//Server verification happens here
-			try {
-				String payKey=confirm.toJSONObject().getJSONObject("proof_of_payment").getJSONObject("adaptive_payment").getString("pay_key");
-				Voucher results = Net.verifyPayment(FoodCirclesUtils.getToken(getActivity()),priceValue,selectedOffer.getId(),payKey,selectedCharity.getId());
-				app.newVoucher = results;
-			} catch (NetException2 e1) {} 
-			catch (JSONException e) { 
-				String payKey;
-				try {
-					payKey = confirm.toJSONObject().getJSONObject("proof_of_payment").getJSONObject("rest_api").getString("payment_id");
-					Voucher results = Net.verifyPayment(FoodCirclesUtils.getToken(getActivity()),priceValue,selectedOffer.getId(),payKey,selectedCharity.getId());
-					app.newVoucher = results;
-				} catch (JSONException e1) { }
-				  catch (NetException2 e2) { }
-			}
-			if (confirm != null)
-			{
-				try
-				{
-					Log.i("paymentExample", confirm.toJSONObject().toString(4));
-					app.purchasedVoucher = true;
-					app.needsRestart = true;
-					
-					getActivity().finish();
-					app.newTop();
-				}
-				catch (JSONException e)
-				{
-					Log.e("PaypalResult", "an extremely unlikely failure occurred: ", e);
-				}
-			}
-		}
-	
-	}
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (data == null) return;
+            MP.track(mixpanel, "Successful Payment");
+            final PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+            if (confirm == null) return;
+            //Server verification happens here
+            try {
+                JSONObject jsonRoot = confirm.toJSONObject();
+                if (jsonRoot == null) return;
+                JSONObject jsonProofOfPayment = jsonRoot.optJSONObject("proof_of_payment");
+                if (jsonProofOfPayment == null) return;
+                JSONObject jsonAdaptivePayment = jsonProofOfPayment.optJSONObject("adaptive_payment");
+                if (jsonAdaptivePayment == null) return;
+                String payKey = jsonAdaptivePayment.optString("pay_key", "");
+                String authToken = FoodCirclesUtils.getToken(getActivity());
+                Voucher results = null;
+                if (authToken != null && priceValue != 0 && selectedOffer != null && payKey != null && selectedCharity != null) {
+                    results = Net.verifyPayment(authToken, priceValue, selectedOffer.getId(), payKey, selectedCharity.getId());
+                } else {
+                    return;
+                }
+                app.newVoucher = results;
+            } catch (NetException2 e1) {
+                Log.d("PayPal", "NetException exception", e1);
+            }
+
+            try {
+                Log.i("paymentExample", confirm.toJSONObject().toString(4));
+                app.purchasedVoucher = true;
+                app.needsRestart = true;
+
+                getActivity().finish();
+                app.newTop();
+            } catch (JSONException e) {
+                Log.e("PaypalResult", "an extremely unlikely failure occurred: ", e);
+            }
+        }
+
+    }
 
 	private void setPrices()
 	{
