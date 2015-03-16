@@ -1,9 +1,5 @@
 package co.foodcircles.activities;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,16 +22,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import co.foodcircles.R;
-import co.foodcircles.net.Net;
-import co.foodcircles.util.FontSetter;
-import co.foodcircles.util.FoodCirclesApplication;
 
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.entities.Feed;
 import com.sromku.simple.fb.listeners.OnLoginListener;
 import com.sromku.simple.fb.listeners.OnPublishListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
+
+import co.foodcircles.R;
+import co.foodcircles.net.Net;
+import co.foodcircles.util.FontSetter;
+import co.foodcircles.util.FoodCirclesApplication;
 
 public class ReceiptDialogFragment extends DialogFragment {
 	private Button markAsUsedButton;
@@ -66,6 +67,17 @@ public class ReceiptDialogFragment extends DialogFragment {
 		TextView textViewChildrenFed = (TextView) v.findViewById(R.id.textViewChildrenFed);
 		TextView textViewSecondLine = (TextView) v.findViewById(R.id.textViewMinGroup);
 		// Display the purchased voucher
+        Calendar date = Calendar.getInstance();
+        date.add(Calendar.MONTH, 1);
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String formattedDate = formatter.format(date.getTime());
+        String minGroupString = "";
+        if ( (app.currentReservation != null) && (app.currentReservation.getOffer().getMinDiners() > 0)) {
+            minGroupString = ("min. group " + app.currentReservation.getOffer() .getMinDiners() + ". ");
+        }
+        textViewSecondLine.setText(minGroupString + "use by "
+                + formattedDate);
+
 		if (app.purchasedVoucher == true) {
 			try {
 				textViewCode.setText(app.newVoucher.getCode());
@@ -85,17 +97,6 @@ public class ReceiptDialogFragment extends DialogFragment {
 			try {
 				textViewVenue.setText(app.selectedVenue.getName());
 			} catch (Exception e) {}
-			try {
-				Calendar date = Calendar.getInstance();
-				date.add(Calendar.MONTH, 1);
-				SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-				String formattedDate = formatter.format(app.newVoucher.getExpirationDate());
-				String minGroupString = "";
-				if (app.currentReservation.getOffer().getMinDiners() > 0) {
-					minGroupString = ("Min. Group " + app.purchasedGroupSize + ". ");
-				}
-				textViewSecondLine.setText(minGroupString + "Use by " + formattedDate);
-			} catch (Exception e) { }
 			textViewDonated.setText("$" + app.purchasedCost + " donated");
 			if (app.purchasedCost == 1) {
 				textViewChildrenFed.setText("(" + app.purchasedCost
@@ -116,19 +117,6 @@ public class ReceiptDialogFragment extends DialogFragment {
 				} catch (Exception e) {}
 				try {
 					app.selectedVenue = app.currentReservation.getVenue();
-					Calendar date = Calendar.getInstance();
-					date.add(Calendar.MONTH, 1);
-					SimpleDateFormat formatter = new SimpleDateFormat(
-							"MM/dd/yyyy");
-					String formattedDate = formatter.format(app.currentReservation.getExpirationDate());
-					String minGroupString = "";
-					if (app.currentReservation.getOffer().getMinDiners() > 0) {
-						minGroupString = ("Min. Group "
-								+ app.currentReservation.getOffer()
-										.getMinDiners() + ". ");
-					}
-					textViewSecondLine.setText(minGroupString + "Use by "
-							+ formattedDate);
 				} catch (Exception e) {
 					Log.d("", " Something went wrong with the second line!");
 				}
