@@ -32,4 +32,4 @@
     <item android:state_focused="true" android:state_selected="false" android:state_pressed="true" android:drawable="@drawable/vpi__tab_unselected_pressed_holo" />
     <item android:state_focused="true" android:state_selected="true"  android:state_pressed="true" android:drawable="@drawable/vpi__tab_selected_pressed_holo" />
 </selector>
-<!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/library/src/main/res/drawable/vpi__tab_indicator.xml --><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/library/unspecified/res/drawable/vpi__tab_indicator.xml -->
+<!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/library/src/main/res/drawable/vpi__tab_indicator.xml --><!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/library/unspecified/res/drawable/vpi__tab_indicator.xml -->

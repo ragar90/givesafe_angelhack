@@ -33,4 +33,4 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/indicator"/>
-</RelativeLayout><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/layout/simple_tabs.xml -->
+</RelativeLayout><!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/layout/simple_tabs.xml -->

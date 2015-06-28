@@ -1,6 +1,7 @@
 package co.foodcircles.net;
 
 import android.annotation.SuppressLint;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
@@ -40,7 +41,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.KeyStore;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import co.foodcircles.exception.NetException2;
 import co.foodcircles.json.Charity;
@@ -54,9 +58,10 @@ public class Net {
     private static final String TAG = Net.class.getSimpleName();
 
 	//public static final String HOST = "http://staging.foodcircles.net";
-    public static final String HOST = "https://joinfoodcircles.org";
+    public static final String HOST = "http://testing.joinfoodcircles.org";
 	private static final String API_URL = "/api";
 	private static final String GET_VENUES = "/venues/%f/%f";
+	private static final String GET_HOMELESS = "/homeless/";
 	private static final String GET_RESERVATION = "/reservations/[reservationId]";
 	private static final String GET_CHARITY_1 = "/charities";
 	private static final String GET_NEWS = "/news";
@@ -178,12 +183,22 @@ public class Net {
 	public static List<Venue> getVenues(double longitude,double latitude,List<BasicNameValuePair> filters)
 			throws NetException {
 		try {
-			String url=String.format(GET_VENUES,latitude,longitude);
+			String url=String.format(GET_VENUES, latitude, longitude);
 			String response = get(API_URL + url, filters);
 			return Venue.parseVenues(response);
 		} catch (JSONException j) {
 			throw new NetException();
 		}
+	}
+
+	public static Venue getHomeless(String deviceId){
+		String url = GET_HOMELESS + deviceId;
+		String apiCall = API_URL + url;
+		Log.d("API CALL", "url: " + apiCall);
+		String response = get(apiCall, null);
+		Log.d("API CALL", "response: " + response);
+		Venue v = Venue.parseHomeless(response);
+		return v;
 	}
 
 	public static List<Reservation> getReservationsList(String token) throws NetException {
@@ -195,6 +210,7 @@ public class Net {
 			throw new NetException();
 		}
 	}
+
 
 	public static Reservation getReservation(String reservationId)
 			throws NetException {

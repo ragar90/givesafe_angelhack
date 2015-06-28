@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -44,6 +45,7 @@ import co.foodcircles.R;
 import co.foodcircles.exception.NetException2;
 import co.foodcircles.json.Charity;
 import co.foodcircles.json.Offer;
+import co.foodcircles.json.Venue;
 import co.foodcircles.json.Voucher;
 import co.foodcircles.net.Net;
 import co.foodcircles.util.FontSetter;
@@ -68,6 +70,10 @@ public class BuyFragment extends Fragment
 	private boolean adjustedSlider = false;
 	private boolean selectedDifferentCharity = false;
 	MixpanelAPI mixpanel;
+	private Venue selectedVenue;
+	BuyOptionsActivity parent;
+	private String TAG = "BuyFragment";
+	private View fragmentView;
 
 	@Override
 	public void onStart()
@@ -83,39 +89,93 @@ public class BuyFragment extends Fragment
 		super.onDestroy();
 	}
 
+	private void loadBuyOptionsFragmentFromDeviceId(){
+		try{
+			String msg = "Loding Homeless";
+			parent.showProgressDialog(msg);
+
+			new AsyncTask<Object, Void, Boolean>(){
+				protected Boolean doInBackground(Object... param){
+					try
+					{
+						Venue v = Net.getHomeless(parent.getDeviceId());
+						selectedVenue = v;
+						app.charities = new ArrayList<Charity>();
+						app.charities.addAll(Net.getCharities());
+						return true;
+					}
+					catch (Exception e)
+					{
+						Log.v(TAG, "Error loading venues", e);
+						return false;
+					}
+				}
+
+				protected void onPostExecute(Boolean success){
+					parent.dismissProgressDialog();
+					if (success){
+
+					}
+					else{
+						parent.runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								parent.showAletDialog();
+							}
+						});
+					}
+				}
+			}.execute();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.buy_options, null);
-		FontSetter.overrideFonts(getActivity(), view);
-
+		fragmentView = inflater.inflate(R.layout.buy_options, null);
+		FontSetter.overrideFonts(getActivity(), fragmentView);
+		parent = (BuyOptionsActivity) this.getActivity();
 		app = (FoodCirclesApplication) getActivity().getApplicationContext();
+		if(app.selectedVenue != null ){
+			selectedVenue = app.selectedVenue;
+			loadFragmentComponents(fragmentView);
+		}
+		else{
+
+		}
+		return fragmentView;
+	}
+
+	private void loadFragmentComponents(View view){
 		Log.i("Token",FoodCirclesUtils.getToken(getActivity()));
 		Log.i("Email",FoodCirclesUtils.getEmail(getActivity()));
-		
-			
-		if (FoodCirclesUtils.getToken(getActivity()).isEmpty() 
-				|| FoodCirclesUtils.getEmail(getActivity()).isEmpty() 
+
+		if (FoodCirclesUtils.getToken(getActivity()).isEmpty()
+				|| FoodCirclesUtils.getEmail(getActivity()).isEmpty()
 				|| FoodCirclesUtils.getToken(getActivity()).equals("")) {
 			Log.i("FALSE","FALSE");
 			try {
 				FoodCirclesUtils.saveToken(getActivity(), Net.facebookSignUp(FoodCirclesUtils.getFBUserId(getActivity()), FoodCirclesUtils.getEmail(getActivity())));
 			} catch (NetException2 e) {
-				e.printStackTrace();	
+				e.printStackTrace();
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setMessage("It seems we've run across a problem!  Sorry about that!  Please contact our support team at joinfoodcircles.org/ and we'll work to get it sorted out as soon as possible!")
-					.setTitle("An Error Has Occurred").setCancelable(false)
-			       .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-			    	   @Override
-			    	   public void onClick(DialogInterface dialog, int which) {
-			    		   getActivity().finish();
-			    	   }
-			       });
+						.setTitle("An Error Has Occurred").setCancelable(false)
+						.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								getActivity().finish();
+							}
+						});
 				AlertDialog dialog = builder.create();
 				dialog.show();
 			}
 		}
-		final List<Offer> offers = app.selectedVenue.getOffers();
+		// USE selectedVenue
+		final List<Offer> offers = selectedVenue.getOffers();
 		selectedOffer = offers.get(0);
 		selectedCharity = app.charities.get(0);
 
@@ -153,6 +213,7 @@ public class BuyFragment extends Fragment
 				return v;
 			}
 		};
+		// END of selectedVenue
 
 		adapter.setDropDownViewResource(R.layout.spinner_content_text);
 		offerSpinner.setAdapter(adapter);
@@ -228,40 +289,7 @@ public class BuyFragment extends Fragment
 		maxPrice = (TextView) view.findViewById(R.id.textViewPrice3);
 		setPrices();
 		Button buyButton = (Button) view.findViewById(R.id.buttonBuy);
-		buyButton.setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if (selectedDifferentOffer) MP.track(mixpanel, "Selected Different Offer");
-				if (selectedDifferentCharity) MP.track(mixpanel, "Selected Different Charity");
-				if (adjustedSlider) MP.track(mixpanel, "Adjusted Slider");
-				if (priceValue == minPriceValue)
-					MP.track(mixpanel, "Buying Voucher", "Price", "Minimum Price");
-				else if (priceValue < medianPriceValue)
-					MP.track(mixpanel, "Buying Voucher", "Price", "Between Minimum and Regular Price");
-				else if (priceValue == medianPriceValue)
-					MP.track(mixpanel, "Buying Voucher", "Price", "Regular Price");
-				else if (priceValue < maxPriceValue)
-					MP.track(mixpanel, "Buying Voucher", "Price", "Between Regular and Double Price");
-				else MP.track(mixpanel, "Buying Voucher", "Price", "Double Price");
-
-				String paypalOffer = (selectedOffer.getTitle() + " from " + app.selectedVenue.getName()).substring(0,22);
-				paypalOffer = (paypalOffer + "...");
-				app.purchasedOffer = selectedOffer.getTitle();
-				app.purchasedCost = priceValue;
-				app.purchasedGroupSize = selectedOffer.getMinDiners();
-				PayPalPayment voucherPayment = new PayPalPayment(new BigDecimal(priceValue), "USD", paypalOffer);
-				Intent intent = new Intent(getActivity(), PaymentActivity.class);
-				intent.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, PaymentActivity.ENVIRONMENT_PRODUCTION);
-				intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, "ATtEOxB-eX60pOi_fHSv3K2PvAX8LRme-eyngA9l6LRSTIr9SeJHtmpaJL4M");
-				intent.putExtra(PaymentActivity.EXTRA_RECEIVER_EMAIL, "jtkumario@gmail.com");
-				intent.putExtra(PaymentActivity.EXTRA_PAYER_ID, FoodCirclesUtils.getToken(getActivity()));
-				intent.putExtra(PaymentActivity.EXTRA_PAYMENT, voucherPayment);
-
-				startActivityForResult(intent, 0);
-			}
-		});
+		buyButton.setOnClickListener(btnListener);
 
 		minPrice.setOnClickListener(new OnClickListener()
 		{
@@ -318,9 +346,44 @@ public class BuyFragment extends Fragment
 				dialog.show(fm, "simple_dialog");
 			}
 		});
-
-		return view;
 	}
+
+	private OnClickListener btnListener = new OnClickListener()
+	{
+		@Override
+		public void onClick(View v)
+		{
+			if (selectedDifferentOffer) MP.track(mixpanel, "Selected Different Offer");
+			if (selectedDifferentCharity) MP.track(mixpanel, "Selected Different Charity");
+			if (adjustedSlider) MP.track(mixpanel, "Adjusted Slider");
+			if (priceValue == minPriceValue)
+				MP.track(mixpanel, "Buying Voucher", "Price", "Minimum Price");
+			else if (priceValue < medianPriceValue)
+				MP.track(mixpanel, "Buying Voucher", "Price", "Between Minimum and Regular Price");
+			else if (priceValue == medianPriceValue)
+				MP.track(mixpanel, "Buying Voucher", "Price", "Regular Price");
+			else if (priceValue < maxPriceValue)
+				MP.track(mixpanel, "Buying Voucher", "Price", "Between Regular and Double Price");
+			else MP.track(mixpanel, "Buying Voucher", "Price", "Double Price");
+
+			// User selectedVenue
+			String paypalOffer = (selectedOffer.getTitle() + " from " + selectedVenue.getName()).substring(0,22);
+			paypalOffer = (paypalOffer + "...");
+
+			app.purchasedOffer = selectedOffer.getTitle();
+			app.purchasedCost = priceValue;
+			app.purchasedGroupSize = selectedOffer.getMinDiners();
+			PayPalPayment voucherPayment = new PayPalPayment(new BigDecimal(priceValue), "USD", paypalOffer);
+			Intent intent = new Intent(getActivity(), PaymentActivity.class);
+			intent.putExtra(PaymentActivity.EXTRA_PAYPAL_ENVIRONMENT, PaymentActivity.ENVIRONMENT_PRODUCTION);
+			intent.putExtra(PaymentActivity.EXTRA_CLIENT_ID, "ATtEOxB-eX60pOi_fHSv3K2PvAX8LRme-eyngA9l6LRSTIr9SeJHtmpaJL4M");
+			intent.putExtra(PaymentActivity.EXTRA_RECEIVER_EMAIL, "jtkumario@gmail.com");
+			intent.putExtra(PaymentActivity.EXTRA_PAYER_ID, FoodCirclesUtils.getToken(getActivity()));
+			intent.putExtra(PaymentActivity.EXTRA_PAYMENT, voucherPayment);
+			startActivityForResult(intent, 0);
+			// End selectedVenue
+		}
+	};
 
 	
 	//Verify the PayPal sale and add the certificate to the user's account

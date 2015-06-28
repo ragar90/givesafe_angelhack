@@ -6,4 +6,4 @@
     <item android:drawable="@drawable/button_active_facebook" android:state_selected="true"/>
     <item android:drawable="@drawable/facebook_button"/>
 
-</selector><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/drawable/facebook_button_selector.xml -->
+</selector><!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/drawable/facebook_button_selector.xml -->

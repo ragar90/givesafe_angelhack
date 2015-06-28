@@ -45,7 +45,8 @@
             android:text="Buy One, Feed One."
             android:textColor="@color/dark_grey"
             android:textSize="@dimen/splash_size"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:visibility="invisible" />
 
         <android.support.v7.widget.Space
             android:id="@+id/space1"
@@ -55,4 +56,4 @@
 
     </LinearLayout>
 
-</FrameLayout><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/layout/splash.xml -->
+</FrameLayout><!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/layout/splash.xml -->

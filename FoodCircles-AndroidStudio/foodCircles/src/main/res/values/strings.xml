@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">FoodCircles</string>
+    <string name="app_name">GiveSafe</string>
     <string name="mixpanel_token">a7f79aaa98013376271cb811ec95ff99</string>
     <string name="preferences">pref</string>
     <string name="last_notification">notification</string>
@@ -26,4 +26,5 @@
     <string name="dish_reserved">Dish reserved!</string>
     <string name="continue_browsing">Continue browsing</string>
     <string name="does_not_reserve_table_at_hop_cat">This does not reserve a table at </string>
+    <string name="title_activity_donation">DonationActivity</string>
 </resources>

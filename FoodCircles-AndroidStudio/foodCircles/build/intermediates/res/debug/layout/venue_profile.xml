@@ -40,14 +40,14 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:orientation="horizontal"
-                        android:visibility="gone"
+
                         android:weightSum="2">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1.8"
-                            android:background="@color/yellow_circle"
+                            android:background="@color/pol_green_days_left_dark"
                             android:orientation="vertical">
 
                             <TextView
@@ -68,11 +68,16 @@
                                 android:textColor="@android:color/white"/>
                         </LinearLayout>
 
+                        <View
+                            android:layout_width="2px"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="0.2"
-                            android:background="@color/pol_yellow_icon_light"
+                            android:background="@color/pol_green_days_left_light"
                             android:orientation="vertical"
                             android:paddingTop="2dp">
 
@@ -295,4 +300,4 @@
         </LinearLayout>
     </ScrollView>
 
-</FrameLayout><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/layout/venue_profile.xml -->
+</FrameLayout><!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/layout/venue_profile.xml -->

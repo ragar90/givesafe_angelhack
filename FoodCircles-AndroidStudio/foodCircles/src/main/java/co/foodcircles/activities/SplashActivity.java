@@ -11,16 +11,28 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Window;
 import co.foodcircles.R;
+import co.foodcircles.services.HomelessDiscoveryService;
 import co.foodcircles.util.FontSetter;
 
 public class SplashActivity extends Activity
 {
 	private int splashDelay = 1000;
 
-	@SuppressLint("NewApi")
+	//@SuppressLint("NewApi")
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if(HomelessDiscoveryService.serviceIsOn){
+			stopService(new Intent(this, HomelessDiscoveryService.class));
+		}
+
+	}
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		if(!HomelessDiscoveryService.serviceIsOn){
+			startService(new Intent(this, HomelessDiscoveryService.class));
+		}
 		Crashlytics.start(this);
 		int SDK_INT = android.os.Build.VERSION.SDK_INT;
 		if (SDK_INT>8){
@@ -42,5 +54,10 @@ public class SplashActivity extends Activity
 		};
 		Timer timer = new Timer();
 		timer.schedule(task, splashDelay);
+//		if(!HomelessDiscoveryService.serviceIsOn){
+//			Intent intent = new Intent(this, HomelessDiscoveryService.class);
+//			startService(intent);
+//		}
+
 	}
 }

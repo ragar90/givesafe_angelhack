@@ -36,6 +36,7 @@ public class Venue
     private int totalPeopleAided;
     private int peopleAided;
     private int weeklyGoal;
+	private String deviceId;
 
 	public static List<Venue> parseVenues(String jsonString) throws JSONException
 	{
@@ -60,6 +61,18 @@ public class Venue
 		}
 		return venues;
 	}
+	public static Venue parseHomeless(String jsonString){
+		try{
+			JSONObject json = new JSONObject(jsonString);
+			Venue v = new Venue(AndroidUtils.safelyGetJsonString(json,"content"));
+			return v;
+		}
+		catch (JSONException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 	
 	public Venue(String jsonString) throws JSONException
 	{
@@ -71,14 +84,15 @@ public class Venue
 		city = AndroidUtils.safelyGetJsonString(json,"city");;
 		state = AndroidUtils.safelyGetJsonString(json,"state");;
 		zip = AndroidUtils.safelyGetJsonString(json,"zip");
-		distance = AndroidUtils.safelyGetJsonString(json,"distance");
-		latitude = AndroidUtils.safelyGetJsonDouble(json,"lat");
-		longitude = AndroidUtils.safelyGetJsonDouble(json,"lon");
-		description = AndroidUtils.safelyGetJsonString(json,"description");
+		distance = AndroidUtils.safelyGetJsonString(json, "distance");
+		latitude = AndroidUtils.safelyGetJsonDouble(json, "lat");
+		longitude = AndroidUtils.safelyGetJsonDouble(json, "lon");
+		description = AndroidUtils.safelyGetJsonString(json, "description");
 		phone = AndroidUtils.safelyGetJsonString(json,"phone");
-		web = AndroidUtils.safelyGetJsonString(json,"web");
+		web = AndroidUtils.safelyGetJsonString(json, "web");
 		vouchersAvailable=AndroidUtils.safelyGetJsonInt(json, "vouchers_available");
-		openTimes = AndroidUtils.safelyGetJsonString(json,"open_times");
+		openTimes = AndroidUtils.safelyGetJsonString(json, "open_times");
+		deviceId = AndroidUtils.safelyGetJsonString(json, "device_id");
 		tags = new ArrayList<String>();
 		JSONArray tagsJson = AndroidUtils.safelyGetJsonArray(json,"tags");
 

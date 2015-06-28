@@ -27,6 +27,7 @@ import com.sromku.simple.fb.listeners.OnProfileListener;
 import co.foodcircles.R;
 import co.foodcircles.exception.NetException2;
 import co.foodcircles.net.Net;
+import co.foodcircles.services.HomelessDiscoveryService;
 import co.foodcircles.util.AndroidUtils;
 import co.foodcircles.util.FontSetter;
 import co.foodcircles.util.FoodCirclesApplication;
@@ -44,8 +45,20 @@ public class SignInActivity extends Activity {
 	boolean signedIn=false;
 	Context mcontext;
 	String id="";
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if(HomelessDiscoveryService.serviceIsOn){
+			stopService(new Intent(this, HomelessDiscoveryService.class));
+		}
+	}
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        if(!HomelessDiscoveryService.serviceIsOn){
+            startService(new Intent(this, HomelessDiscoveryService.class));
+        }
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.signin);
 		FontSetter.overrideFonts(this, findViewById(R.id.root));
@@ -95,19 +108,22 @@ public class SignInActivity extends Activity {
 				new Thread() {
 					public void run() {
 						signIn(email.getText().toString(), password.getText().toString());
-					};
-				}.start();
+					}
+
+                    ;
+                }.start();
 			}
 		});
 
 		signUpButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
-				startActivity(intent);
-				SignInActivity.this.finish();
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+                SignInActivity.this.finish();
 			}
 		});
+
 		
 	}
 

@@ -1,13 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'Google Inc.:Google APIs:19'
+    compileSdkVersion 22
     buildToolsVersion "20.0.0"
+
+    packagingOptions {
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+    }
 
     defaultConfig {
         applicationId "co.foodcircles"
         minSdkVersion 9
-        targetSdkVersion 20
+        targetSdkVersion 22
     }
 
     signingConfigs {
@@ -33,10 +38,15 @@ dependencies {
     compile project(':simpleFacebook')
     compile 'com.android.support:gridlayout-v7:19.1.0'
     compile 'com.google.android.gms:play-services:+'
+    compile 'com.jakewharton:butterknife:6.1.0'
     compile files('libs/MixpanelAPI.jar')
     compile files('libs/PayPalAndroidSDK.jar')
     compile files('libs/crashlytics.jar')
     compile files('libs/maps.jar')
     compile files('libs/twitter4j-core-4.0.0.jar')
     compile files('libs/universal-image-loader-1.8.4.jar')
+    compile files('libs/gimbal.jar')
+    compile files('libs/gimbal-dev-logging.jar')
+    compile files('libs/spring-android-core-1.0.1.RELEASE.jar')
+    compile files('libs/spring-android-rest-template-1.0.1.RELEASE.jar')
 }

@@ -6,4 +6,4 @@
     <item android:drawable="@drawable/nvm_btn_press" android:state_selected="true"/>
     <item android:drawable="@drawable/nvm_btn"/>
 
-</selector><!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/drawable/nevermind_btn_selector.xml -->
+</selector><!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/drawable/nevermind_btn_selector.xml -->

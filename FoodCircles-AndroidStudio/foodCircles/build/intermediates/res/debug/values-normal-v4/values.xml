@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/values-normal/dimens.xml -->
+    <!-- From: file:/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/src/main/res/values-normal/dimens.xml -->
     <eat-comment/>
     <dimen name="buy_options_spinner">12dp</dimen>
     <dimen name="buy_options_text">18dp</dimen>

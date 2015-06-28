@@ -2,109 +2,298 @@
 <items version="2" >
 
     <item
-        jar="/Users/mat/adt-bundle-mac-x86_64-20130729/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-19a9d3701e27e37a9c09b2ac949a01b8de5f3112.jar" />
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-426ea66c2b18a808130a7ed7018fe8b856cf57cc.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/maps.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="9c5e4add9f7e72566520ce964af5eca390ce9877">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/maps-7934bdb15ac0fb5b4623149cf0e904f9e06d3bbf.jar" />
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-0769ee784e15864833dd3145f16a764ddf6394b4.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
+        jar="/Users/ragar90/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.1.0/63735f48b82bcd24cdd33821342428252eb1ca5a/butterknife-6.1.0.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-f48fee8b4294e8965c1d31f4db2f7bf334c4d3cd.jar" />
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/butterknife-6.1.0-28bed20ada0d26c0b6b13088a442abe675f0b8da.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/19.1.0/classes.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="af4cc326e6cd92f88db12298767e521743aedd36">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-e3e27de3636bf5d3ed20b030de7f91e5d1d0c8f5.jar" />
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-b2dd66c99ffa503d1112d5fce5e47d69af6b2fba.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/libs/bolts-android-1.1.2.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-a4336a1b996efe046654fea9f0a888632e97a946.jar" />
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-f04d6451dbde2e0b0b007629f45d486ff65f9336.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/universal-image-loader-1.8.4.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="eee81e43531ce82db1781c5a8b27781ca384eede">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/universal-image-loader-1.8.4-c6fa840b708fdeb57b1485c4471b8c2af8240c87.jar" />
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-3ae37266af5aad8dfb1c36c1bdc0ac1ebaa2c26e.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/PayPalAndroidSDK.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="583b0ee4331af82ebac7a948f78ca71024270497">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/PayPalAndroidSDK-ad70e0d9839a5c714f1f710be8e29b55e281a311.jar" />
+        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-e6a1cfe952f175f6761582daf0d9ac8290d5caab.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/crashlytics.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/library/unspecified/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="b8189e9eef2f07fae743e05d7fe7e69daebe98d1">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/crashlytics-c042681cd5e1ec2b0463c7808ecc4d72f972961c.jar" />
+        sha1="f3dc77b4eb02a6ecd23df3fe2bd529be82bb8fa9">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-35bbc61269cbbfc69e6a56743aba06d0af03e544.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/library/unspecified/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="2156b4858c2fc87bdbb591516e28f823cbbae43f">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-3a76a134e8048b372f644764196906b64d5d8a06.jar" />
-    </item>
-    <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/twitter4j-core-4.0.0.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/twitter4j-core-4.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="5f104e22c2820390f999fa0cc443a1fb21e60897">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/twitter4j-core-4.0.0-9649b7467202885c7987e542caa2d043123581db.jar" />
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/twitter4j-core-4.0.0-f41c4cf2a3d863006fa9bce235d125b17a7ec924.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/PayPalAndroidSDK.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-1edf314a084beccea16d8967b4f4435239788cc1.jar" />
+        sha1="583b0ee4331af82ebac7a948f78ca71024270497">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/PayPalAndroidSDK-2c61a36be82268746fe6e2ee3f1d5d855736a8c5.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-95bf7f19bc8a31586d6122ae58851584accf9b6a.jar" />
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-dd4a55453cae50e9a5c232b6f2228d499d4513cf.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/classes.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/universal-image-loader-1.8.4.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="2a5ce2513d43a56eeab1ccafbeee98c2cc64ef73">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-398edc286d773fc0d83e4c2a7227dd88199655e3.jar" />
+        sha1="eee81e43531ce82db1781c5a8b27781ca384eede">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/universal-image-loader-1.8.4-b1860eb09218ee1ee88d58920fa313efef7237a7.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/MixpanelAPI.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="5b9a672b5668e6fcaf8c9776e9f84d9bb09ed1d6">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-c618a0a258f7c6bf54bbb4e1feefbffcdb25e126.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-5c92bbd817810847d183b50491dfd088dc923f52.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-ea287db8937f76fb2f495aeffc6046dcfcc42c9a.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/gimbal-dev-logging.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b8ce9d8f1acfed2056e217e1150ee4eeea1c0913">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/gimbal-dev-logging-d35f82aba3029ca715c66bd5ed1916250e6cc98b.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-64c226449a98a881431b4f68f7ee758046e1b068.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/facebookSDK/unspecified/libs/bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-fcd4f17d9caf7dc39b63a7076e5a72a11c66d15a.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-91232aa5282e8e7b21356a067a79db1e664df953.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-d00283e6e036574ae2de4487b87d1e94c0c34ac6.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-e577c4691e728f15d54af015078caa220a6ed866.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-1ad3f3caec205be56d446b1ccdee41470a8ae713.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/crashlytics.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b8189e9eef2f07fae743e05d7fe7e69daebe98d1">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/crashlytics-d33b876397a0b26bd0c39a279642cc3ff4a3200d.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/dev_tools/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-ea793c1a363b0dbe42328fb598383876e8cf9e61.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-6ef2d7b29d222c01ee72e481104f300dcb26ab20.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-4df4ab82105436c93f36528209afed199b7db360.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-15e7615054ad1c9783a35acb9913cf0d29bcd45a.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-ce8ba1c638faa5100685a6902bc416577162525b.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/19.1.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="af4cc326e6cd92f88db12298767e521743aedd36">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-33931f239c76deb735c092b394799be0d6eb7f18.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-4bdd588965f4c48c4c8874091aadc8b2005685b6.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/gimbal.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="96b566a177e713e7bca23157187dea9cf2e7e8c9">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/gimbal-da159e90921849d50b2f433432efcacb063ddb39.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-3aace09681201754efe37d1bf54912837a62d6fc.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/spring-android-rest-template-1.0.1.RELEASE.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e132d929bd181941f79b0d63edafb8a86ae6fd33">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/spring-android-rest-template-1.0.1.RELEASE-651d2153cbf4f33e189121518335fc40835924c1.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-4ddc24a072bd927a55996ecb67afcbdbe176bcaa.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-f0e67851f01dc9b2739b5683c98fcb2836f0886b.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/maps.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9c5e4add9f7e72566520ce964af5eca390ce9877">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/maps-4a5f9107ed13e2185ba346c9b9b1833659b0ff6f.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/simpleFacebook/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="ea5f68de91999a37ac12e53e587523a534c4698d">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-83ebba31f94e917b685bc5fa21e3ad5fdbaa00e7.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/spring-android-core-1.0.1.RELEASE.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e68f0e8e4b636ee30c4de58953be38d9b72a5e3b">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/spring-android-core-1.0.1.RELEASE-2bdc4d2fbd55852d4e8ba6ea27f4ed76ccf27e6b.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-1a816680e2950c2a4fd321c304e6178a502e2100.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/libs/MixpanelAPI.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="c29aca65c9453e1339580cd49be9e445b418b045">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/MixpanelAPI-ee4de1ed29b92ca4ea4cfbd0442d4166a604bf0b.jar" />
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/MixpanelAPI-f1a2e9a21b447a7c77aa46c0f503f314a0d512d9.jar" />
     </item>
     <item
-        jar="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/FoodCircles-AndroidStudio/simpleFacebook/unspecified/classes.jar"
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="aaa477190cd7e51e855e3bca6d950503f3bf6f7e">
-        <dex dex="/Users/mat/git_repos/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-6431e043f57f5cdc2b25b6721e2ca9a891766f56.jar" />
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-c2f2069e2b49e853b6a1a89ec1f6ad7c98a3eb13.jar" />
+    </item>
+    <item
+        jar="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="/Users/ragar90/foodcircles-android/FoodCircles-AndroidStudio/foodCircles/build/intermediates/pre-dexed/debug/classes-5dba318dda090eb0b94c0fcb9cfd19b6365c7334.jar" />
     </item>
 
 </items>

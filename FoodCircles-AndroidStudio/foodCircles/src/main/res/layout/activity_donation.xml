@@ -1,0 +1,100 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.foodcircles.activities.DonationActivity"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/relativelayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/profileImageView"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/splash_logo"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/homelessNameTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/profileImageView"
+                    android:layout_alignTop="@+id/profileImageView"
+                    android:layout_alignRight="@+id/profileImageView"
+                    android:layout_alignBottom="@+id/profileImageView"
+                    android:text="Random Name"
+                    android:textSize="42sp"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="25dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Give One Dolar"
+                android:id="@+id/give1DolarBtn"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="left|center_vertical"
+                android:textSize="42dp"
+                android:textColor="#FFF"
+                android:background="#FF716BBE"
+                android:paddingTop="34dp"
+                android:paddingBottom="34dp"
+                android:paddingLeft="21dp"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Give More"
+                android:id="@+id/giveMore"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="left|center_vertical"
+                android:textSize="15dp"
+                android:textColor="#05ABBF"
+                android:background="#FFF"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="21dp"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Some Description"
+                android:id="@+id/profileDescriptionTxt"
+                android:layout_gravity="center_horizontal"
+                android:background="#fff"
+                android:textColor="#FF3D3D3D"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                android:scrollbars = "vertical"
+                android:maxLines = "500"
+                android:textSize="15dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
